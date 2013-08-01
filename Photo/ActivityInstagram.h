@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DMActivityInstagram : UIActivity <DMResizerDelegate, UIDocumentInteractionControllerDelegate>
+
+@interface DMActivityInstagram : UIActivity <UIDocumentInteractionControllerDelegate>
 
 @property (nonatomic, strong) UIImage *shareImage;
 @property (nonatomic, strong) NSString *shareString;

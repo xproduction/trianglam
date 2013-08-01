@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0BCE1B317AA990500222AB6 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BCE1B217AA990500222AB6 /* Camera.m */; };
 		D2008B1516A019E80022DB19 /* trianglam_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = D2008B1416A019E80022DB19 /* trianglam_ok.png */; };
 		D2008B1916A020910022DB19 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = D2008B1816A020910022DB19 /* DropDown.m */; };
 		D2010E0817AA9368009ADB8F /* ActivityInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = D2010E0717AA9368009ADB8F /* ActivityInstagram.m */; };
@@ -68,6 +69,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0BCE1B117AA990500222AB6 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		D0BCE1B217AA990500222AB6 /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
 		D2008B1416A019E80022DB19 /* trianglam_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_ok.png; sourceTree = "<group>"; };
 		D2008B1716A020910022DB19 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
 		D2008B1816A020910022DB19 /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 		D28A1D3B1664F3AA005578F1 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
+				D0BCE1B117AA990500222AB6 /* Camera.h */,
+				D0BCE1B217AA990500222AB6 /* Camera.m */,
 				D28A1D441664F3AA005578F1 /* AppDelegate.h */,
 				D28A1D451664F3AA005578F1 /* AppDelegate.m */,
 				D28A1D5E1664FF6C005578F1 /* CameraViewController.h */,
@@ -417,6 +422,7 @@
 				D223EA7C166F592100411CC0 /* Settings.m in Sources */,
 				D223EA81166F848100411CC0 /* UIImage+Extensions.m in Sources */,
 				D2008B1916A020910022DB19 /* DropDown.m in Sources */,
+				D0BCE1B317AA990500222AB6 /* Camera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +498,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Photo/Trianglam-Prefix.pch";
 				INFOPLIST_FILE = "Photo/Trianglam-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Trianglam;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -507,7 +513,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Photo/Trianglam-Prefix.pch";
 				INFOPLIST_FILE = "Photo/Trianglam-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Trianglam;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

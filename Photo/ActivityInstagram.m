@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Cory Alder. All rights reserved.
 //
 
-#import "DMActivityInstagram.h"
+#import "ActivityInstagram.h"
 
 @implementation DMActivityInstagram
 
@@ -50,14 +50,14 @@
     }
 }
 
-- (UIViewController *)activityViewController {
+/*- (UIViewController *)activityViewController {
     UIViewController *controller = [[UIViewController alloc] init];
     controller.view.backgroundColor = [UIColor blackColor];
     controller.view.frame = [[UIScreen mainScreen] setBrightness:0.0];
     return controller;
-}
+}*/
 
--(void)resizer:(DMResizerViewController *)resizer finishedResizingWithResult:(UIImage *)image {
+/*-(void)resizer:(DMResizerViewController *)resizer finishedResizingWithResult:(UIImage *)image {
     if (image == nil) {
         if (self.documentController) {
             [self.documentController dismissMenuAnimated:YES];
@@ -70,7 +70,7 @@
         // performActivity
         [self performActivity];
     }
-}
+}*/
 
 - (void)performActivity {
     // no resize, just fire away.
