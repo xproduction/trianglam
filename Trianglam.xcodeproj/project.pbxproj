@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D2008B1516A019E80022DB19 /* trianglam_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = D2008B1416A019E80022DB19 /* trianglam_ok.png */; };
+		D2008B1916A020910022DB19 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = D2008B1816A020910022DB19 /* DropDown.m */; };
+		D2010E0817AA9368009ADB8F /* ActivityInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = D2010E0717AA9368009ADB8F /* ActivityInstagram.m */; };
+		D210AEC217673640007F7524 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D210AEC117673640007F7524 /* Media.xcassets */; };
+		D223EA5B166E25CE00411CC0 /* GalleryCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA5A166E25CE00411CC0 /* GalleryCollectionCell.m */; };
+		D223EA5E166E371300411CC0 /* UIImage+Triangles.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA5D166E371300411CC0 /* UIImage+Triangles.m */; };
+		D223EA61166E3E0D00411CC0 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA60166E3E0D00411CC0 /* ImageViewController.m */; };
+		D223EA7C166F592100411CC0 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA7B166F592100411CC0 /* Settings.m */; };
+		D223EA81166F848100411CC0 /* UIImage+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA80166F848100411CC0 /* UIImage+Extensions.m */; };
+		D24E1CB11684868200045655 /* trianglam_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C941684868200045655 /* trianglam_camera.png */; };
+		D24E1CB21684868200045655 /* trianglam_close.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C951684868200045655 /* trianglam_close.png */; };
+		D24E1CB31684868200045655 /* trianglam_fb.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C961684868200045655 /* trianglam_fb.png */; };
+		D24E1CB41684868200045655 /* trianglam_flash_auto.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C971684868200045655 /* trianglam_flash_auto.png */; };
+		D24E1CB51684868200045655 /* trianglam_flash_off.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C981684868200045655 /* trianglam_flash_off.png */; };
+		D24E1CB61684868200045655 /* trianglam_flash_on.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C991684868200045655 /* trianglam_flash_on.png */; };
+		D24E1CB71684868200045655 /* trianglam_trash.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9A1684868200045655 /* trianglam_trash.png */; };
+		D24E1CB81684868200045655 /* trianglam_instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9B1684868200045655 /* trianglam_instagram.png */; };
+		D24E1CB91684868200045655 /* trianglam_mail.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9C1684868200045655 /* trianglam_mail.png */; };
+		D24E1CBA1684868200045655 /* trianglam_save.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9D1684868200045655 /* trianglam_save.png */; };
+		D24E1CBB1684868200045655 /* trianglam_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9E1684868200045655 /* trianglam_share.png */; };
+		D24E1CBC1684868200045655 /* trianglam_switch.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9F1684868200045655 /* trianglam_switch.png */; };
+		D24E1CBD1684868200045655 /* trianglam_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA01684868200045655 /* trianglam_twitter.png */; };
+		D24E1CBF1684868200045655 /* trianglam_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA31684868200045655 /* trianglam_camera@2x.png */; };
+		D24E1CC01684868200045655 /* trianglam_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA41684868200045655 /* trianglam_close@2x.png */; };
+		D24E1CC11684868200045655 /* trianglam_fb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA51684868200045655 /* trianglam_fb@2x.png */; };
+		D24E1CC21684868200045655 /* trianglam_flash_auto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA61684868200045655 /* trianglam_flash_auto@2x.png */; };
+		D24E1CC31684868200045655 /* trianglam_flash_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA71684868200045655 /* trianglam_flash_off@2x.png */; };
+		D24E1CC41684868200045655 /* trianglam_flash_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA81684868200045655 /* trianglam_flash_on@2x.png */; };
+		D24E1CC51684868200045655 /* trianglam_trash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA91684868200045655 /* trianglam_trash@2x.png */; };
+		D24E1CC61684868200045655 /* trianglam_instagram@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAA1684868200045655 /* trianglam_instagram@2x.png */; };
+		D24E1CC71684868200045655 /* trianglam_mail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAB1684868200045655 /* trianglam_mail@2x.png */; };
+		D24E1CC81684868200045655 /* trianglam_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAC1684868200045655 /* trianglam_save@2x.png */; };
+		D24E1CC91684868200045655 /* trianglam_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAD1684868200045655 /* trianglam_share@2x.png */; };
+		D24E1CCA1684868200045655 /* trianglam_switch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAE1684868200045655 /* trianglam_switch@2x.png */; };
+		D24E1CCB1684868200045655 /* trianglam_twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAF1684868200045655 /* trianglam_twitter@2x.png */; };
+		D2640C53169B0E19000A9A7B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2640C52169B0E19000A9A7B /* QuartzCore.framework */; };
+		D27CBD651680A33D006B6574 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27CBD641680A33D006B6574 /* MessageUI.framework */; };
+		D27CBD6A1680A34D006B6574 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27CBD691680A34D006B6574 /* Social.framework */; };
+		D28A1D361664F3AA005578F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D351664F3AA005578F1 /* UIKit.framework */; };
+		D28A1D381664F3AA005578F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D371664F3AA005578F1 /* Foundation.framework */; };
+		D28A1D3A1664F3AA005578F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D391664F3AA005578F1 /* CoreGraphics.framework */; };
+		D28A1D401664F3AA005578F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D28A1D3E1664F3AA005578F1 /* InfoPlist.strings */; };
+		D28A1D421664F3AA005578F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D411664F3AA005578F1 /* main.m */; };
+		D28A1D461664F3AA005578F1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D451664F3AA005578F1 /* AppDelegate.m */; };
+		D28A1D481664F3AA005578F1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D28A1D471664F3AA005578F1 /* Default.png */; };
+		D28A1D4A1664F3AA005578F1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D28A1D491664F3AA005578F1 /* Default@2x.png */; };
+		D28A1D4C1664F3AA005578F1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D28A1D4B1664F3AA005578F1 /* Default-568h@2x.png */; };
+		D28A1D591664F440005578F1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D581664F440005578F1 /* AVFoundation.framework */; };
+		D28A1D601664FF6C005578F1 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D5F1664FF6C005578F1 /* CameraViewController.m */; };
+		D28A1D62166619B9005578F1 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D61166619B9005578F1 /* ImageIO.framework */; };
+		D28A1D6416661A07005578F1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D6316661A07005578F1 /* CoreMedia.framework */; };
+		D28A1D6716661D80005578F1 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6616661D80005578F1 /* Gallery.m */; };
+		D28A1D6E166633AD005578F1 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6D166633AC005578F1 /* GalleryViewController.m */; };
+		D28A1D74166635E2005578F1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D73166635E2005578F1 /* CoreVideo.framework */; };
+		D2A8BE9B16A426DA00C7EAB1 /* trianglam_square_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2A8BE9A16A426DA00C7EAB1 /* trianglam_square_icon.png */; };
+		D2A8BE9E16A426E500C7EAB1 /* trianglam_triangle_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2A8BE9D16A426E500C7EAB1 /* trianglam_triangle_icon.png */; };
+		D2B6AD381684AFD000E85FF1 /* trianglam_gallery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B6AD371684AFD000E85FF1 /* trianglam_gallery@2x.png */; };
+		D2B6AD3A1684AFD700E85FF1 /* trianglam_gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B6AD391684AFD700E85FF1 /* trianglam_gallery.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D2008B1416A019E80022DB19 /* trianglam_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_ok.png; sourceTree = "<group>"; };
+		D2008B1716A020910022DB19 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
+		D2008B1816A020910022DB19 /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
+		D2010E0617AA9368009ADB8F /* ActivityInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityInstagram.h; sourceTree = "<group>"; };
+		D2010E0717AA9368009ADB8F /* ActivityInstagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityInstagram.m; sourceTree = "<group>"; };
+		D210AEC117673640007F7524 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Trianglam/Media.xcassets; sourceTree = "<group>"; };
+		D223EA59166E25CE00411CC0 /* GalleryCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryCollectionCell.h; sourceTree = "<group>"; };
+		D223EA5A166E25CE00411CC0 /* GalleryCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryCollectionCell.m; sourceTree = "<group>"; };
+		D223EA5C166E371300411CC0 /* UIImage+Triangles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Triangles.h"; sourceTree = "<group>"; };
+		D223EA5D166E371300411CC0 /* UIImage+Triangles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Triangles.m"; sourceTree = "<group>"; };
+		D223EA5F166E3E0D00411CC0 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		D223EA60166E3E0D00411CC0 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		D223EA7A166F592100411CC0 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		D223EA7B166F592100411CC0 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		D223EA7F166F848100411CC0 /* UIImage+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extensions.h"; sourceTree = "<group>"; };
+		D223EA80166F848100411CC0 /* UIImage+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extensions.m"; sourceTree = "<group>"; };
+		D24E1C941684868200045655 /* trianglam_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_camera.png; sourceTree = "<group>"; };
+		D24E1C951684868200045655 /* trianglam_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_close.png; sourceTree = "<group>"; };
+		D24E1C961684868200045655 /* trianglam_fb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_fb.png; sourceTree = "<group>"; };
+		D24E1C971684868200045655 /* trianglam_flash_auto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_flash_auto.png; sourceTree = "<group>"; };
+		D24E1C981684868200045655 /* trianglam_flash_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_flash_off.png; sourceTree = "<group>"; };
+		D24E1C991684868200045655 /* trianglam_flash_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_flash_on.png; sourceTree = "<group>"; };
+		D24E1C9A1684868200045655 /* trianglam_trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_trash.png; sourceTree = "<group>"; };
+		D24E1C9B1684868200045655 /* trianglam_instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_instagram.png; sourceTree = "<group>"; };
+		D24E1C9C1684868200045655 /* trianglam_mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_mail.png; sourceTree = "<group>"; };
+		D24E1C9D1684868200045655 /* trianglam_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_save.png; sourceTree = "<group>"; };
+		D24E1C9E1684868200045655 /* trianglam_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_share.png; sourceTree = "<group>"; };
+		D24E1C9F1684868200045655 /* trianglam_switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_switch.png; sourceTree = "<group>"; };
+		D24E1CA01684868200045655 /* trianglam_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_twitter.png; sourceTree = "<group>"; };
+		D24E1CA31684868200045655 /* trianglam_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_camera@2x.png"; sourceTree = "<group>"; };
+		D24E1CA41684868200045655 /* trianglam_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_close@2x.png"; sourceTree = "<group>"; };
+		D24E1CA51684868200045655 /* trianglam_fb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_fb@2x.png"; sourceTree = "<group>"; };
+		D24E1CA61684868200045655 /* trianglam_flash_auto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_flash_auto@2x.png"; sourceTree = "<group>"; };
+		D24E1CA71684868200045655 /* trianglam_flash_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_flash_off@2x.png"; sourceTree = "<group>"; };
+		D24E1CA81684868200045655 /* trianglam_flash_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_flash_on@2x.png"; sourceTree = "<group>"; };
+		D24E1CA91684868200045655 /* trianglam_trash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_trash@2x.png"; sourceTree = "<group>"; };
+		D24E1CAA1684868200045655 /* trianglam_instagram@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_instagram@2x.png"; sourceTree = "<group>"; };
+		D24E1CAB1684868200045655 /* trianglam_mail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_mail@2x.png"; sourceTree = "<group>"; };
+		D24E1CAC1684868200045655 /* trianglam_save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_save@2x.png"; sourceTree = "<group>"; };
+		D24E1CAD1684868200045655 /* trianglam_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_share@2x.png"; sourceTree = "<group>"; };
+		D24E1CAE1684868200045655 /* trianglam_switch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_switch@2x.png"; sourceTree = "<group>"; };
+		D24E1CAF1684868200045655 /* trianglam_twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_twitter@2x.png"; sourceTree = "<group>"; };
+		D2640C52169B0E19000A9A7B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D27CBD641680A33D006B6574 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		D27CBD691680A34D006B6574 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		D28A1D311664F3AA005578F1 /* Trianglam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trianglam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D28A1D351664F3AA005578F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D28A1D371664F3AA005578F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D28A1D391664F3AA005578F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D28A1D3D1664F3AA005578F1 /* Trianglam-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Trianglam-Info.plist"; sourceTree = "<group>"; };
+		D28A1D3F1664F3AA005578F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D28A1D411664F3AA005578F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D28A1D431664F3AA005578F1 /* Trianglam-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Trianglam-Prefix.pch"; sourceTree = "<group>"; };
+		D28A1D441664F3AA005578F1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D28A1D451664F3AA005578F1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D28A1D471664F3AA005578F1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D28A1D491664F3AA005578F1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D28A1D4B1664F3AA005578F1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D28A1D581664F440005578F1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D28A1D5E1664FF6C005578F1 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		D28A1D5F1664FF6C005578F1 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		D28A1D61166619B9005578F1 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		D28A1D6316661A07005578F1 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		D28A1D6516661D7F005578F1 /* Gallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gallery.h; sourceTree = "<group>"; };
+		D28A1D6616661D80005578F1 /* Gallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gallery.m; sourceTree = "<group>"; };
+		D28A1D6C166633AC005578F1 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
+		D28A1D6D166633AC005578F1 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
+		D28A1D73166635E2005578F1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D2A8BE9A16A426DA00C7EAB1 /* trianglam_square_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_square_icon.png; sourceTree = "<group>"; };
+		D2A8BE9D16A426E500C7EAB1 /* trianglam_triangle_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_triangle_icon.png; sourceTree = "<group>"; };
+		D2B6AD371684AFD000E85FF1 /* trianglam_gallery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_gallery@2x.png"; sourceTree = "<group>"; };
+		D2B6AD391684AFD700E85FF1 /* trianglam_gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_gallery.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D28A1D2E1664F3AA005578F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2640C53169B0E19000A9A7B /* QuartzCore.framework in Frameworks */,
+				D27CBD6A1680A34D006B6574 /* Social.framework in Frameworks */,
+				D27CBD651680A33D006B6574 /* MessageUI.framework in Frameworks */,
+				D28A1D74166635E2005578F1 /* CoreVideo.framework in Frameworks */,
+				D28A1D6416661A07005578F1 /* CoreMedia.framework in Frameworks */,
+				D28A1D62166619B9005578F1 /* ImageIO.framework in Frameworks */,
+				D28A1D3A1664F3AA005578F1 /* CoreGraphics.framework in Frameworks */,
+				D28A1D591664F440005578F1 /* AVFoundation.framework in Frameworks */,
+				D28A1D361664F3AA005578F1 /* UIKit.framework in Frameworks */,
+				D28A1D381664F3AA005578F1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D24E1C921684868200045655 /* 1x */ = {
+			isa = PBXGroup;
+			children = (
+				D2A8BE9D16A426E500C7EAB1 /* trianglam_triangle_icon.png */,
+				D2A8BE9A16A426DA00C7EAB1 /* trianglam_square_icon.png */,
+				D2008B1416A019E80022DB19 /* trianglam_ok.png */,
+				D2B6AD391684AFD700E85FF1 /* trianglam_gallery.png */,
+				D24E1C941684868200045655 /* trianglam_camera.png */,
+				D24E1C951684868200045655 /* trianglam_close.png */,
+				D24E1C961684868200045655 /* trianglam_fb.png */,
+				D24E1C971684868200045655 /* trianglam_flash_auto.png */,
+				D24E1C981684868200045655 /* trianglam_flash_off.png */,
+				D24E1C991684868200045655 /* trianglam_flash_on.png */,
+				D24E1C9A1684868200045655 /* trianglam_trash.png */,
+				D24E1C9B1684868200045655 /* trianglam_instagram.png */,
+				D24E1C9C1684868200045655 /* trianglam_mail.png */,
+				D24E1C9D1684868200045655 /* trianglam_save.png */,
+				D24E1C9E1684868200045655 /* trianglam_share.png */,
+				D24E1C9F1684868200045655 /* trianglam_switch.png */,
+				D24E1CA01684868200045655 /* trianglam_twitter.png */,
+			);
+			name = 1x;
+			path = export;
+			sourceTree = "<group>";
+		};
+		D24E1CA11684868200045655 /* 2x */ = {
+			isa = PBXGroup;
+			children = (
+				D2B6AD371684AFD000E85FF1 /* trianglam_gallery@2x.png */,
+				D24E1CA31684868200045655 /* trianglam_camera@2x.png */,
+				D24E1CA41684868200045655 /* trianglam_close@2x.png */,
+				D24E1CA51684868200045655 /* trianglam_fb@2x.png */,
+				D24E1CA61684868200045655 /* trianglam_flash_auto@2x.png */,
+				D24E1CA71684868200045655 /* trianglam_flash_off@2x.png */,
+				D24E1CA81684868200045655 /* trianglam_flash_on@2x.png */,
+				D24E1CA91684868200045655 /* trianglam_trash@2x.png */,
+				D24E1CAA1684868200045655 /* trianglam_instagram@2x.png */,
+				D24E1CAB1684868200045655 /* trianglam_mail@2x.png */,
+				D24E1CAC1684868200045655 /* trianglam_save@2x.png */,
+				D24E1CAD1684868200045655 /* trianglam_share@2x.png */,
+				D24E1CAE1684868200045655 /* trianglam_switch@2x.png */,
+				D24E1CAF1684868200045655 /* trianglam_twitter@2x.png */,
+			);
+			name = 2x;
+			path = export2x;
+			sourceTree = "<group>";
+		};
+		D24E1CCD1684868700045655 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				D24E1C921684868200045655 /* 1x */,
+				D24E1CA11684868200045655 /* 2x */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+		D28A1D261664F3AA005578F1 = {
+			isa = PBXGroup;
+			children = (
+				D210AEC117673640007F7524 /* Media.xcassets */,
+				D28A1D3B1664F3AA005578F1 /* Photo */,
+				D28A1D341664F3AA005578F1 /* Frameworks */,
+				D28A1D321664F3AA005578F1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D28A1D321664F3AA005578F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D28A1D311664F3AA005578F1 /* Trianglam.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D28A1D341664F3AA005578F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2640C52169B0E19000A9A7B /* QuartzCore.framework */,
+				D27CBD691680A34D006B6574 /* Social.framework */,
+				D27CBD641680A33D006B6574 /* MessageUI.framework */,
+				D28A1D73166635E2005578F1 /* CoreVideo.framework */,
+				D28A1D6316661A07005578F1 /* CoreMedia.framework */,
+				D28A1D61166619B9005578F1 /* ImageIO.framework */,
+				D28A1D581664F440005578F1 /* AVFoundation.framework */,
+				D28A1D351664F3AA005578F1 /* UIKit.framework */,
+				D28A1D371664F3AA005578F1 /* Foundation.framework */,
+				D28A1D391664F3AA005578F1 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D28A1D3B1664F3AA005578F1 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				D28A1D441664F3AA005578F1 /* AppDelegate.h */,
+				D28A1D451664F3AA005578F1 /* AppDelegate.m */,
+				D28A1D5E1664FF6C005578F1 /* CameraViewController.h */,
+				D28A1D5F1664FF6C005578F1 /* CameraViewController.m */,
+				D2008B1716A020910022DB19 /* DropDown.h */,
+				D2008B1816A020910022DB19 /* DropDown.m */,
+				D2010E0617AA9368009ADB8F /* ActivityInstagram.h */,
+				D2010E0717AA9368009ADB8F /* ActivityInstagram.m */,
+				D223EA5F166E3E0D00411CC0 /* ImageViewController.h */,
+				D223EA60166E3E0D00411CC0 /* ImageViewController.m */,
+				D28A1D6C166633AC005578F1 /* GalleryViewController.h */,
+				D28A1D6D166633AC005578F1 /* GalleryViewController.m */,
+				D28A1D6516661D7F005578F1 /* Gallery.h */,
+				D28A1D6616661D80005578F1 /* Gallery.m */,
+				D223EA7A166F592100411CC0 /* Settings.h */,
+				D223EA7B166F592100411CC0 /* Settings.m */,
+				D223EA59166E25CE00411CC0 /* GalleryCollectionCell.h */,
+				D223EA5A166E25CE00411CC0 /* GalleryCollectionCell.m */,
+				D223EA5C166E371300411CC0 /* UIImage+Triangles.h */,
+				D223EA5D166E371300411CC0 /* UIImage+Triangles.m */,
+				D223EA7F166F848100411CC0 /* UIImage+Extensions.h */,
+				D223EA80166F848100411CC0 /* UIImage+Extensions.m */,
+				D24E1CCD1684868700045655 /* Graphics */,
+				D28A1D3C1664F3AA005578F1 /* Supporting Files */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		D28A1D3C1664F3AA005578F1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D28A1D3D1664F3AA005578F1 /* Trianglam-Info.plist */,
+				D28A1D3E1664F3AA005578F1 /* InfoPlist.strings */,
+				D28A1D411664F3AA005578F1 /* main.m */,
+				D28A1D431664F3AA005578F1 /* Trianglam-Prefix.pch */,
+				D28A1D471664F3AA005578F1 /* Default.png */,
+				D28A1D491664F3AA005578F1 /* Default@2x.png */,
+				D28A1D4B1664F3AA005578F1 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D28A1D301664F3AA005578F1 /* Trianglam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D28A1D4F1664F3AA005578F1 /* Build configuration list for PBXNativeTarget "Trianglam" */;
+			buildPhases = (
+				D28A1D2D1664F3AA005578F1 /* Sources */,
+				D28A1D2E1664F3AA005578F1 /* Frameworks */,
+				D28A1D2F1664F3AA005578F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Trianglam;
+			productName = Photo;
+			productReference = D28A1D311664F3AA005578F1 /* Trianglam.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D28A1D281664F3AA005578F1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "X Production s.r.o.";
+				TargetAttributes = {
+					D28A1D301664F3AA005578F1 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = D28A1D2B1664F3AA005578F1 /* Build configuration list for PBXProject "Trianglam" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D28A1D261664F3AA005578F1;
+			productRefGroup = D28A1D321664F3AA005578F1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D28A1D301664F3AA005578F1 /* Trianglam */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D28A1D2F1664F3AA005578F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D28A1D401664F3AA005578F1 /* InfoPlist.strings in Resources */,
+				D28A1D481664F3AA005578F1 /* Default.png in Resources */,
+				D28A1D4A1664F3AA005578F1 /* Default@2x.png in Resources */,
+				D28A1D4C1664F3AA005578F1 /* Default-568h@2x.png in Resources */,
+				D24E1CB11684868200045655 /* trianglam_camera.png in Resources */,
+				D24E1CB21684868200045655 /* trianglam_close.png in Resources */,
+				D24E1CB31684868200045655 /* trianglam_fb.png in Resources */,
+				D24E1CB41684868200045655 /* trianglam_flash_auto.png in Resources */,
+				D24E1CB51684868200045655 /* trianglam_flash_off.png in Resources */,
+				D24E1CB61684868200045655 /* trianglam_flash_on.png in Resources */,
+				D24E1CB71684868200045655 /* trianglam_trash.png in Resources */,
+				D24E1CB81684868200045655 /* trianglam_instagram.png in Resources */,
+				D24E1CB91684868200045655 /* trianglam_mail.png in Resources */,
+				D24E1CBA1684868200045655 /* trianglam_save.png in Resources */,
+				D24E1CBB1684868200045655 /* trianglam_share.png in Resources */,
+				D24E1CBC1684868200045655 /* trianglam_switch.png in Resources */,
+				D24E1CBD1684868200045655 /* trianglam_twitter.png in Resources */,
+				D24E1CBF1684868200045655 /* trianglam_camera@2x.png in Resources */,
+				D24E1CC01684868200045655 /* trianglam_close@2x.png in Resources */,
+				D24E1CC11684868200045655 /* trianglam_fb@2x.png in Resources */,
+				D24E1CC21684868200045655 /* trianglam_flash_auto@2x.png in Resources */,
+				D24E1CC31684868200045655 /* trianglam_flash_off@2x.png in Resources */,
+				D24E1CC41684868200045655 /* trianglam_flash_on@2x.png in Resources */,
+				D24E1CC51684868200045655 /* trianglam_trash@2x.png in Resources */,
+				D24E1CC61684868200045655 /* trianglam_instagram@2x.png in Resources */,
+				D24E1CC71684868200045655 /* trianglam_mail@2x.png in Resources */,
+				D24E1CC81684868200045655 /* trianglam_save@2x.png in Resources */,
+				D24E1CC91684868200045655 /* trianglam_share@2x.png in Resources */,
+				D24E1CCA1684868200045655 /* trianglam_switch@2x.png in Resources */,
+				D24E1CCB1684868200045655 /* trianglam_twitter@2x.png in Resources */,
+				D2B6AD381684AFD000E85FF1 /* trianglam_gallery@2x.png in Resources */,
+				D2B6AD3A1684AFD700E85FF1 /* trianglam_gallery.png in Resources */,
+				D2008B1516A019E80022DB19 /* trianglam_ok.png in Resources */,
+				D2A8BE9B16A426DA00C7EAB1 /* trianglam_square_icon.png in Resources */,
+				D210AEC217673640007F7524 /* Media.xcassets in Resources */,
+				D2A8BE9E16A426E500C7EAB1 /* trianglam_triangle_icon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D28A1D2D1664F3AA005578F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D28A1D421664F3AA005578F1 /* main.m in Sources */,
+				D2010E0817AA9368009ADB8F /* ActivityInstagram.m in Sources */,
+				D28A1D461664F3AA005578F1 /* AppDelegate.m in Sources */,
+				D28A1D601664FF6C005578F1 /* CameraViewController.m in Sources */,
+				D28A1D6716661D80005578F1 /* Gallery.m in Sources */,
+				D28A1D6E166633AD005578F1 /* GalleryViewController.m in Sources */,
+				D223EA5B166E25CE00411CC0 /* GalleryCollectionCell.m in Sources */,
+				D223EA5E166E371300411CC0 /* UIImage+Triangles.m in Sources */,
+				D223EA61166E3E0D00411CC0 /* ImageViewController.m in Sources */,
+				D223EA7C166F592100411CC0 /* Settings.m in Sources */,
+				D223EA81166F848100411CC0 /* UIImage+Extensions.m in Sources */,
+				D2008B1916A020910022DB19 /* DropDown.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D28A1D3E1664F3AA005578F1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D28A1D3F1664F3AA005578F1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D28A1D4D1664F3AA005578F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D28A1D4E1664F3AA005578F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D28A1D501664F3AA005578F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Photo/Trianglam-Prefix.pch";
+				INFOPLIST_FILE = "Photo/Trianglam-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = Trianglam;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D28A1D511664F3AA005578F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Photo/Trianglam-Prefix.pch";
+				INFOPLIST_FILE = "Photo/Trianglam-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = Trianglam;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D28A1D2B1664F3AA005578F1 /* Build configuration list for PBXProject "Trianglam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D28A1D4D1664F3AA005578F1 /* Debug */,
+				D28A1D4E1664F3AA005578F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D28A1D4F1664F3AA005578F1 /* Build configuration list for PBXNativeTarget "Trianglam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D28A1D501664F3AA005578F1 /* Debug */,
+				D28A1D511664F3AA005578F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D28A1D281664F3AA005578F1 /* Project object */;
+}

@@ -1,0 +1,21 @@
+//
+// Prefix header for all source files of the 'Photo' target in the 'Photo' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+
+#define BOTTOM_BAR_HEIGHT 80.0
+#define STATUS_BAR_HEIGHT 20.0
+#define TOP_BAR_HEIGHT 44.0
+
+#define IS_IPAD ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
