@@ -56,6 +56,21 @@
         //cameraView.center = self.view.center;
         [self.view addSubview:cameraView];
         
+        // picture preview
+        pictureView = [[UIImageView alloc] initWithFrame:cameraFrame];
+        pictureView.center = self.view.center;
+        pictureView.alpha = 0.0;
+        pictureView.contentMode = UIViewContentModeScaleAspectFill;
+        pictureView.layer.masksToBounds = YES;
+        [self.view addSubview:pictureView];
+        
+        processedView = [[UIImageView alloc] initWithFrame:cameraFrame];
+        processedView.center = self.view.center;
+        processedView.alpha = 0.0;
+        processedView.contentMode = UIViewContentModeScaleAspectFill;
+        processedView.layer.masksToBounds = YES;
+        [self.view addSubview:processedView];
+        
         // ui sweetness
         UIColor *blurTintColor = [UIColor colorWithWhite:0.2 alpha:0.6];
         CGRect topBlurFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
@@ -113,21 +128,6 @@
         [chooseFromGallery setImage:[UIImage imageNamed:@"trianglam_gallery.png"] forState:UIControlStateNormal];
         [chooseFromGallery addTarget:self action:@selector(chooseFromGallery:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:chooseFromGallery];
-        
-        // picture preview
-        pictureView = [[UIImageView alloc] initWithFrame:cameraFrame];
-        pictureView.center = self.view.center;
-        pictureView.alpha = 0.0;
-        pictureView.contentMode = UIViewContentModeScaleAspectFill;
-        pictureView.layer.masksToBounds = YES;
-        [self.view addSubview:pictureView];
-        
-        processedView = [[UIImageView alloc] initWithFrame:cameraFrame];
-        processedView.center = self.view.center;
-        processedView.alpha = 0.0;
-        processedView.contentMode = UIViewContentModeScaleAspectFill;
-        processedView.layer.masksToBounds = YES;
-        [self.view addSubview:processedView];
         
         // lightning
         lightView = [[UIView alloc] initWithFrame:cameraFrame];
