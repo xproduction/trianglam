@@ -88,7 +88,7 @@
     isOpen = YES;
     [UIView animateWithDuration:animationTime animations:^(void){
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height * buttons.count);
-        self.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.6];
+        self.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.8];
     }];
     NSUInteger __block i = 0;
     for (UIButton *button in buttons)

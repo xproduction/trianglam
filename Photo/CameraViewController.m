@@ -156,13 +156,13 @@
         [self.view addSubview:flashDropDown];
         
         UIButton *flashAutoButton = [[UIButton alloc] init];
-        [flashAutoButton setImage:[UIImage imageNamed:@"trianglam_flash_auto.png"] forState:UIControlStateNormal];
+        [flashAutoButton setImage:[UIImage imageNamed:@"FlashAuto.png"] forState:UIControlStateNormal];
         
         UIButton *flashOnButton = [[UIButton alloc] init];
-        [flashOnButton setImage:[UIImage imageNamed:@"trianglam_flash_on.png"] forState:UIControlStateNormal];
+        [flashOnButton setImage:[UIImage imageNamed:@"Flash.png"] forState:UIControlStateNormal];
         
         UIButton *flashOffButton = [[UIButton alloc] init];
-        [flashOffButton setImage:[UIImage imageNamed:@"trianglam_flash_off.png"] forState:UIControlStateNormal];
+        [flashOffButton setImage:[UIImage imageNamed:@"FlashNo.png"] forState:UIControlStateNormal];
         
         flashDropDown.buttons = @[flashAutoButton, flashOnButton, flashOffButton];
         flashDropDown.delegate = self;
@@ -172,17 +172,18 @@
         sizeDropDown = [[DropDown alloc] initWithFrame:CGRectMake(BUTTON_FLASH_PADDING_SIDE * 2.0 + BUTTON_FLASH_SIZE, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0 - BUTTON_FLASH_PADDING_TOP - BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
         [self.view addSubview:sizeDropDown];
         
+        UIFont *font = [UIFont systemFontOfSize:32.0];
         UIButton *smallSizeButton = [[UIButton alloc] init];
         [smallSizeButton setTitle:@"S" forState:UIControlStateNormal];
-        smallSizeButton.titleLabel.font = [UIFont boldSystemFontOfSize:32.0];
+        smallSizeButton.titleLabel.font = font;
         
         UIButton *middleSizeButton = [[UIButton alloc] init];
         [middleSizeButton setTitle:@"M" forState:UIControlStateNormal];
-        middleSizeButton.titleLabel.font = [UIFont boldSystemFontOfSize:32.0];
+        middleSizeButton.titleLabel.font = font;
         
         UIButton *largeSizeButton = [[UIButton alloc] init];
         [largeSizeButton setTitle:@"L" forState:UIControlStateNormal];
-        largeSizeButton.titleLabel.font = [UIFont boldSystemFontOfSize:32.0];
+        largeSizeButton.titleLabel.font = font;
         
         sizeDropDown.buttons = @[smallSizeButton, middleSizeButton, largeSizeButton];
         sizeDropDown.selectedButtonIndex = 1;
@@ -197,11 +198,10 @@
         [triangleButton setImage:[UIImage imageNamed:@"trianglam_triangle_icon.png"] forState:UIControlStateNormal];
         
         UIButton *squareButton = [[UIButton alloc] init];
-        [squareButton setImage:[UIImage imageNamed:@"trianglam_square_icon.png"] forState:UIControlStateNormal];
+        [squareButton setImage:[UIImage imageNamed:@"Rectangle.png"] forState:UIControlStateNormal];
         
         UIButton *hexagonButton = [[UIButton alloc] init];
-        [hexagonButton setTitle:@"H" forState:UIControlStateNormal];
-        hexagonButton.titleLabel.font = [UIFont boldSystemFontOfSize:32.0];
+        [hexagonButton setImage:[UIImage imageNamed:@"Hexagon.png"] forState:UIControlStateNormal];
         
         shapeDropDown.buttons = @[triangleButton, squareButton, hexagonButton];
         shapeDropDown.delegate = self;
