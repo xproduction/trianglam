@@ -56,10 +56,6 @@
 
 - (void)transitionToGallery
 {
-    if(IS_IPAD)
-    {
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
-    }
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     if (self.window.rootViewController.view == cameraController.view)
     {

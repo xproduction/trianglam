@@ -11,6 +11,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DropDownDelegate <NSObject>
+
+-(void)dropDownShut:(id)dropDown;
+-(void)dropDownOpened:(id)dropDown;
+
+@end
+
 @interface DropDown : UIControl
 {
     NSArray *buttons;
@@ -21,6 +28,7 @@
     double animationTime;
 }
 
+@property (weak) id<DropDownDelegate> delegate;
 @property (nonatomic, strong) NSArray *buttons;
 @property (atomic) NSUInteger selectedButtonIndex;
 @property (atomic) CGFloat padding;

@@ -11,6 +11,7 @@
 
 @implementation DropDown
 
+@synthesize delegate;
 @synthesize buttons;
 @synthesize selectedButtonIndex;
 @synthesize animationTime;
@@ -58,6 +59,7 @@
 
 - (void)shut
 {
+    [delegate dropDownShut:self];
     isOpen = NO;
     [UIView animateWithDuration:animationTime animations:^(void){
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
@@ -82,6 +84,7 @@
 
 - (void)open
 {
+    [delegate dropDownOpened:self];
     isOpen = YES;
     [UIView animateWithDuration:animationTime animations:^(void){
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height * buttons.count);

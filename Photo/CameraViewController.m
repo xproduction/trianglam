@@ -14,10 +14,11 @@
 #import "DropDown.h"
 #import "UIImage+Triangles.h"
 #import "UIImage+Extensions.h"
+#import "AMBlurView.h"
 
 #define BUTTON_FLASH_SIZE 50.0
 #define BUTTON_FLASH_PADDING_SIDE 10.0
-#define BUTTON_FLASH_PADDING_TOP 15.0
+#define BUTTON_FLASH_PADDING_TOP 5.0
 
 #define BOTTOM_BAR_PADDING 15.0
 
@@ -44,31 +45,28 @@
         camera = [[Camera alloc] init];
         camera.delegate = self;
         
-        CGRect cameraFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.width);
+        //CGRect cameraFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.width);
+        CGRect cameraFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
         
         // default settings
         size = 20;
         
-        // ui sweetness
-        
-        CAGradientLayer *gradient = [CAGradientLayer layer];
-        gradient.frame = self.view.frame;
-        gradient.colors = @[(id)[UIColor colorWithWhite:0.1 alpha:1.0].CGColor, (id)[UIColor colorWithWhite:0.5 alpha:1.0].CGColor, (id)[UIColor colorWithWhite:0.1 alpha:1.0].CGColor];
-        [self.view.layer addSublayer:gradient];
-        
-        UIView *cameraShadow = [[UIView alloc] initWithFrame:cameraFrame];
-        cameraShadow.center = self.view.center;
-        cameraShadow.layer.shadowOffset = CGSizeMake(0, 0);
-        cameraShadow.layer.shadowOpacity = 0.9;
-        cameraShadow.layer.shadowRadius = 8;
-        cameraShadow.layer.shadowColor = [UIColor blackColor].CGColor;
-        cameraShadow.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:cameraShadow];
-        
         // camera view/layer
         cameraView = [[UIView alloc] initWithFrame:cameraFrame];
-        cameraView.center = self.view.center;
+        //cameraView.center = self.view.center;
         [self.view addSubview:cameraView];
+        
+        // ui sweetness
+        UIColor *blurTintColor = [UIColor colorWithWhite:0.2 alpha:0.6];
+        CGRect topBlurFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
+        AMBlurView *topBlurView = [[AMBlurView alloc] initWithFrame:topBlurFrame];
+        topBlurView.blurTintColor = blurTintColor;
+        [self.view addSubview:topBlurView];
+        
+        CGRect bottomBlurFrame = CGRectMake(0.0, self.view.center.y + self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0 + 1.0);
+        AMBlurView *bottomBlurView = [[AMBlurView alloc] initWithFrame:bottomBlurFrame];
+        bottomBlurView.blurTintColor = blurTintColor;
+        [self.view addSubview:bottomBlurView];
         
         
         // buttons
@@ -76,17 +74,9 @@
         {
             switchButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - BUTTON_FLASH_PADDING_SIDE - BUTTON_FLASH_SIZE, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0 - BUTTON_FLASH_PADDING_TOP - BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
             [switchButton setImage:[UIImage imageNamed:@"trianglam_switch.png"] forState:UIControlStateNormal];
-            switchButton.layer.shadowOffset = CGSizeMake(0, 0);
-            switchButton.layer.shadowOpacity = 0.9;
-            switchButton.layer.shadowRadius = 6;
-            switchButton.layer.shadowColor = [UIColor blackColor].CGColor;
             [switchButton addTarget:self action:@selector(switchCamera:) forControlEvents:UIControlEventTouchUpInside];
             [self.view addSubview:switchButton];
         }
-        
-        /*UIView *bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height - BOTTOM_BAR_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - BOTTOM_BAR_HEIGHT)];
-        bottomBar.backgroundColor = [UIColor blackColor];
-        [self.view addSubview:bottomBar];*/
         
         CGRect galleryButtonFrame = CGRectMake(BOTTOM_BAR_PADDING, self.view.frame.size.height - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING);
         galleryButton = [[UIButton alloc] initWithFrame:galleryButtonFrame];
@@ -99,10 +89,6 @@
         {
             [galleryButton setImage:[Gallery getThumbAtIndex:imageCount - 1] forState:UIControlStateNormal];
         }
-        galleryButton.layer.shadowOffset = CGSizeMake(0, 0);
-        galleryButton.layer.shadowOpacity = 0.7;
-        galleryButton.layer.shadowRadius = 4;
-        galleryButton.layer.shadowColor = [UIColor blackColor].CGColor;
         [galleryButton addTarget:self action:@selector(goToGallery:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:galleryButton];
         
@@ -115,12 +101,9 @@
         if(camera.cameraCount != 0)
         {
             takePictureButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, self.view.frame.size.height - BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
-            [takePictureButton setImage:[UIImage imageNamed:@"trianglam_camera.png"] forState:UIControlStateNormal];
+            [takePictureButton setImage:[UIImage imageNamed:@"Camera.png"] forState:UIControlStateNormal];
+            [takePictureButton setImage:[UIImage imageNamed:@"CameraTouched.png"] forState:UIControlStateHighlighted];
             [takePictureButton addTarget:self action:@selector(takePicture:) forControlEvents:UIControlEventTouchUpInside];
-            takePictureButton.layer.shadowOffset = CGSizeMake(0, 0);
-            takePictureButton.layer.shadowOpacity = 0.9;
-            takePictureButton.layer.shadowRadius = 8;
-            takePictureButton.layer.shadowColor = [UIColor blackColor].CGColor;
             [self.view addSubview:takePictureButton];
             [camera showPreviewInView:cameraView];
         }
@@ -128,10 +111,6 @@
         chooseFromGallery = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, self.view.frame.size.height - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING)];
         //[chooseFromGallery setTitle:@"Gal" forState:UIControlStateNormal];
         [chooseFromGallery setImage:[UIImage imageNamed:@"trianglam_gallery.png"] forState:UIControlStateNormal];
-        chooseFromGallery.layer.shadowOffset = CGSizeMake(0, 0);
-        chooseFromGallery.layer.shadowOpacity = 0.9;
-        chooseFromGallery.layer.shadowRadius = 6;
-        chooseFromGallery.layer.shadowColor = [UIColor blackColor].CGColor;
         [chooseFromGallery addTarget:self action:@selector(chooseFromGallery:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:chooseFromGallery];
         
@@ -161,10 +140,6 @@
         CGRect okButtonFrame = CGRectMake(self.view.frame.size.width / 2.0 + BUTTON_FLASH_PADDING_SIDE / 2.0, self.view.frame.size.height - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING);
         okButton = [[UIButton alloc] initWithFrame:okButtonFrame];
         [okButton setImage:[UIImage imageNamed:@"trianglam_ok.png"] forState:UIControlStateNormal];
-        okButton.layer.shadowOffset = CGSizeMake(0, 0);
-        okButton.layer.shadowOpacity = 0.9;
-        okButton.layer.shadowRadius = 6;
-        okButton.layer.shadowColor = [UIColor blackColor].CGColor;
         okButton.alpha = 0.0;
         [okButton addTarget:self action:@selector(acceptImage:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:okButton];
@@ -172,10 +147,6 @@
         CGRect notOkButtonFrame = CGRectMake(self.view.frame.size.width / 2.0 - BOTTOM_BAR_HEIGHT + BUTTON_FLASH_PADDING_SIDE, self.view.frame.size.height - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING);
         notOkButton = [[UIButton alloc] initWithFrame:notOkButtonFrame];
         [notOkButton setImage:[UIImage imageNamed:@"trianglam_close.png"] forState:UIControlStateNormal];
-        notOkButton.layer.shadowOffset = CGSizeMake(0, 0);
-        notOkButton.layer.shadowOpacity = 0.9;
-        notOkButton.layer.shadowRadius = 6;
-        notOkButton.layer.shadowColor = [UIColor blackColor].CGColor;
         notOkButton.alpha = 0.0;
         [notOkButton addTarget:self action:@selector(releaseImage:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:notOkButton];
@@ -194,11 +165,8 @@
         [flashOffButton setImage:[UIImage imageNamed:@"trianglam_flash_off.png"] forState:UIControlStateNormal];
         
         flashDropDown.buttons = @[flashAutoButton, flashOnButton, flashOffButton];
+        flashDropDown.delegate = self;
         [flashDropDown addTarget:self action:@selector(setFlash:) forControlEvents:UIControlEventTouchUpInside];
-        flashDropDown.layer.shadowOffset = CGSizeMake(0, 0);
-        flashDropDown.layer.shadowOpacity = 0.95;
-        flashDropDown.layer.shadowRadius = 8;
-        flashDropDown.layer.shadowColor = [UIColor blackColor].CGColor;
         
         // settings
         sizeDropDown = [[DropDown alloc] initWithFrame:CGRectMake(BUTTON_FLASH_PADDING_SIDE * 2.0 + BUTTON_FLASH_SIZE, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0 - BUTTON_FLASH_PADDING_TOP - BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
@@ -218,11 +186,8 @@
         
         sizeDropDown.buttons = @[smallSizeButton, middleSizeButton, largeSizeButton];
         sizeDropDown.selectedButtonIndex = 1;
+        sizeDropDown.delegate = self;
         [sizeDropDown addTarget:self action:@selector(setSize:) forControlEvents:UIControlEventTouchUpInside];
-        sizeDropDown.layer.shadowOffset = CGSizeMake(0, 0);
-        sizeDropDown.layer.shadowOpacity = 0.95;
-        sizeDropDown.layer.shadowRadius = 8;
-        sizeDropDown.layer.shadowColor = [UIColor blackColor].CGColor;
         
         // shape dropdown
         shapeDropDown = [[DropDown alloc] initWithFrame:CGRectMake(BUTTON_FLASH_PADDING_SIDE, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0 - BUTTON_FLASH_PADDING_TOP - BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
@@ -239,24 +204,23 @@
         hexagonButton.titleLabel.font = [UIFont boldSystemFontOfSize:32.0];
         
         shapeDropDown.buttons = @[triangleButton, squareButton, hexagonButton];
+        shapeDropDown.delegate = self;
         [shapeDropDown addTarget:self action:@selector(setShape:) forControlEvents:UIControlEventTouchUpInside];
-        shapeDropDown.layer.shadowOffset = CGSizeMake(0, 0);
-        shapeDropDown.layer.shadowOpacity = 0.95;
-        shapeDropDown.layer.shadowRadius = 8;
-        shapeDropDown.layer.shadowColor = [UIColor blackColor].CGColor;
         
         [self reloadUserInterface];
     }
     return self;
 }
 
-/*- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidLoad
 {
-    if (camera.cameraCount == 0) {
-        [self chooseFromGallery:nil];
-    }
-    [super viewWillAppear:animated];
-}*/
+     [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)reloadUserInterface
 {
@@ -381,6 +345,22 @@
     thumbImage = [processedImage imageByScalingToSize:CGSizeMake(THUMB_SIZE, THUMB_SIZE)];
     vector = [dic objectForKey:@"vector"];
     [self performSelectorOnMainThread:@selector(stopProcessing) withObject:nil waitUntilDone:YES];
+}
+
+#pragma mark - Drop down delegate
+- (void)dropDownOpened:(id)dropDown
+{
+    if(flashDropDown != dropDown)
+        [flashDropDown shut];
+    if(sizeDropDown != dropDown)
+        [sizeDropDown shut];
+    if(shapeDropDown != dropDown)
+        [shapeDropDown shut];
+}
+
+- (void)dropDownShut:(id)dropDown
+{
+    
 }
 
 #pragma mark - Animations
