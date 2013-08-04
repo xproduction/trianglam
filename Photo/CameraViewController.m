@@ -45,7 +45,6 @@
         camera = [[Camera alloc] init];
         camera.delegate = self;
         
-        //CGRect cameraFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.width);
         CGRect cameraFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
         
         // default settings

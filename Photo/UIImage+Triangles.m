@@ -319,14 +319,18 @@ static NSUInteger bitsPerComponent = 8;
             NSUInteger byteIndex = (self.size.width / width * y * 4) + x * 4;
             [[UIColor colorWithRed:pixels[byteIndex] green:pixels[byteIndex + 1] blue:pixels[byteIndex + 2] alpha:pixels[byteIndex + 3]] set];
             CGContextBeginPath(context);
+            float diffX = 0.0;
+            if (y % 2) {
+                diffX = (cos(D60) - cos(D30)) * ratio * width;
+            }
             //if((x % 2 == 0 && y % 2 == 0) || (x % 2 == 1 && y % 2 == 1))
             //{
-                CGContextMoveToPoint(context, width * ratio * x + sin(D30 + D60) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60) * height * ratio / 2.0);
-                CGContextAddLineToPoint(context, width * ratio * x + sin(D30 + D60 * 2.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 2.0) * height * ratio / 2.0);
-                CGContextAddLineToPoint(context, width * ratio * x + sin(D30 + D60 * 3.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 3.0) * height * ratio / 2.0);
-                CGContextAddLineToPoint(context, width * ratio * x + sin(D30 + D60 * 4.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 4.0) * height * ratio / 2.0);
-                CGContextAddLineToPoint(context, width * ratio * x + sin(D30 + D60 * 5.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 5.0) * height * ratio / 2.0);
-                CGContextAddLineToPoint(context, width * ratio * x + sin(D30) * width * ratio / 2.0, height * ratio * y + cos(D30) * height * ratio / 2.0);
+                CGContextMoveToPoint(context, diffX + width * ratio * x + sin(D30 + D60) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60) * height * ratio / 2.0);
+                CGContextAddLineToPoint(context, diffX + width * ratio * x + sin(D30 + D60 * 2.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 2.0) * height * ratio / 2.0);
+                CGContextAddLineToPoint(context, diffX + width * ratio * x + sin(D30 + D60 * 3.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 3.0) * height * ratio / 2.0);
+                CGContextAddLineToPoint(context, diffX + width * ratio * x + sin(D30 + D60 * 4.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 4.0) * height * ratio / 2.0);
+                CGContextAddLineToPoint(context, diffX + width * ratio * x + sin(D30 + D60 * 5.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 5.0) * height * ratio / 2.0);
+                CGContextAddLineToPoint(context, diffX + width * ratio * x + sin(D30) * width * ratio / 2.0, height * ratio * y + cos(D30) * height * ratio / 2.0);
                 
                 /*[string appendFormat:@"<polygon points=\"%.3f,%d %.3f,%d %f,%d\" style=\"fill:rgb(%d,%d,%d);stroke:none;\"/>\n",
                  width * x - 1.0 / 2.0 * width, height * y,
