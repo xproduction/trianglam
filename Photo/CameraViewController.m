@@ -73,13 +73,6 @@
         pictureView.layer.masksToBounds = YES;
         [self.view addSubview:pictureView];
         
-        CGRect processedViewRect = CGRectMake(0.0, self.view.center.y - self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.frame.size.width);
-        processedView = [[UIImageView alloc] initWithFrame:processedViewRect];
-        processedView.center = self.view.center;
-        processedView.alpha = 0.0;
-        processedView.contentMode = UIViewContentModeScaleAspectFill;
-        processedView.layer.masksToBounds = YES;
-        [self.view addSubview:processedView];
         
         // ui sweetness
         CGRect topBlurFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
@@ -93,6 +86,15 @@
         AMBlurView *bottomBlurView = [[AMBlurView alloc] initWithFrame:bottomBlurFrame];
         bottomBlurView.blurTintColor = blurTintColor;
         [self.view addSubview:bottomBlurView];
+        
+        // processed view
+        CGRect processedViewRect = CGRectMake(0.0, self.view.center.y - self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.frame.size.width);
+        processedView = [[UIImageView alloc] initWithFrame:processedViewRect];
+        processedView.center = self.view.center;
+        processedView.alpha = 0.0;
+        processedView.contentMode = UIViewContentModeScaleAspectFill;
+        processedView.layer.masksToBounds = YES;
+        [self.view addSubview:processedView];
         
         // buttons
         if(camera.cameraCount > 1)
