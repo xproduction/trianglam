@@ -42,6 +42,14 @@
     self = [super init];
     if(self)
     {
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+        {
+            [self setNeedsStatusBarAppearanceUpdate];
+        } else {
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+            self.wantsFullScreenLayout = YES;
+        }
+        
         queue = [[NSMutableArray alloc] init];
         
         camera = [[Camera alloc] init];
@@ -65,27 +73,26 @@
         pictureView.layer.masksToBounds = YES;
         [self.view addSubview:pictureView];
         
-        processedView = [[UIImageView alloc] initWithFrame:cameraFrame];
+        CGRect processedViewRect = CGRectMake(0.0, self.view.center.y - self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.frame.size.width);
+        processedView = [[UIImageView alloc] initWithFrame:processedViewRect];
         processedView.center = self.view.center;
         processedView.alpha = 0.0;
         processedView.contentMode = UIViewContentModeScaleAspectFill;
         processedView.layer.masksToBounds = YES;
         [self.view addSubview:processedView];
         
-        // ui sweetness for iOS 7
-        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
-        {
-            UIColor *blurTintColor = [UIColor colorWithWhite:0.2 alpha:0.6];
-            CGRect topBlurFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
-            AMBlurView *topBlurView = [[AMBlurView alloc] initWithFrame:topBlurFrame];
-            topBlurView.blurTintColor = blurTintColor;
-            [self.view addSubview:topBlurView];
-            
-            CGRect bottomBlurFrame = CGRectMake(0.0, self.view.center.y + self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0 + 1.0);
-            AMBlurView *bottomBlurView = [[AMBlurView alloc] initWithFrame:bottomBlurFrame];
-            bottomBlurView.blurTintColor = blurTintColor;
-            [self.view addSubview:bottomBlurView];
-        }
+        // ui sweetness
+        CGRect topBlurFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
+        CGRect bottomBlurFrame = CGRectMake(0.0, self.view.center.y + self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
+        UIColor *blurTintColor = [UIColor colorWithWhite:0.2 alpha:0.6];
+        
+        AMBlurView *topBlurView = [[AMBlurView alloc] initWithFrame:topBlurFrame];
+        topBlurView.blurTintColor = blurTintColor;
+        [self.view addSubview:topBlurView];
+        
+        AMBlurView *bottomBlurView = [[AMBlurView alloc] initWithFrame:bottomBlurFrame];
+        bottomBlurView.blurTintColor = blurTintColor;
+        [self.view addSubview:bottomBlurView];
         
         // buttons
         if(camera.cameraCount > 1)
@@ -181,14 +188,17 @@
         UIButton *smallSizeButton = [[UIButton alloc] init];
         [smallSizeButton setTitle:@"S" forState:UIControlStateNormal];
         smallSizeButton.titleLabel.font = font;
+        [smallSizeButton setTitleColor:[UIColor colorWithWhite:0.9 alpha:0.5] forState:UIControlStateHighlighted];
         
         UIButton *middleSizeButton = [[UIButton alloc] init];
         [middleSizeButton setTitle:@"M" forState:UIControlStateNormal];
         middleSizeButton.titleLabel.font = font;
+        [middleSizeButton setTitleColor:[UIColor colorWithWhite:0.9 alpha:0.5] forState:UIControlStateHighlighted];
         
         UIButton *largeSizeButton = [[UIButton alloc] init];
         [largeSizeButton setTitle:@"L" forState:UIControlStateNormal];
         largeSizeButton.titleLabel.font = font;
+        [largeSizeButton setTitleColor:[UIColor colorWithWhite:0.9 alpha:0.5] forState:UIControlStateHighlighted];
         
         sizeDropDown.buttons = @[smallSizeButton, middleSizeButton, largeSizeButton];
         sizeDropDown.delegate = self;
@@ -224,10 +234,7 @@
 
 - (void)viewDidLoad
 {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
-    {
-     [self setNeedsStatusBarAppearanceUpdate];
-    }
+
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -437,12 +444,15 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Couldn't save your photo", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
         [alert show];
     }
+    
+    CGRect processedImageViewFrame = processedView.frame;
+    
     [UIView animateWithDuration:0.4 animations:^(void){
         processedView.frame = galleryButton.frame;
     } completion:^(BOOL finished){
         galleryButton.alpha = 1.0;
         [galleryButton setImage:thumbImage forState:UIControlStateNormal];
-        processedView.frame = cameraView.frame;
+        processedView.frame = processedImageViewFrame;
         [self releaseImage:sender];
     }];
 }

@@ -177,6 +177,7 @@
 - (IBAction)dismiss:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
 - (IBAction)remove:(id)sender
@@ -197,19 +198,26 @@
     
     [Gallery removeImageAtIndex:currentIndex];
     images = [Gallery getImageArray];
-        
+    
+    AppDelegate *appDelegate = ((AppDelegate*)[UIApplication sharedApplication].delegate);
+    
     if (images.count > 0)
     {
         if (images.count == currentIndex)
+        {
             currentIndex--;
+            
+            UIImage* thnFirst = [UIImage imageWithContentsOfFile:[[images objectAtIndex:currentIndex] objectForKey:@"thumb"]];
+            UIButton* galleryButton = ((CameraViewController*)appDelegate.cameraController).galleryButton;
+            [galleryButton setImage:thnFirst forState:UIControlStateNormal];
+        }
         
         [self loadImages];
         [self moveImageViews];
     } else {
-        AppDelegate *appDelegate = ((AppDelegate*)[UIApplication sharedApplication].delegate);
         ((CameraViewController*)appDelegate.cameraController).galleryButton.alpha = 0.0;
         
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismiss:nil];
     }
 }
 

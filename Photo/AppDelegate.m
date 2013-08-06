@@ -56,7 +56,6 @@
 
 - (void)transitionToGallery
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     if (self.window.rootViewController.view == cameraController.view)
     {
         [UIView transitionFromView:self.window.rootViewController.view
@@ -70,7 +69,6 @@
 }
 - (void)transitionToCamera
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     if (self.window.rootViewController.view == galleryController.view)
     {
         [UIView transitionFromView:self.window.rootViewController.view

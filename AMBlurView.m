@@ -44,24 +44,33 @@
 }
 
 - (void)setup {
-    [self setToolBar:[[UIToolbar alloc] initWithFrame:[self bounds]]];
-    [self setBlurLayer:[[self toolBar] layer]];
-    
-    UIView *blurView = [UIView new];
-    [blurView setUserInteractionEnabled:NO];
-    [blurView.layer addSublayer:[self blurLayer]];
-    [blurView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [blurView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
-    [self addSubview:blurView];
-    
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[blurView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(blurView)]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(-1)-[blurView]-(-1)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(blurView)]];
-    
-    [self setBackgroundColor:[UIColor clearColor]];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+    {
+        [self setToolBar:[[UIToolbar alloc] initWithFrame:[self bounds]]];
+        [self setBlurLayer:[[self toolBar] layer]];
+        UIView *blurView = [UIView new];
+        [blurView setUserInteractionEnabled:NO];
+        [blurView.layer addSublayer:[self blurLayer]];
+        [blurView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [blurView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+        [self addSubview:blurView];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[blurView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(blurView)]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(-1)-[blurView]-(-1)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(blurView)]];
+        [self setBackgroundColor:[UIColor clearColor]];
+    } else {
+        self.alpha = 0.9;
+        self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
+    }
 }
 
 - (void) setBlurTintColor:(UIColor *)blurTintColor {
-    [self.toolBar setBarTintColor:blurTintColor];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+    {
+        [self.toolBar setBarTintColor:blurTintColor];
+    } else {
+        self.backgroundColor = blurTintColor;
+    }
 }
 
 - (void)setFrame:(CGRect)frame {

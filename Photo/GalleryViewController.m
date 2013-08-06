@@ -28,6 +28,8 @@
     self = [super init];
     if(self)
     {
+        self.wantsFullScreenLayout = YES;
+
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.itemSize = CGSizeMake(IMAGE_SIZE, IMAGE_SIZE);
         layout.minimumInteritemSpacing = IMAGE_PADDING;
