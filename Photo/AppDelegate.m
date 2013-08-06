@@ -10,7 +10,7 @@
 
 @implementation AppDelegate
 
-@synthesize automaticallySaveToCameraRoll;
+@synthesize automaticallySaveToCameraRoll, cameraController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

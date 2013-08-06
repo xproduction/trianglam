@@ -11,7 +11,8 @@
 
 #import "ImageViewController.h"
 #import "Gallery.h"
-
+#import "AppDelegate.h"
+#import "CameraViewController.h"
 
 @interface ImageViewController ()
 
@@ -196,7 +197,20 @@
     
     [Gallery removeImageAtIndex:currentIndex];
     images = [Gallery getImageArray];
-    //[self loadImages];
+        
+    if (images.count > 0)
+    {
+        if (images.count == currentIndex)
+            currentIndex--;
+        
+        [self loadImages];
+        [self moveImageViews];
+    } else {
+        AppDelegate *appDelegate = ((AppDelegate*)[UIApplication sharedApplication].delegate);
+        ((CameraViewController*)appDelegate.cameraController).galleryButton.alpha = 0.0;
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (IBAction)showOrHideControls:(id)sender

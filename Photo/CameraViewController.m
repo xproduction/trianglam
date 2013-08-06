@@ -35,6 +35,8 @@
 
 @implementation CameraViewController
 
+@synthesize galleryButton;
+
 - (id)init
 {
     self = [super init];
@@ -70,18 +72,20 @@
         processedView.layer.masksToBounds = YES;
         [self.view addSubview:processedView];
         
-        // ui sweetness
-        UIColor *blurTintColor = [UIColor colorWithWhite:0.2 alpha:0.6];
-        CGRect topBlurFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
-        AMBlurView *topBlurView = [[AMBlurView alloc] initWithFrame:topBlurFrame];
-        topBlurView.blurTintColor = blurTintColor;
-        [self.view addSubview:topBlurView];
-        
-        CGRect bottomBlurFrame = CGRectMake(0.0, self.view.center.y + self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0 + 1.0);
-        AMBlurView *bottomBlurView = [[AMBlurView alloc] initWithFrame:bottomBlurFrame];
-        bottomBlurView.blurTintColor = blurTintColor;
-        [self.view addSubview:bottomBlurView];
-        
+        // ui sweetness for iOS 7
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+        {
+            UIColor *blurTintColor = [UIColor colorWithWhite:0.2 alpha:0.6];
+            CGRect topBlurFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
+            AMBlurView *topBlurView = [[AMBlurView alloc] initWithFrame:topBlurFrame];
+            topBlurView.blurTintColor = blurTintColor;
+            [self.view addSubview:topBlurView];
+            
+            CGRect bottomBlurFrame = CGRectMake(0.0, self.view.center.y + self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0 + 1.0);
+            AMBlurView *bottomBlurView = [[AMBlurView alloc] initWithFrame:bottomBlurFrame];
+            bottomBlurView.blurTintColor = blurTintColor;
+            [self.view addSubview:bottomBlurView];
+        }
         
         // buttons
         if(camera.cameraCount > 1)
@@ -165,6 +169,8 @@
         
         flashDropDown.buttons = @[flashAutoButton, flashOnButton, flashOffButton];
         flashDropDown.delegate = self;
+        if ([[NSUserDefaults standardUserDefaults] valueForKey:@"flashPreset"])
+            flashDropDown.selectedButtonIndex = [[[NSUserDefaults standardUserDefaults] valueForKey:@"flashPreset"] intValue];
         [flashDropDown addTarget:self action:@selector(setFlash:) forControlEvents:UIControlEventTouchUpInside];
         
         // settings
@@ -185,10 +191,13 @@
         largeSizeButton.titleLabel.font = font;
         
         sizeDropDown.buttons = @[smallSizeButton, middleSizeButton, largeSizeButton];
-        sizeDropDown.selectedButtonIndex = 1;
         sizeDropDown.delegate = self;
         [sizeDropDown addTarget:self action:@selector(setSize:) forControlEvents:UIControlEventTouchUpInside];
-        
+        if ([[NSUserDefaults standardUserDefaults] valueForKey:@"sizePreset"])
+            sizeDropDown.selectedButtonIndex = [[[NSUserDefaults standardUserDefaults] valueForKey:@"sizePreset"] intValue];
+        else
+            sizeDropDown.selectedButtonIndex = 1;
+    
         // shape dropdown
         shapeDropDown = [[DropDown alloc] initWithFrame:CGRectMake(BUTTON_FLASH_PADDING_SIDE, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0 - BUTTON_FLASH_PADDING_TOP - BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
         [self.view addSubview:shapeDropDown];
@@ -205,7 +214,9 @@
         shapeDropDown.buttons = @[triangleButton, squareButton, hexagonButton];
         shapeDropDown.delegate = self;
         [shapeDropDown addTarget:self action:@selector(setShape:) forControlEvents:UIControlEventTouchUpInside];
-        
+        if ([[NSUserDefaults standardUserDefaults] valueForKey:@"shapePreset"])
+            shapeDropDown.selectedButtonIndex = [[[NSUserDefaults standardUserDefaults] valueForKey:@"shapePreset"] intValue];
+
         [self reloadUserInterface];
     }
     return self;
@@ -213,7 +224,10 @@
 
 - (void)viewDidLoad
 {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+    {
      [self setNeedsStatusBarAppearanceUpdate];
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -254,6 +268,8 @@
 
 - (IBAction)setFlash:(DropDown *)sender
 {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:sender.selectedButtonIndex] forKey:@"flashPreset"];
+    
     [self reloadUserInterface];
     switch (sender.selectedButtonIndex) {
         case 0:
@@ -270,6 +286,8 @@
 
 - (IBAction)setSize:(DropDown *)sender
 {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:sender.selectedButtonIndex] forKey:@"sizePreset"];
+
     switch (sender.selectedButtonIndex) {
         case 0:
             size = 10;
@@ -285,6 +303,8 @@
 
 - (IBAction)setShape:(DropDown *)sender
 {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:sender.selectedButtonIndex] forKey:@"shapePreset"];
+
     shape = sender.selectedButtonIndex;
 }
 

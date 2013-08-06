@@ -27,4 +27,6 @@
     NSUInteger shape;
 }
 
+@property (nonatomic, strong) UIButton* galleryButton;
+
 @end

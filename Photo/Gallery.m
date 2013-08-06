@@ -38,6 +38,7 @@
         return NO;
     }
     [[NSUserDefaults standardUserDefaults] setObject:array forKey:GALLERY_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
 
