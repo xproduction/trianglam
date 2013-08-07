@@ -13,10 +13,13 @@
 #import "Gallery.h"
 #import "AppDelegate.h"
 #import "CameraViewController.h"
+#import "RGMPageControl.h"
 
 @interface ImageViewController ()
 
 @end
+
+static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 
 @implementation ImageViewController
 
@@ -27,44 +30,34 @@
         currentIndex = index;
         images = [Gallery getImageArray];
         
-        scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-        scrollView.pagingEnabled = YES;
-        scrollView.showsHorizontalScrollIndicator = NO;
-        scrollView.showsVerticalScrollIndicator = NO;
+        scrollView = [[RGMPagingScrollView alloc] initWithFrame:self.view.frame];
+        scrollView.scrollDirection = RGMScrollDirectionHorizontal;
         scrollView.delegate = self;
-        scrollView.contentSize = CGSizeMake(self.view.frame.size.width * images.count + 1, self.view.frame.size.height);
+        scrollView.datasource = self;
+        scrollView.currentPage = index;
+        
         [self.view addSubview:scrollView];
         
-        currentImageView = [[UIImageView alloc] init];
-        currentImageView.backgroundColor = [UIColor blackColor];
-        currentImageView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
-        currentImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [scrollView addSubview:currentImageView];
+        [scrollView registerClass:[UIImageView class] forCellReuseIdentifier:reuseIdentifier];
         
-        previousImageView = [[UIImageView alloc] init];
-        previousImageView.backgroundColor = [UIColor blackColor];
-        previousImageView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
-        previousImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [scrollView addSubview:previousImageView];
+        fullScreenImages = [[NSMutableDictionary alloc] init];
         
-        nextImageView = [[UIImageView alloc] init];
-        nextImageView.backgroundColor = [UIColor blackColor];
-        nextImageView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
-        nextImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [scrollView addSubview:nextImageView];
+        queue = [[NSOperationQueue alloc] init];
+        queue.name = @"GalleryQueue";
         
-        [self loadImages];
-        [self moveImageViews];
         
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, scrollView.contentSize.width, scrollView.contentSize.height)];
-        [button addTarget:self action:@selector(showOrHideControls:) forControlEvents:UIControlEventTouchUpInside];
-        [scrollView addSubview:button];
-        
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrHideControls:)];
+        [scrollView addGestureRecognizer:singleTap];
+         
         [self renewInterface];
     }
     return self;
 }
 
+-(void)didReceiveMemoryWarning
+{
+    [fullScreenImages removeAllObjects];
+}
 
 - (void)renewInterface
 {
@@ -120,60 +113,6 @@
     bottomBar.alpha = 0.0;
 }
 
-- (void)loadImages
-{
-    filename = [[images objectAtIndex:currentIndex] objectForKey:@"image"];
-    [scrollView scrollRectToVisible:CGRectMake((images.count - currentIndex - 1) * self.view.frame.size.width, 0.0, self.view.frame.size.width, self.view.frame.size.height) animated:NO];
-    if (currentIndex > 0)
-    {
-        nextImageView.image = [UIImage imageWithContentsOfFile:[[images objectAtIndex:currentIndex - 1] objectForKey:@"image"]];
-    }
-    currentImageView.image = [UIImage imageWithContentsOfFile:[[images objectAtIndex:currentIndex] objectForKey:@"image"]];
-    if (currentIndex < images.count - 1)
-    {
-        previousImageView.image = [UIImage imageWithContentsOfFile:[[images objectAtIndex:currentIndex + 1] objectForKey:@"image"]];
-    }
-}
-
-- (void)nextImage
-{
-    filename = [[images objectAtIndex:currentIndex] objectForKey:@"image"];
-    previousImageView.image = currentImageView.image;
-    currentImageView.image = nextImageView.image;
-    if (currentIndex > 0)
-    {
-        nextImageView.image = [UIImage imageWithContentsOfFile:[[images objectAtIndex:currentIndex - 1] objectForKey:@"image"]];
-    }
-    else
-    {
-        nextImageView.image = nil;
-    }
-    [self moveImageViews];
-}
-
-- (void)previousImage
-{
-    filename = [[images objectAtIndex:currentIndex] objectForKey:@"image"];
-    nextImageView.image = currentImageView.image;
-    currentImageView.image = previousImageView.image;
-    if (currentIndex < images.count - 1)
-    {
-        previousImageView.image = [UIImage imageWithContentsOfFile:[[images objectAtIndex:currentIndex + 1] objectForKey:@"image"]];
-    }
-    else
-    {
-        previousImageView.image = nil;
-    }
-    [self moveImageViews];
-}
-
-- (void)moveImageViews
-{
-    previousImageView.frame = CGRectMake((images.count - currentIndex - 2) * self.view.frame.size.width, 0.0, self.view.frame.size.width, self.view.frame.size.height);
-    currentImageView.frame = CGRectMake((images.count - currentIndex - 1) * self.view.frame.size.width, 0.0, self.view.frame.size.width, self.view.frame.size.height);
-    nextImageView.frame = CGRectMake((images.count - currentIndex) * self.view.frame.size.width, 0.0, self.view.frame.size.width, self.view.frame.size.height);
-}
-
 - (IBAction)dismiss:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -182,22 +121,31 @@
 
 - (IBAction)remove:(id)sender
 {
-    UIImageView *backupView = currentImageView;
+    UIImageView *backupView;
     
-    currentImageView = [[UIImageView alloc] init];
-    currentImageView.backgroundColor = [UIColor blackColor];
-    currentImageView.frame = backupView.frame;
-    currentImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [scrollView insertSubview:currentImageView belowSubview:backupView];
+    UIImageView* imageView = (UIImageView*)[scrollView dequeueReusablePageWithIdentifer:reuseIdentifier forIndex:currentIndex];
+    
+    backupView = [[UIImageView alloc] init];
+    backupView.backgroundColor = [UIColor blackColor];
+    backupView.frame = currentImageView.frame;
+    backupView.image = currentImageView.image;
+    backupView.contentMode = UIViewContentModeScaleAspectFit;
+    [scrollView insertSubview:backupView aboveSubview:currentImageView];
     
     [UIView animateWithDuration:0.3 animations:^(void){
-        backupView.frame = CGRectMake((images.count - currentIndex - 1) * self.view.frame.size.width + self.view.center.x - 1.0, self.view.center.y - 1.0, 2.0, 2.0);
+        backupView.frame = CGRectMake(currentImageView.frame.size.width / 2.0 - 1.0, currentImageView.frame.size.height / 2.0 - 1.0, 2.0, 2.0);
     } completion:^(BOOL finished){
         [backupView removeFromSuperview];
     }];
     
-    [Gallery removeImageAtIndex:currentIndex];
-    images = [Gallery getImageArray];
+    //[Gallery removeImageAtIndex:currentIndex];
+    //images = [Gallery getImageArray];
+    
+    [scrollView reloadData];
+    
+    scrollView.currentPage = currentIndex--;
+    
+    return;
     
     AppDelegate *appDelegate = ((AppDelegate*)[UIApplication sharedApplication].delegate);
     
@@ -211,9 +159,6 @@
             UIButton* galleryButton = ((CameraViewController*)appDelegate.cameraController).galleryButton;
             [galleryButton setImage:thnFirst forState:UIControlStateNormal];
         }
-        
-        [self loadImages];
-        [self moveImageViews];
     } else {
         ((CameraViewController*)appDelegate.cameraController).galleryButton.alpha = 0.0;
         
@@ -297,27 +242,59 @@
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - UIScrollViewDelegate
+#pragma mark - RGMPagingScrollViewDatasource
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scroll
+- (NSInteger)pagingScrollViewNumberOfPages:(RGMPagingScrollView *)pagingScrollView
 {
-    NSUInteger oldIndex = currentIndex;
-    currentIndex = images.count - (NSUInteger)(scroll.contentOffset.x / scroll.frame.size.width) - 1;
-    if(oldIndex < currentIndex)
+    return images.count;
+}
+
+- (UIView *)pagingScrollView:(RGMPagingScrollView *)pagingScrollView viewForIndex:(NSInteger)idx
+{
+    
+    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:idx-2]])
     {
-        [self previousImage];
+        [fullScreenImages removeObjectForKey:[NSNumber numberWithInt:idx-2]];
     }
-    if(oldIndex > currentIndex)
+    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:idx+2]])
     {
-        [self nextImage];
-    }
-    if (bottomBar.alpha == 1.0) {
-        [UIView animateWithDuration:0.4 animations:^(void){
-            bottomBar.alpha = 0.0;
-            topBar.alpha = 0.0;
-        }];
+        [fullScreenImages removeObjectForKey:[NSNumber numberWithInt:idx+2]];
     }
     
+    if (queue.operationCount > 3)
+        [queue cancelAllOperations];
+    
+    UIImageView* imageView = (UIImageView*)[pagingScrollView dequeueReusablePageWithIdentifer:reuseIdentifier forIndex:idx];
+    currentImageView = imageView;
+    currentIndex = idx;
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:idx]])
+    {
+        imageView.image = [fullScreenImages objectForKey:[NSNumber numberWithInt:idx]];
+    } else {
+        imageView.image = [Gallery getThumbAtIndex:idx];
+        
+        ImageRenderOperation* operation = [[ImageRenderOperation alloc] initWithImage:[[images objectAtIndex:idx] objectForKey:@"image"] delegate:self index:idx andImageView:imageView];
+        [queue addOperation:operation];
+    }
+    
+    return imageView;
 }
+
+#pragma mark ImageRenderDelegate
+
+-(void)renderDidFinish:(ImageRenderOperation *)op
+{
+    // set image to the current imageView
+    if (scrollView.currentPage == op.index)
+        op.imageView.image = op.renderedImage;
+    
+    if (fullScreenImages.count > 3)
+        [fullScreenImages removeAllObjects];
+    
+    [fullScreenImages setObject:op.renderedImage forKey:[NSNumber numberWithInt:op.index]];
+}
+
 
 @end

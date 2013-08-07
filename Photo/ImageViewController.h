@@ -8,17 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "RGMPagingScrollView.h"
+#import "ImageRenderOperation.h"
 
-@interface ImageViewController : UIViewController <MFMailComposeViewControllerDelegate, UIScrollViewDelegate>
+@interface ImageViewController : UIViewController <MFMailComposeViewControllerDelegate, RGMPagingScrollViewDatasource, RGMPagingScrollViewDelegate, ImageRenderDelegate>
 {
     NSUInteger currentIndex;
     NSArray *images;
+    NSMutableDictionary *fullScreenImages;
     UIDocumentInteractionController *instagramController;
     UIActivityViewController *sharingController;
     UIView *bottomBar, *topBar;
-    UIScrollView *scrollView;
+    RGMPagingScrollView *scrollView;
     NSString *filename;
     UIImageView *currentImageView, *previousImageView, *nextImageView;
+    UIImage* nextImage;
+    float lastContentOffset;
+    NSOperationQueue* queue;
+    
 }
 
 - (id)initWithImageAtIndex:(NSUInteger)index;
