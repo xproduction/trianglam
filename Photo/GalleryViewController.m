@@ -11,13 +11,16 @@
 #import "Gallery.h"
 #import "GalleryCollectionCell.h"
 #import "ImageViewController.h"
+#import "UIViewController+TopAndBottomBlur.h"
 
-#define IMAGE_SIZE 93.0
-#define IMAGE_PADDING 10.0
+#define IMAGE_SIZE 104.0
+#define IMAGE_PADDING 4.0
 #define STATUS_BAR_HEIGHT 20.0
 #define TOP_BAR_HEIGHT 44.0
 
-@interface GalleryViewController ()
+#define BUTTON_PADDING 12.0
+
+@interface GalleryViewController (TopAndBottomBlur)
 
 @end
 
@@ -34,17 +37,21 @@
         layout.itemSize = CGSizeMake(IMAGE_SIZE, IMAGE_SIZE);
         layout.minimumInteritemSpacing = IMAGE_PADDING;
         layout.minimumLineSpacing = IMAGE_PADDING;
-        layout.sectionInset = UIEdgeInsetsMake(IMAGE_PADDING, IMAGE_PADDING, IMAGE_PADDING, IMAGE_PADDING);
-        CGRect collectionFrame = CGRectMake(0.0, TOP_BAR_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - TOP_BAR_HEIGHT - BOTTOM_BAR_HEIGHT - STATUS_BAR_HEIGHT);
-        collectionView = [[UICollectionView alloc] initWithFrame:collectionFrame collectionViewLayout:layout];
+        layout.sectionInset = UIEdgeInsetsMake(IMAGE_PADDING + self.view.center.y - self.view.center.x, 0.0, IMAGE_PADDING + self.view.center.y - self.view.center.x, 0.0);
+        collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
         [collectionView registerClass:[GalleryCollectionCell class] forCellWithReuseIdentifier:@"imagecell"];
         collectionView.scrollsToTop = YES;
         collectionView.delegate = self;
         collectionView.dataSource = self;
         [self.view addSubview:collectionView];
         
-        UIButton *shootButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height - BOTTOM_BAR_HEIGHT - STATUS_BAR_HEIGHT, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
-        [shootButton setImage:[UIImage imageNamed:@"trianglam_camera.png"] forState:UIControlStateNormal];
+        // ui sweetness
+        [self addTopAndBottomBlur];
+        
+        float buttonSize = self.view.center.y - self.view.center.x - 2.0 * BUTTON_PADDING;
+        UIButton *shootButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0 + BUTTON_PADDING, self.view.center.y + self.view.center.x + BUTTON_PADDING, buttonSize, buttonSize)];
+        [shootButton setImage:[UIImage imageNamed:@"Camera.png"] forState:UIControlStateNormal];
+        [shootButton setImage:[UIImage imageNamed:@"CameraTouched.png"] forState:UIControlStateHighlighted];
         [shootButton addTarget:self action:@selector(goToCamera:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:shootButton];
     }

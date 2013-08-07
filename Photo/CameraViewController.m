@@ -14,7 +14,7 @@
 #import "DropDown.h"
 #import "UIImage+Triangles.h"
 #import "UIImage+Extensions.h"
-#import "AMBlurView.h"
+#import "UIViewController+TopAndBottomBlur.h"
 
 #define BUTTON_FLASH_SIZE 50.0
 #define BUTTON_FLASH_PADDING_SIDE 10.0
@@ -29,7 +29,7 @@
 #define SHAPE_RECT 1
 #define SHAPE_HEXAGON 2
 
-@interface CameraViewController ()
+@interface CameraViewController (TopAndBottomBlur)
 
 @end
 
@@ -73,6 +73,12 @@
         pictureView.layer.masksToBounds = YES;
         [self.view addSubview:pictureView];
         
+        
+        // ui sweetness
+        [self addTopAndBottomBlur];
+        
+        
+        // processed view
         CGRect processedViewRect = CGRectMake(0.0, self.view.center.y - self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.frame.size.width);
         processedView = [[UIImageView alloc] initWithFrame:processedViewRect];
         processedView.center = self.view.center;
@@ -80,19 +86,6 @@
         processedView.contentMode = UIViewContentModeScaleAspectFill;
         processedView.layer.masksToBounds = YES;
         [self.view addSubview:processedView];
-        
-        // ui sweetness
-        CGRect topBlurFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
-        CGRect bottomBlurFrame = CGRectMake(0.0, self.view.center.y + self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
-        UIColor *blurTintColor = [UIColor colorWithWhite:0.2 alpha:0.6];
-        
-        AMBlurView *topBlurView = [[AMBlurView alloc] initWithFrame:topBlurFrame];
-        topBlurView.blurTintColor = blurTintColor;
-        [self.view addSubview:topBlurView];
-        
-        AMBlurView *bottomBlurView = [[AMBlurView alloc] initWithFrame:bottomBlurFrame];
-        bottomBlurView.blurTintColor = blurTintColor;
-        [self.view addSubview:bottomBlurView];
         
         // buttons
         if(camera.cameraCount > 1)

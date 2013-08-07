@@ -41,6 +41,7 @@
 		D2640C53169B0E19000A9A7B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2640C52169B0E19000A9A7B /* QuartzCore.framework */; };
 		D27CBD651680A33D006B6574 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27CBD641680A33D006B6574 /* MessageUI.framework */; };
 		D27CBD6A1680A34D006B6574 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27CBD691680A34D006B6574 /* Social.framework */; };
+		D283195B17B26E240024C6EF /* UIViewController+TopAndBottomBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = D283195A17B26E240024C6EF /* UIViewController+TopAndBottomBlur.m */; };
 		D28A1D361664F3AA005578F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D351664F3AA005578F1 /* UIKit.framework */; };
 		D28A1D381664F3AA005578F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D371664F3AA005578F1 /* Foundation.framework */; };
 		D28A1D3A1664F3AA005578F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D391664F3AA005578F1 /* CoreGraphics.framework */; };
@@ -109,6 +110,8 @@
 		D2640C52169B0E19000A9A7B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D27CBD641680A33D006B6574 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D27CBD691680A34D006B6574 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		D283195917B26E240024C6EF /* UIViewController+TopAndBottomBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TopAndBottomBlur.h"; sourceTree = "<group>"; };
+		D283195A17B26E240024C6EF /* UIViewController+TopAndBottomBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TopAndBottomBlur.m"; sourceTree = "<group>"; };
 		D28A1D311664F3AA005578F1 /* Trianglam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trianglam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A1D351664F3AA005578F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D28A1D371664F3AA005578F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -282,6 +285,8 @@
 				D223EA60166E3E0D00411CC0 /* ImageViewController.m */,
 				D28A1D6C166633AC005578F1 /* GalleryViewController.h */,
 				D28A1D6D166633AC005578F1 /* GalleryViewController.m */,
+				D283195917B26E240024C6EF /* UIViewController+TopAndBottomBlur.h */,
+				D283195A17B26E240024C6EF /* UIViewController+TopAndBottomBlur.m */,
 				D28A1D6516661D7F005578F1 /* Gallery.h */,
 				D28A1D6616661D80005578F1 /* Gallery.m */,
 				D223EA7A166F592100411CC0 /* Settings.h */,
@@ -429,6 +434,7 @@
 				D09FDEB717B235D50076198E /* RGMPagingScrollView.m in Sources */,
 				D223EA5B166E25CE00411CC0 /* GalleryCollectionCell.m in Sources */,
 				D223EA5E166E371300411CC0 /* UIImage+Triangles.m in Sources */,
+				D283195B17B26E240024C6EF /* UIViewController+TopAndBottomBlur.m in Sources */,
 				D223EA61166E3E0D00411CC0 /* ImageViewController.m in Sources */,
 				D223EA7C166F592100411CC0 /* Settings.m in Sources */,
 				D223EA81166F848100411CC0 /* UIImage+Extensions.m in Sources */,
