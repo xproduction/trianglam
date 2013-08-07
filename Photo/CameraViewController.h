@@ -12,7 +12,7 @@
 #import "Camera.h"
 #import "DropDown.h"
 
-@interface CameraViewController : UIViewController <CameraDelegate, DropDownDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CameraViewController : UIViewController<CameraDelegate, DropDownDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     UIView *cameraView, *lightView;
     UIImageView *pictureView, *processedView;
