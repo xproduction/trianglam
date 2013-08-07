@@ -58,7 +58,7 @@
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(-1)-[blurView]-(-1)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(blurView)]];
         [self setBackgroundColor:[UIColor clearColor]];
     } else {
-        self.alpha = 0.9;
+        self.alpha = 0.99;
         self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.8];
     }
 }

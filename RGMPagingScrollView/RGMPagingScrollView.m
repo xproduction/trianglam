@@ -149,6 +149,7 @@ static NSString *RGMPageReuseIdentifierKey = @"pageReuseIdentifier";
     NSMutableDictionary *_reusablePages;
     NSMutableDictionary *_registeredClasses;
     NSMutableDictionary *_registeredNibs;
+    CGRect* frameRect;
 }
 
 @property (strong, nonatomic) RGMPagingScrollViewModel *viewModel;
@@ -235,7 +236,8 @@ static NSString *RGMPageReuseIdentifierKey = @"pageReuseIdentifier";
     [_visiblePages removeAllObjects];
     [_reusablePages removeAllObjects];
     
-    self.viewModel = nil;
+    _viewModel.numberOfPages = [self.datasource pagingScrollViewNumberOfPages:self];
+    self.contentSize = [_viewModel contentSizeForDirection:self.scrollDirection];
     
     [self setNeedsLayout];
 }
@@ -248,7 +250,7 @@ static NSString *RGMPageReuseIdentifierKey = @"pageReuseIdentifier";
         
         _viewModel.pageWidth = self.bounds.size.width;
         _viewModel.pageHeight = self.bounds.size.height;
-        _viewModel.gutter = 30.0f;
+        _viewModel.gutter = 20.0f;
         
         self.contentSize = [_viewModel contentSizeForDirection:self.scrollDirection];
         

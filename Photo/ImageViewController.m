@@ -34,7 +34,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         scrollView.scrollDirection = RGMScrollDirectionHorizontal;
         scrollView.delegate = self;
         scrollView.datasource = self;
-        scrollView.currentPage = index;
+        scrollView.currentPage = images.count - index - 1;
         
         [self.view addSubview:scrollView];
         
@@ -121,33 +121,30 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 
 - (IBAction)remove:(id)sender
 {
-    UIImageView *backupView;
+    currentImageView.hidden = YES;
     
-    UIImageView* imageView = (UIImageView*)[scrollView dequeueReusablePageWithIdentifer:reuseIdentifier forIndex:currentIndex];
-    
-    backupView = [[UIImageView alloc] init];
+    UIImageView *backupView = [[UIImageView alloc] init];
     backupView.backgroundColor = [UIColor blackColor];
-    backupView.frame = currentImageView.frame;
+    backupView.frame = CGRectMake(currentImageView.frame.origin.x, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.frame.size.width);
     backupView.image = currentImageView.image;
     backupView.contentMode = UIViewContentModeScaleAspectFit;
     [scrollView insertSubview:backupView aboveSubview:currentImageView];
     
     [UIView animateWithDuration:0.3 animations:^(void){
-        backupView.frame = CGRectMake(currentImageView.frame.size.width / 2.0 - 1.0, currentImageView.frame.size.height / 2.0 - 1.0, 2.0, 2.0);
+        backupView.frame = CGRectMake(scrollView.contentOffset.x + self.view.frame.size.width / 2.0, scrollView.contentOffset.y + self.view.frame.size.height / 2.0, 2.0, 2.0);
     } completion:^(BOOL finished){
+        currentImageView.hidden = NO;
         [backupView removeFromSuperview];
+        [scrollView reloadData];
+        scrollView.currentPage = images.count - currentIndex - 1;
     }];
     
-    //[Gallery removeImageAtIndex:currentIndex];
-    //images = [Gallery getImageArray];
-    
-    [scrollView reloadData];
-    
-    scrollView.currentPage = currentIndex--;
-    
-    return;
+    [Gallery removeImageAtIndex:currentIndex];
+    [fullScreenImages removeAllObjects];
+    images = [Gallery getImageArray];
     
     AppDelegate *appDelegate = ((AppDelegate*)[UIApplication sharedApplication].delegate);
+    
     
     if (images.count > 0)
     {
@@ -159,11 +156,13 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
             UIButton* galleryButton = ((CameraViewController*)appDelegate.cameraController).galleryButton;
             [galleryButton setImage:thnFirst forState:UIControlStateNormal];
         }
+        
     } else {
         ((CameraViewController*)appDelegate.cameraController).galleryButton.alpha = 0.0;
         
         [self dismiss:nil];
     }
+    
 }
 
 - (IBAction)showOrHideControls:(id)sender
@@ -249,33 +248,33 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
     return images.count;
 }
 
-- (UIView *)pagingScrollView:(RGMPagingScrollView *)pagingScrollView viewForIndex:(NSInteger)idx
+- (UIView *)pagingScrollView:(RGMPagingScrollView *)pagingScrollView viewForIndex:(NSInteger)backwardIndex
 {
+    currentIndex = images.count - backwardIndex - 1;
     
-    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:idx-2]])
+    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:currentIndex-2]])
     {
-        [fullScreenImages removeObjectForKey:[NSNumber numberWithInt:idx-2]];
+        [fullScreenImages removeObjectForKey:[NSNumber numberWithInt:currentIndex-2]];
     }
-    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:idx+2]])
+    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:currentIndex+2]])
     {
-        [fullScreenImages removeObjectForKey:[NSNumber numberWithInt:idx+2]];
+        [fullScreenImages removeObjectForKey:[NSNumber numberWithInt:currentIndex+2]];
     }
     
     if (queue.operationCount > 3)
         [queue cancelAllOperations];
     
-    UIImageView* imageView = (UIImageView*)[pagingScrollView dequeueReusablePageWithIdentifer:reuseIdentifier forIndex:idx];
+    UIImageView* imageView = (UIImageView*)[pagingScrollView dequeueReusablePageWithIdentifer:reuseIdentifier forIndex:currentIndex];
     currentImageView = imageView;
-    currentIndex = idx;
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:idx]])
+    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:currentIndex]])
     {
-        imageView.image = [fullScreenImages objectForKey:[NSNumber numberWithInt:idx]];
+        imageView.image = [fullScreenImages objectForKey:[NSNumber numberWithInt:currentIndex]];
     } else {
-        imageView.image = [Gallery getThumbAtIndex:idx];
+        imageView.image = [Gallery getThumbAtIndex:currentIndex];
         
-        ImageRenderOperation* operation = [[ImageRenderOperation alloc] initWithImage:[[images objectAtIndex:idx] objectForKey:@"image"] delegate:self index:idx andImageView:imageView];
+        ImageRenderOperation* operation = [[ImageRenderOperation alloc] initWithImage:[[images objectAtIndex:currentIndex] objectForKey:@"image"] delegate:self index:currentIndex andImageView:imageView];
         [queue addOperation:operation];
     }
     
@@ -287,7 +286,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 -(void)renderDidFinish:(ImageRenderOperation *)op
 {
     // set image to the current imageView
-    if (scrollView.currentPage == op.index)
+    if (scrollView.currentPage == images.count - op.index - 1)
         op.imageView.image = op.renderedImage;
     
     if (fullScreenImages.count > 3)
