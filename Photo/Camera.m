@@ -93,6 +93,12 @@
          }
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
          UIImage *image = [[UIImage alloc] initWithData:imageData];
+         
+         if ([self getCameraPosition] == AVCaptureDevicePositionFront)
+         {
+             image = [UIImage imageWithCGImage:image.CGImage scale:image.scale orientation:UIImageOrientationLeftMirrored];
+         }
+         
          [delegate cameraTookImage:image];
      }];
 }
