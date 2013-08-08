@@ -25,6 +25,7 @@
     NSString *vector;
     DropDown *flashDropDown, *sizeDropDown, *shapeDropDown;
     NSUInteger shape;
+    UIPopoverController* popover;
 }
 
 @property (nonatomic, strong) UIButton* galleryButton;

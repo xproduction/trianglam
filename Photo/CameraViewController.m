@@ -261,6 +261,17 @@
     picker.delegate = self;
     if(IS_IPAD)
     {
+        // on iPad with iOS < 7, UIImagePickerController must be presented only via popover
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
+        {
+            popover = [[UIPopoverController alloc] initWithContentViewController:picker];
+            [popover presentPopoverFromRect:chooseFromGallery.frame
+                                     inView:self.view
+                   permittedArrowDirections:UIPopoverArrowDirectionAny
+                                   animated:YES];
+            return;
+        }
+        
         picker.modalInPopover = YES;
     }
     [self presentViewController:picker animated:YES completion:NULL];
@@ -428,6 +439,7 @@
     notOkButton.alpha = 0.0;
     okButton.alpha = 0.0;
     pictureView.alpha = 0.0;
+    pictureView.contentMode = UIViewContentModeScaleAspectFit;
     if([Gallery addImage:processedImage thumb:thumbImage vector:vector])
     {
         NSLog(@"image saved");
@@ -456,6 +468,7 @@
     okButton.alpha = 0.0;
     takePictureButton.alpha = 1.0;
     pictureView.alpha = 0.0;
+    pictureView.contentMode = UIViewContentModeScaleAspectFill;
     processedView.alpha = 0.0;
     chooseFromGallery.alpha = 1.0;
     sizeDropDown.alpha = 1.0;
@@ -474,13 +487,26 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    [self cameraTookImage:[image imageByScalingProportionallyToMinimumSize:CGSizeMake(480.0, 480.0)]];
+    //UIImage *scaledImage = [image imageByScalingProportionallyToMinimumSize:CGSizeMake(480.0, 480.0)];
+    [self cameraTookImage:[image fitInsideWidth:480.0 fitInsideHeight:480.0]];
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    //pictureView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    if (IS_IPAD && [[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
+    {
+        [popover dismissPopoverAnimated:YES];
+    }
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    if (IS_IPAD && [[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
+    {
+        [popover dismissPopoverAnimated:YES];
+    }
 }
 
 @end

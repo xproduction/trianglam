@@ -32,7 +32,11 @@
     CGImageRef image = CGImageCreateWithJPEGDataProvider(imageDataProvider, NULL, NO, kCGRenderingIntentDefault);
     
     if (self.isCancelled)
+    {
+        CGImageRelease(image);
+        CGDataProviderRelease(imageDataProvider);
         return;
+    }
     
     // Create a bitmap context from the image's specifications
     // (Note: We need to specify kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrder32Little
@@ -42,7 +46,13 @@
     CGContextRef bitmapContext = CGBitmapContextCreate(NULL, CGImageGetWidth(image), CGImageGetHeight(image), CGImageGetBitsPerComponent(image), CGImageGetWidth(image) * 4, colorSpace, kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrder32Little);
     
     if (self.isCancelled)
+    {
+        CGImageRelease(image);
+        CGDataProviderRelease(imageDataProvider);
+        CGContextRelease(bitmapContext);
+        CGColorSpaceRelease(colorSpace);
         return;
+    }
     
     // Draw the image into the bitmap context and retrieve the
     // decompressed image
@@ -51,13 +61,27 @@
     CGImageRef decompressedImage = CGBitmapContextCreateImage(bitmapContext);
     
     if (self.isCancelled)
+    {
+        CGImageRelease(decompressedImage);
+        CGContextRelease(bitmapContext);
+        CGColorSpaceRelease(colorSpace);
+        CGImageRelease(image);
+        CGDataProviderRelease(imageDataProvider);
         return;
+    }
     
     // Create a UIImage
     self.renderedImage = [[UIImage alloc] initWithCGImage:decompressedImage];
     
     if (self.isCancelled)
+    {
+        CGImageRelease(decompressedImage);
+        CGContextRelease(bitmapContext);
+        CGColorSpaceRelease(colorSpace);
+        CGImageRelease(image);
+        CGDataProviderRelease(imageDataProvider);
         return;
+    }
     
     // Release everything
     CGImageRelease(decompressedImage);

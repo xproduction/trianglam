@@ -102,15 +102,15 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
     
     [self.view addSubview:bottomBar];
     
-    topBar = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 80.0)];
+    topBar = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0)];
     //topBar.backgroundColor = [UIColor lightGrayColor];
     
-    UIButton *dismissButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, 80.0, 80.0)];
+    UIButton *dismissButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, topBar.frame.size.height / 2.0 - 40.0, 80.0, 80.0)];
     [dismissButton setImage:[UIImage imageNamed:@"trianglam_close.png"] forState:UIControlStateNormal];
     [dismissButton addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:dismissButton];
     
-    UIButton *removeButton = [[UIButton alloc] initWithFrame:CGRectMake(160.0, 0.0, 80.0, 80.0)];
+    UIButton *removeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80.0, topBar.frame.size.height / 2.0 - 40.0, 80.0, 80.0)];
     [removeButton setImage:[UIImage imageNamed:@"trianglam_trash.png"] forState:UIControlStateNormal];
     [removeButton addTarget:self action:@selector(remove:) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:removeButton];
@@ -180,7 +180,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         [UIView animateWithDuration:0.4 animations:^(void){
             bottomBar.alpha = 1.0;
             topBar.alpha = 1.0;
-            //[self setBlurAlpha:1.0];
+            [self setBlurAlpha:1.0];
         }];
     }
     else
@@ -188,7 +188,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         [UIView animateWithDuration:0.4 animations:^(void){
             bottomBar.alpha = 0.0;
             topBar.alpha = 0.0;
-            //[self setBlurAlpha:0.0];
+            [self setBlurAlpha:0.0];
         }];
     }
 }
@@ -306,7 +306,13 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         imageView.image = [Gallery getThumbAtIndex:currentIndex];
         
         ImageRenderOperation* operation = [[ImageRenderOperation alloc] initWithImage:[[images objectAtIndex:currentIndex] objectForKey:@"image"] delegate:self index:currentIndex andImageView:imageView];
-        [queue addOperation:operation];
+        
+        if (![[queue operations] containsObject:operation])
+        {
+            [queue addOperation:operation];
+        } else {
+            NSLog(@"already rendering");
+        }
     }
     
     return imageView;
@@ -317,11 +323,8 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 -(void)renderDidFinish:(ImageRenderOperation *)op
 {
     // set image to the current imageView
-    if (scrollView.currentPage == images.count - op.index - 1)
+    if (op.imageView.tag == images.count - op.index - 1)
         op.imageView.image = op.renderedImage;
-    
-    if (fullScreenImages.count > 3)
-        [fullScreenImages removeAllObjects];
     
     [fullScreenImages setObject:op.renderedImage forKey:[NSNumber numberWithInt:op.index]];
 }
