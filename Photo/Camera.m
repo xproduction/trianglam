@@ -111,52 +111,66 @@
 {
     if(session == nil)
     {
-        cameraCount = 0;
-        session = [[AVCaptureSession alloc] init];
-        session.sessionPreset = AVCaptureSessionPreset640x480;
+        session = [self createSession];
         
-        NSError *error = nil;
-        backCamera = [AVCaptureDeviceInput deviceInputWithDevice:[self backFacingCamera] error:&error];
-        if(backCamera)
+        if (backCamera)
         {
-            cameraCount++;
             [session addInput:backCamera];
         }
-        else
+        
+        if (frontCamera && [session canAddInput:frontCamera])
         {
-            NSLog(@"%@", error);
+            [session addInput:frontCamera];
         }
-        frontCamera = [AVCaptureDeviceInput deviceInputWithDevice:[self frontFacingCamera] error:&error];
-        if(frontCamera)
-        {
-            cameraCount++;
-            if([session canAddInput:frontCamera])
-            {
-                [session addInput:frontCamera];
-            }
-        }
-        else if(error != nil)
-        {
-            NSLog(@"%@", error);
-        }
-        imageOutput = [[AVCaptureStillImageOutput alloc] init];
-        NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys:AVVideoCodecJPEG, AVVideoCodecKey, nil];
-        [imageOutput setOutputSettings:outputSettings];
-        if([session canAddOutput:imageOutput])
-        {
-            [session addOutput:imageOutput];
-        }
-        else
-        {
-            cameraCount = 0;
-            NSLog(@"Couldn't add still image output");
-        }
-        if (cameraCount == 0)
-        {
-            NSLog(@"no camera found");
-        }
+        
     }
 
+}
+
+- (AVCaptureSession*)createSession
+{
+    cameraCount = 0;
+    AVCaptureSession* newSession = [[AVCaptureSession alloc] init];
+    newSession.sessionPreset = AVCaptureSessionPreset640x480;
+    
+    NSError *error = nil;
+    backCamera = [AVCaptureDeviceInput deviceInputWithDevice:[self backFacingCamera] error:&error];
+    if(backCamera)
+    {
+        cameraCount++;
+    }
+    else
+    {
+        NSLog(@"%@", error);
+    }
+    frontCamera = [AVCaptureDeviceInput deviceInputWithDevice:[self frontFacingCamera] error:&error];
+    if(frontCamera)
+    {
+        cameraCount++;
+    }
+    else if(error != nil)
+    {
+        NSLog(@"%@", error);
+    }
+    
+    imageOutput = [[AVCaptureStillImageOutput alloc] init];
+    NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys:AVVideoCodecJPEG, AVVideoCodecKey, nil];
+    [imageOutput setOutputSettings:outputSettings];
+    if([newSession canAddOutput:imageOutput])
+    {
+        [newSession addOutput:imageOutput];
+    }
+    else
+    {
+        cameraCount = 0;
+        NSLog(@"Couldn't add still image output");
+    }
+    if (cameraCount == 0)
+    {
+        NSLog(@"no camera found");
+    }
+    
+    return newSession;
 }
 
 - (void)startSession
@@ -175,36 +189,80 @@
     if (cameraCount == 0) {
         return;
     }
-    AVCaptureVideoPreviewLayer *videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
+    
+    cameraContainerView = view;
+    
+    videoPreviewLayer = [self createVideoPreviewLayerForSession:session];
     [view.layer setMasksToBounds:YES];
-    
-    [videoPreviewLayer setFrame:view.bounds];
-    
-    [videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
     [view.layer insertSublayer:videoPreviewLayer below:[[view.layer sublayers] objectAtIndex:0]];
     [session startRunning];
 }
 
+- (AVCaptureVideoPreviewLayer*) createVideoPreviewLayerForSession:(AVCaptureSession*)_session
+{
+    AVCaptureVideoPreviewLayer* newVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_session];
+    [newVideoPreviewLayer setFrame:cameraContainerView.bounds];
+    [newVideoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    
+    return newVideoPreviewLayer;
+}
+
 - (void)switchCamera
 {
     if (cameraCount > 1) {
-        [session beginConfiguration];
-        if([session.inputs containsObject:frontCamera])
+        AVCaptureSession* oldSession = session;
+        
+        AVCaptureSession* newSession = [self createSession];
+        [newSession beginConfiguration];
+        if([self getCameraPosition] == AVCaptureDevicePositionFront)
         {
             [session removeInput:frontCamera];
-            [session addInput:backCamera];
+            [newSession addInput:backCamera];
         }
         else
         {
             [session removeInput:backCamera];
-            [session addInput:frontCamera];
+            [newSession addInput:frontCamera];
         }
-        [session commitConfiguration];
+        [newSession commitConfiguration];
+
+        
+        AVCaptureVideoPreviewLayer* newVideoPreviewLayer = [self createVideoPreviewLayerForSession:newSession];
+        
+        [UIView beginAnimations:@"Flip" context:nil];
+        [UIView setAnimationDuration:0.5f];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView transitionWithView:cameraContainerView duration:2.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        
+            [videoPreviewLayer removeFromSuperlayer];
+            videoPreviewLayer = newVideoPreviewLayer;
+            [cameraContainerView.layer insertSublayer:videoPreviewLayer below:[[cameraContainerView.layer sublayers] objectAtIndex:0]];
+            session = newSession;
+            
+            [newSession startRunning];
+        } completion:^(BOOL r){
+            [oldSession stopRunning];
+        }];
+        [UIView commitAnimations];
+        
+
     }
 }
 
 #pragma mark - Utility methods
+
+- (AVCaptureDevicePosition) getCameraPosition
+{
+    for ( AVCaptureDeviceInput *input in session.inputs ) {
+        AVCaptureDevice *device = input.device;
+        if ( [device hasMediaType:AVMediaTypeVideo] ) {
+            return device.position;
+        }
+    }
+    
+    return nil;
+}
 
 - (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position
 {

@@ -21,9 +21,11 @@
 @interface Camera : NSObject
 {
     AVCaptureSession *session;
+    AVCaptureVideoPreviewLayer *videoPreviewLayer;
     AVCaptureStillImageOutput *imageOutput;
     AVCaptureInput *frontCamera, *backCamera;
     NSUInteger cameraCount;
+    UIView* cameraContainerView;
     id<CameraDelegate> delegate;
 }
 
