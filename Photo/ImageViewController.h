@@ -16,7 +16,7 @@
     NSUInteger currentIndex;
     NSArray *images;
     NSMutableDictionary *fullScreenImages;
-    UIDocumentInteractionController *instagramController;
+    UIDocumentInteractionController *interactionController;
     UIActivityViewController *sharingController;
     UIView *bottomBar, *topBar;
     RGMPagingScrollView *scrollView;

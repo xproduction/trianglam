@@ -19,12 +19,24 @@
     UIColor *blurTintColor = [UIColor colorWithWhite:0.2 alpha:0.6];
     
     AMBlurView *topBlurView = [[AMBlurView alloc] initWithFrame:topBlurFrame];
+    topBlurView.tag = 2;
     topBlurView.blurTintColor = blurTintColor;
     [self.view addSubview:topBlurView];
     
     AMBlurView *bottomBlurView = [[AMBlurView alloc] initWithFrame:bottomBlurFrame];
+    bottomBlurView.tag = 3;
     bottomBlurView.blurTintColor = blurTintColor;
+    
     [self.view addSubview:bottomBlurView];
+}
+
+-(void)setBlurAlpha:(CGFloat)alpha
+{
+    UIView* top = [self.view viewWithTag:2];
+    UIView* bottom = [self.view viewWithTag:3];
+    
+    top.alpha = alpha;
+    bottom.alpha = alpha;
 }
 
 @end

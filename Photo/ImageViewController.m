@@ -14,8 +14,9 @@
 #import "AppDelegate.h"
 #import "CameraViewController.h"
 #import "RGMPageControl.h"
+#import "UIViewController+TopAndBottomBlur.h"
 
-@interface ImageViewController ()
+@interface ImageViewController (TopAndBottomBlur)
 
 @end
 
@@ -27,6 +28,9 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 {
     self = [super init];
     if (self) {
+        // ui sweetness
+        [self addTopAndBottomBlur];
+        
         currentIndex = index;
         images = [Gallery getImageArray];
         
@@ -45,10 +49,9 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         queue = [[NSOperationQueue alloc] init];
         queue.name = @"GalleryQueue";
         
-        
         UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrHideControls:)];
         [scrollView addGestureRecognizer:singleTap];
-         
+        
         [self renewInterface];
     }
     return self;
@@ -57,6 +60,11 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 -(void)didReceiveMemoryWarning
 {
     [fullScreenImages removeAllObjects];
+}
+
+-(BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 - (void)renewInterface
@@ -172,6 +180,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         [UIView animateWithDuration:0.4 animations:^(void){
             bottomBar.alpha = 1.0;
             topBar.alpha = 1.0;
+            //[self setBlurAlpha:1.0];
         }];
     }
     else
@@ -179,6 +188,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         [UIView animateWithDuration:0.4 animations:^(void){
             bottomBar.alpha = 0.0;
             topBar.alpha = 0.0;
+            //[self setBlurAlpha:0.0];
         }];
     }
 }
@@ -189,12 +199,32 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 {
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"instagram://app"]])
     {
-        instagramController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filename]];
-        instagramController.UTI = @"com.instagram.exclusivegram";
-        instagramController.annotation = @{@"InstagramCaption" : NSLocalizedString(@"Taken with #trianglam", nil)};
-        [instagramController presentOpenInMenuFromRect:self.view.frame inView:self.view animated:YES];
+        interactionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filename]];
+        interactionController.UTI = @"com.instagram.exclusivegram";
+        interactionController.annotation = @{@"InstagramCaption" : NSLocalizedString(@"Taken with #trianglam", nil)};
+        [interactionController presentOpenInMenuFromRect:self.view.frame inView:self.view animated:YES];
     }
 }
+
+- (IBAction)openIn:(id)sender
+{
+    interactionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filename]];
+    [interactionController presentOpenInMenuFromRect:self.view.frame inView:self.view animated:YES];
+}
+
+- (IBAction)shareTo:(id)sender
+{
+    NSString *shareString = @"Taken with #trianglam";
+    UIImage *shareImage = [UIImage imageWithContentsOfFile:filename];
+    
+    NSArray *activityItems = [NSArray arrayWithObjects:shareString, shareImage, nil];
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    activityViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    [self presentViewController:activityViewController animated:YES completion:nil];
+}
+
 
 - (IBAction)shareToTwitter:(id)sender
 {
@@ -251,6 +281,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 - (UIView *)pagingScrollView:(RGMPagingScrollView *)pagingScrollView viewForIndex:(NSInteger)backwardIndex
 {
     currentIndex = images.count - backwardIndex - 1;
+    filename = [[images objectAtIndex:currentIndex] objectForKey:@"image"] ;
     
     if ([fullScreenImages objectForKey:[NSNumber numberWithInt:currentIndex-2]])
     {

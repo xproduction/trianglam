@@ -10,7 +10,6 @@
 
 @interface ImageRenderOperation()
 
-
 @end
 
 @implementation ImageRenderOperation
@@ -18,7 +17,6 @@
 -(id)initWithImage:(NSString*)path delegate:(id<ImageRenderDelegate>)delegate index:(NSInteger)index andImageView:(UIImageView *)imageView;
 {
     if (self = [super init]) {
-        // 2
         self.delegate = delegate;
         self.path = path;
         self.index = index;
@@ -28,8 +26,6 @@
 }
 
 - (void)main {
-    
-    //NSString* path = [[images objectAtIndex:idx] objectForKey:@"image"];
     
     CGDataProviderRef imageDataProvider = CGDataProviderCreateWithFilename([_path fileSystemRepresentation]);
     

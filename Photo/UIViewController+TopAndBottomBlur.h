@@ -11,5 +11,6 @@
 @interface UIViewController (TopAndBottomBlur)
 
 -(void)addTopAndBottomBlur;
+-(void)setBlurAlpha:(CGFloat)alpha;
 
 @end
