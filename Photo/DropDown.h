@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 X Production s.r.o. All rights reserved.
 //
 
-#define DROPDOWN_DEFAULT_PADDING 4.0
+#define DROPDOWN_DEFAULT_PADDING 0.0
 #define DROPDOWN_DEFAULT_ANIMATION_TIME 0.15
 
 #import <UIKit/UIKit.h>

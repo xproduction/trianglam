@@ -16,9 +16,9 @@
 #import "UIImage+Extensions.h"
 #import "UIViewController+TopAndBottomBlur.h"
 
-#define BUTTON_FLASH_SIZE 50.0
-#define BUTTON_FLASH_PADDING_SIDE 10.0
-#define BUTTON_FLASH_PADDING_TOP 5.0
+#define BUTTON_FLASH_SIZE 60.0
+#define BUTTON_FLASH_PADDING_SIDE 5.0
+#define BUTTON_FLASH_PADDING_TOP 0.0
 
 #define BOTTOM_BAR_PADDING 15.0
 
@@ -206,13 +206,16 @@
         [self.view addSubview:shapeDropDown];
         
         UIButton *triangleButton = [[UIButton alloc] init];
-        [triangleButton setImage:[UIImage imageNamed:@"trianglam_triangle_icon.png"] forState:UIControlStateNormal];
+        [triangleButton setImage:[UIImage imageNamed:@"Tria.png"] forState:UIControlStateNormal];
+        [triangleButton setImage:[UIImage imageNamed:@"TriaTouched.png"] forState:UIControlStateHighlighted];
         
         UIButton *squareButton = [[UIButton alloc] init];
-        [squareButton setImage:[UIImage imageNamed:@"Rectangle.png"] forState:UIControlStateNormal];
+        [squareButton setImage:[UIImage imageNamed:@"Rect.png"] forState:UIControlStateNormal];
+        [squareButton setImage:[UIImage imageNamed:@"RectTouched.png"] forState:UIControlStateHighlighted];
         
         UIButton *hexagonButton = [[UIButton alloc] init];
-        [hexagonButton setImage:[UIImage imageNamed:@"Hexagon.png"] forState:UIControlStateNormal];
+        [hexagonButton setImage:[UIImage imageNamed:@"Hexa.png"] forState:UIControlStateNormal];
+        [hexagonButton setImage:[UIImage imageNamed:@"HexaTouched.png"] forState:UIControlStateHighlighted];
         
         shapeDropDown.buttons = @[triangleButton, squareButton, hexagonButton];
         shapeDropDown.delegate = self;
@@ -488,7 +491,7 @@
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     //UIImage *scaledImage = [image imageByScalingProportionallyToMinimumSize:CGSizeMake(480.0, 480.0)];
-    [self cameraTookImage:[image fitInsideWidth:480.0 fitInsideHeight:480.0]];
+    [self cameraTookImage:image];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
     //pictureView.contentMode = UIViewContentModeScaleAspectFit;
