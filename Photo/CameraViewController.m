@@ -70,6 +70,7 @@
         pictureView.center = self.view.center;
         pictureView.alpha = 0.0;
         pictureView.contentMode = UIViewContentModeScaleAspectFill;
+        pictureView.backgroundColor = [UIColor blackColor];
         pictureView.layer.masksToBounds = YES;
         [self.view addSubview:pictureView];
         
@@ -490,11 +491,11 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    //UIImage *scaledImage = [image imageByScalingProportionallyToMinimumSize:CGSizeMake(480.0, 480.0)];
-    [self cameraTookImage:image];
+    UIImage *scaledImage = [image imageByScalingProportionallyToMinimumSize:CGSizeMake(480.0, 480.0)];
+    [self cameraTookImage:scaledImage];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
-    //pictureView.contentMode = UIViewContentModeScaleAspectFit;
+    pictureView.contentMode = UIViewContentModeScaleAspectFit;
     
     if (IS_IPAD && [[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
     {

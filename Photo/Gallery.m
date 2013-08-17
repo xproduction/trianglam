@@ -56,6 +56,41 @@
     
 }*/
 
++ (void)checkImagesIntegrity
+{
+    NSMutableArray *images = [self getMutableArray];
+    NSArray *originalImages = [self getImageArray];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    for (id image in originalImages)
+    {
+        if (![fileManager fileExistsAtPath:[image objectForKey:@"thumb"]] || ![fileManager fileExistsAtPath:[image objectForKey:@"image"]])
+        {
+            NSError *error = nil;
+            if (![fileManager fileExistsAtPath:[image objectForKey:@"thumb"]])
+            {
+                [fileManager removeItemAtPath:[image objectForKey:@"thumb"] error:&error];
+            }
+            if (error != nil)
+            {
+                NSLog(@"%@", error);
+                error = nil;
+            }
+            
+            if (![fileManager fileExistsAtPath:[image objectForKey:@"image"]])
+            {
+                [fileManager removeItemAtPath:[image objectForKey:@"image"] error:&error];
+            }
+            if (error != nil)
+            {
+                NSLog(@"%@", error);
+            }
+            
+            [images removeObject:image];
+        }
+    }
+    [self saveArray:images];
+}
+
 + (BOOL)addImage:(UIImage *)image thumb:(UIImage *)thumb vector:(NSString *)vector
 {
     if(image == nil || thumb == nil)

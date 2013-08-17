@@ -119,6 +119,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
     
     topBar.alpha = 0.0;
     bottomBar.alpha = 0.0;
+    [self setBlurAlpha:0];
 }
 
 - (IBAction)dismiss:(id)sender

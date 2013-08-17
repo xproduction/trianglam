@@ -54,6 +54,8 @@
         [shootButton setImage:[UIImage imageNamed:@"CameraTouched.png"] forState:UIControlStateHighlighted];
         [shootButton addTarget:self action:@selector(goToCamera:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:shootButton];
+        
+        [Gallery checkImagesIntegrity];
     }
     return self;
 }

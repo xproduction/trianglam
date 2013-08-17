@@ -15,5 +15,6 @@
 + (UIImage *)getImageAtIndex:(NSUInteger)index;
 + (UIImage *)getThumbAtIndex:(NSUInteger)index;
 + (BOOL)removeImageAtIndex:(NSUInteger)index;
++ (void)checkImagesIntegrity;
 
 @end
