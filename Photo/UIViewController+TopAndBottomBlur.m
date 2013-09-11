@@ -15,8 +15,8 @@
 -(void)addTopAndBottomBlur
 {
     CGRect topBlurFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
-    CGRect bottomBlurFrame = CGRectMake(0.0, self.view.center.y + self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0);
-    UIColor *blurTintColor = [UIColor colorWithWhite:0.2 alpha:0.6];
+    CGRect bottomBlurFrame = CGRectMake(0.0, self.view.center.y + self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.center.y - self.view.frame.size.width / 2.0 + 1.0);
+    UIColor *blurTintColor = [UIColor colorWithWhite:0.2 alpha:0.9];
     
     AMBlurView *topBlurView = [[AMBlurView alloc] initWithFrame:topBlurFrame];
     topBlurView.tag = 2;
