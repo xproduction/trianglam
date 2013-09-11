@@ -69,33 +69,34 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 
 - (void)renewInterface
 {
-    bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height - BOTTOM_BAR_HEIGHT - STATUS_BAR_HEIGHT, self.view.frame.size.width, BOTTOM_BAR_HEIGHT)];
+    bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0.0, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0) + (self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0)) / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, self.view.frame.size.width, BOTTOM_BAR_HEIGHT)];
     
-    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"instagram://app"]])
-    {
         UIButton *instagramButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
-        [instagramButton setImage:[UIImage imageNamed:@"trianglam_instagram.png"] forState:UIControlStateNormal];
+        [instagramButton setImage:[UIImage imageNamed:@"Share.png"] forState:UIControlStateNormal];
+        [instagramButton setImage:[UIImage imageNamed:@"ShareTouched.png"] forState:UIControlStateHighlighted];
         [instagramButton addTarget:self action:@selector(shareToInstagram:) forControlEvents:UIControlEventTouchUpInside];
         [bottomBar addSubview:instagramButton];
-    }
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(BOTTOM_BAR_HEIGHT, 0.0, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
-        [button setImage:[UIImage imageNamed:@"trianglam_fb.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"Facebook.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"FacebookTouched.png"] forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(shareToFacebook:) forControlEvents:UIControlEventTouchUpInside];
         [bottomBar addSubview:button];
     }
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(BOTTOM_BAR_HEIGHT * 2.0, 0.0, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
-        [button setImage:[UIImage imageNamed:@"trianglam_twitter.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"Twitter.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"TwitterTouched.png"] forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(shareToTwitter:) forControlEvents:UIControlEventTouchUpInside];
         [bottomBar addSubview:button];
     }
     
     if ([MFMailComposeViewController canSendMail]) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(BOTTOM_BAR_HEIGHT * 3.0, 0.0, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
-        [button setImage:[UIImage imageNamed:@"trianglam_mail.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"Mail.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"MailTouched.png"] forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(mail:) forControlEvents:UIControlEventTouchUpInside];
         [bottomBar addSubview:button];
     }
@@ -106,12 +107,14 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
     //topBar.backgroundColor = [UIColor lightGrayColor];
     
     UIButton *dismissButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, topBar.frame.size.height / 2.0 - 40.0, 80.0, 80.0)];
-    [dismissButton setImage:[UIImage imageNamed:@"trianglam_close.png"] forState:UIControlStateNormal];
+    [dismissButton setImage:[UIImage imageNamed:@"Close.png"] forState:UIControlStateNormal];
+    [dismissButton setImage:[UIImage imageNamed:@"CloseTouched.png"] forState:UIControlStateHighlighted];
     [dismissButton addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:dismissButton];
     
     UIButton *removeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80.0, topBar.frame.size.height / 2.0 - 40.0, 80.0, 80.0)];
-    [removeButton setImage:[UIImage imageNamed:@"trianglam_trash.png"] forState:UIControlStateNormal];
+    [removeButton setImage:[UIImage imageNamed:@"Trash.png"] forState:UIControlStateNormal];
+    [removeButton setImage:[UIImage imageNamed:@"TrashTouched.png"] forState:UIControlStateHighlighted];
     [removeButton addTarget:self action:@selector(remove:) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:removeButton];
     
