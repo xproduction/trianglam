@@ -25,7 +25,12 @@
     UIImageView *trianglam = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Trianglam.png"]];
     [topBlurView addSubview:trianglam];
     float trianglamSize = 30.0;
-    trianglam.frame = CGRectMake(topBlurView.center.x - trianglamSize / 2.0, 20.0 + (topBlurView.frame.size.height - 20.0) / 2.0 - trianglamSize / 2.0, trianglamSize, trianglamSize);
+    
+    float topMargin = 0.0;
+    if (![self prefersStatusBarHidden])
+        topMargin = 20.0;
+    
+    trianglam.frame = CGRectMake(topBlurView.center.x - trianglamSize / 2.0, topMargin + (topBlurView.frame.size.height - topMargin) / 2.0 - trianglamSize / 2.0, trianglamSize, trianglamSize);
     
     [self.view addSubview:topBlurView];
     
