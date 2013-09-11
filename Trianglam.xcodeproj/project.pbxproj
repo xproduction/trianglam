@@ -11,7 +11,6 @@
 		D09FDEB617B235D50076198E /* RGMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FDEB317B235D50076198E /* RGMPageControl.m */; };
 		D09FDEB717B235D50076198E /* RGMPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FDEB517B235D50076198E /* RGMPagingScrollView.m */; };
 		D0BCE1B317AA990500222AB6 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BCE1B217AA990500222AB6 /* Camera.m */; };
-		D2008B1516A019E80022DB19 /* trianglam_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = D2008B1416A019E80022DB19 /* trianglam_ok.png */; };
 		D2008B1916A020910022DB19 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = D2008B1816A020910022DB19 /* DropDown.m */; };
 		D2010E0817AA9368009ADB8F /* ActivityInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = D2010E0717AA9368009ADB8F /* ActivityInstagram.m */; };
 		D210AEC217673640007F7524 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D210AEC117673640007F7524 /* Media.xcassets */; };
@@ -20,24 +19,6 @@
 		D223EA61166E3E0D00411CC0 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA60166E3E0D00411CC0 /* ImageViewController.m */; };
 		D223EA7C166F592100411CC0 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA7B166F592100411CC0 /* Settings.m */; };
 		D223EA81166F848100411CC0 /* UIImage+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA80166F848100411CC0 /* UIImage+Extensions.m */; };
-		D24E1CB21684868200045655 /* trianglam_close.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C951684868200045655 /* trianglam_close.png */; };
-		D24E1CB31684868200045655 /* trianglam_fb.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C961684868200045655 /* trianglam_fb.png */; };
-		D24E1CB71684868200045655 /* trianglam_trash.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9A1684868200045655 /* trianglam_trash.png */; };
-		D24E1CB81684868200045655 /* trianglam_instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9B1684868200045655 /* trianglam_instagram.png */; };
-		D24E1CB91684868200045655 /* trianglam_mail.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9C1684868200045655 /* trianglam_mail.png */; };
-		D24E1CBA1684868200045655 /* trianglam_save.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9D1684868200045655 /* trianglam_save.png */; };
-		D24E1CBB1684868200045655 /* trianglam_share.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9E1684868200045655 /* trianglam_share.png */; };
-		D24E1CBC1684868200045655 /* trianglam_switch.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1C9F1684868200045655 /* trianglam_switch.png */; };
-		D24E1CBD1684868200045655 /* trianglam_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA01684868200045655 /* trianglam_twitter.png */; };
-		D24E1CC01684868200045655 /* trianglam_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA41684868200045655 /* trianglam_close@2x.png */; };
-		D24E1CC11684868200045655 /* trianglam_fb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA51684868200045655 /* trianglam_fb@2x.png */; };
-		D24E1CC51684868200045655 /* trianglam_trash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CA91684868200045655 /* trianglam_trash@2x.png */; };
-		D24E1CC61684868200045655 /* trianglam_instagram@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAA1684868200045655 /* trianglam_instagram@2x.png */; };
-		D24E1CC71684868200045655 /* trianglam_mail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAB1684868200045655 /* trianglam_mail@2x.png */; };
-		D24E1CC81684868200045655 /* trianglam_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAC1684868200045655 /* trianglam_save@2x.png */; };
-		D24E1CC91684868200045655 /* trianglam_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAD1684868200045655 /* trianglam_share@2x.png */; };
-		D24E1CCA1684868200045655 /* trianglam_switch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAE1684868200045655 /* trianglam_switch@2x.png */; };
-		D24E1CCB1684868200045655 /* trianglam_twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D24E1CAF1684868200045655 /* trianglam_twitter@2x.png */; };
 		D2640C53169B0E19000A9A7B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2640C52169B0E19000A9A7B /* QuartzCore.framework */; };
 		D27CBD651680A33D006B6574 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27CBD641680A33D006B6574 /* MessageUI.framework */; };
 		D27CBD6A1680A34D006B6574 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27CBD691680A34D006B6574 /* Social.framework */; };
@@ -58,9 +39,6 @@
 		D28A1D6716661D80005578F1 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6616661D80005578F1 /* Gallery.m */; };
 		D28A1D6E166633AD005578F1 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6D166633AC005578F1 /* GalleryViewController.m */; };
 		D28A1D74166635E2005578F1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D73166635E2005578F1 /* CoreVideo.framework */; };
-		D2A8BE9E16A426E500C7EAB1 /* trianglam_triangle_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2A8BE9D16A426E500C7EAB1 /* trianglam_triangle_icon.png */; };
-		D2B6AD381684AFD000E85FF1 /* trianglam_gallery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B6AD371684AFD000E85FF1 /* trianglam_gallery@2x.png */; };
-		D2B6AD3A1684AFD700E85FF1 /* trianglam_gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B6AD391684AFD700E85FF1 /* trianglam_gallery.png */; };
 		E78ECF0E17AE5CAC0025D3E2 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */; };
 /* End PBXBuildFile section */
 
@@ -73,7 +51,6 @@
 		D09FDEB517B235D50076198E /* RGMPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RGMPagingScrollView.m; path = RGMPagingScrollView/RGMPagingScrollView.m; sourceTree = "<group>"; };
 		D0BCE1B117AA990500222AB6 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		D0BCE1B217AA990500222AB6 /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
-		D2008B1416A019E80022DB19 /* trianglam_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_ok.png; sourceTree = "<group>"; };
 		D2008B1716A020910022DB19 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
 		D2008B1816A020910022DB19 /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
 		D2010E0617AA9368009ADB8F /* ActivityInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityInstagram.h; sourceTree = "<group>"; };
@@ -89,24 +66,6 @@
 		D223EA7B166F592100411CC0 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		D223EA7F166F848100411CC0 /* UIImage+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extensions.h"; sourceTree = "<group>"; };
 		D223EA80166F848100411CC0 /* UIImage+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extensions.m"; sourceTree = "<group>"; };
-		D24E1C951684868200045655 /* trianglam_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_close.png; sourceTree = "<group>"; };
-		D24E1C961684868200045655 /* trianglam_fb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_fb.png; sourceTree = "<group>"; };
-		D24E1C9A1684868200045655 /* trianglam_trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_trash.png; sourceTree = "<group>"; };
-		D24E1C9B1684868200045655 /* trianglam_instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_instagram.png; sourceTree = "<group>"; };
-		D24E1C9C1684868200045655 /* trianglam_mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_mail.png; sourceTree = "<group>"; };
-		D24E1C9D1684868200045655 /* trianglam_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_save.png; sourceTree = "<group>"; };
-		D24E1C9E1684868200045655 /* trianglam_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_share.png; sourceTree = "<group>"; };
-		D24E1C9F1684868200045655 /* trianglam_switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_switch.png; sourceTree = "<group>"; };
-		D24E1CA01684868200045655 /* trianglam_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_twitter.png; sourceTree = "<group>"; };
-		D24E1CA41684868200045655 /* trianglam_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_close@2x.png"; sourceTree = "<group>"; };
-		D24E1CA51684868200045655 /* trianglam_fb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_fb@2x.png"; sourceTree = "<group>"; };
-		D24E1CA91684868200045655 /* trianglam_trash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_trash@2x.png"; sourceTree = "<group>"; };
-		D24E1CAA1684868200045655 /* trianglam_instagram@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_instagram@2x.png"; sourceTree = "<group>"; };
-		D24E1CAB1684868200045655 /* trianglam_mail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_mail@2x.png"; sourceTree = "<group>"; };
-		D24E1CAC1684868200045655 /* trianglam_save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_save@2x.png"; sourceTree = "<group>"; };
-		D24E1CAD1684868200045655 /* trianglam_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_share@2x.png"; sourceTree = "<group>"; };
-		D24E1CAE1684868200045655 /* trianglam_switch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_switch@2x.png"; sourceTree = "<group>"; };
-		D24E1CAF1684868200045655 /* trianglam_twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_twitter@2x.png"; sourceTree = "<group>"; };
 		D2640C52169B0E19000A9A7B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D27CBD641680A33D006B6574 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D27CBD691680A34D006B6574 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -135,9 +94,6 @@
 		D28A1D6C166633AC005578F1 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		D28A1D6D166633AC005578F1 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
 		D28A1D73166635E2005578F1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		D2A8BE9D16A426E500C7EAB1 /* trianglam_triangle_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_triangle_icon.png; sourceTree = "<group>"; };
-		D2B6AD371684AFD000E85FF1 /* trianglam_gallery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglam_gallery@2x.png"; sourceTree = "<group>"; };
-		D2B6AD391684AFD700E85FF1 /* trianglam_gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglam_gallery.png; sourceTree = "<group>"; };
 		E78ECF0C17AE5CAC0025D3E2 /* AMBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMBlurView.h; sourceTree = "<group>"; };
 		E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMBlurView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,53 +137,6 @@
 				D09FDEB517B235D50076198E /* RGMPagingScrollView.m */,
 			);
 			name = PagingScrollView;
-			sourceTree = "<group>";
-		};
-		D24E1C921684868200045655 /* 1x */ = {
-			isa = PBXGroup;
-			children = (
-				D2A8BE9D16A426E500C7EAB1 /* trianglam_triangle_icon.png */,
-				D2008B1416A019E80022DB19 /* trianglam_ok.png */,
-				D2B6AD391684AFD700E85FF1 /* trianglam_gallery.png */,
-				D24E1C951684868200045655 /* trianglam_close.png */,
-				D24E1C961684868200045655 /* trianglam_fb.png */,
-				D24E1C9A1684868200045655 /* trianglam_trash.png */,
-				D24E1C9B1684868200045655 /* trianglam_instagram.png */,
-				D24E1C9C1684868200045655 /* trianglam_mail.png */,
-				D24E1C9D1684868200045655 /* trianglam_save.png */,
-				D24E1C9E1684868200045655 /* trianglam_share.png */,
-				D24E1C9F1684868200045655 /* trianglam_switch.png */,
-				D24E1CA01684868200045655 /* trianglam_twitter.png */,
-			);
-			name = 1x;
-			path = export;
-			sourceTree = "<group>";
-		};
-		D24E1CA11684868200045655 /* 2x */ = {
-			isa = PBXGroup;
-			children = (
-				D2B6AD371684AFD000E85FF1 /* trianglam_gallery@2x.png */,
-				D24E1CA41684868200045655 /* trianglam_close@2x.png */,
-				D24E1CA51684868200045655 /* trianglam_fb@2x.png */,
-				D24E1CA91684868200045655 /* trianglam_trash@2x.png */,
-				D24E1CAA1684868200045655 /* trianglam_instagram@2x.png */,
-				D24E1CAB1684868200045655 /* trianglam_mail@2x.png */,
-				D24E1CAC1684868200045655 /* trianglam_save@2x.png */,
-				D24E1CAD1684868200045655 /* trianglam_share@2x.png */,
-				D24E1CAE1684868200045655 /* trianglam_switch@2x.png */,
-				D24E1CAF1684868200045655 /* trianglam_twitter@2x.png */,
-			);
-			name = 2x;
-			path = export2x;
-			sourceTree = "<group>";
-		};
-		D24E1CCD1684868700045655 /* Graphics */ = {
-			isa = PBXGroup;
-			children = (
-				D24E1C921684868200045655 /* 1x */,
-				D24E1CA11684868200045655 /* 2x */,
-			);
-			name = Graphics;
 			sourceTree = "<group>";
 		};
 		D28A1D261664F3AA005578F1 = {
@@ -297,7 +206,6 @@
 				D223EA5D166E371300411CC0 /* UIImage+Triangles.m */,
 				D223EA7F166F848100411CC0 /* UIImage+Extensions.h */,
 				D223EA80166F848100411CC0 /* UIImage+Extensions.m */,
-				D24E1CCD1684868700045655 /* Graphics */,
 				D28A1D3C1664F3AA005578F1 /* Supporting Files */,
 			);
 			path = Photo;
@@ -391,29 +299,7 @@
 				D28A1D481664F3AA005578F1 /* Default.png in Resources */,
 				D28A1D4A1664F3AA005578F1 /* Default@2x.png in Resources */,
 				D28A1D4C1664F3AA005578F1 /* Default-568h@2x.png in Resources */,
-				D24E1CB21684868200045655 /* trianglam_close.png in Resources */,
-				D24E1CB31684868200045655 /* trianglam_fb.png in Resources */,
-				D24E1CB71684868200045655 /* trianglam_trash.png in Resources */,
-				D24E1CB81684868200045655 /* trianglam_instagram.png in Resources */,
-				D24E1CB91684868200045655 /* trianglam_mail.png in Resources */,
-				D24E1CBA1684868200045655 /* trianglam_save.png in Resources */,
-				D24E1CBB1684868200045655 /* trianglam_share.png in Resources */,
-				D24E1CBC1684868200045655 /* trianglam_switch.png in Resources */,
-				D24E1CBD1684868200045655 /* trianglam_twitter.png in Resources */,
-				D24E1CC01684868200045655 /* trianglam_close@2x.png in Resources */,
-				D24E1CC11684868200045655 /* trianglam_fb@2x.png in Resources */,
-				D24E1CC51684868200045655 /* trianglam_trash@2x.png in Resources */,
-				D24E1CC61684868200045655 /* trianglam_instagram@2x.png in Resources */,
-				D24E1CC71684868200045655 /* trianglam_mail@2x.png in Resources */,
-				D24E1CC81684868200045655 /* trianglam_save@2x.png in Resources */,
-				D24E1CC91684868200045655 /* trianglam_share@2x.png in Resources */,
-				D24E1CCA1684868200045655 /* trianglam_switch@2x.png in Resources */,
-				D24E1CCB1684868200045655 /* trianglam_twitter@2x.png in Resources */,
-				D2B6AD381684AFD000E85FF1 /* trianglam_gallery@2x.png in Resources */,
-				D2B6AD3A1684AFD700E85FF1 /* trianglam_gallery.png in Resources */,
-				D2008B1516A019E80022DB19 /* trianglam_ok.png in Resources */,
 				D210AEC217673640007F7524 /* Media.xcassets in Resources */,
-				D2A8BE9E16A426E500C7EAB1 /* trianglam_triangle_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
