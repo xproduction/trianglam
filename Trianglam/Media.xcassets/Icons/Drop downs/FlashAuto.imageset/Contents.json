@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "flash-auto-1.png"
+      "filename" : "FlashAuto.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "flash-auto-2.png"
+      "filename" : "FlashAuto@2x.png"
     }
   ],
   "info" : {

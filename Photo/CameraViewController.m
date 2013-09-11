@@ -21,6 +21,7 @@
 #define BUTTON_FLASH_PADDING_TOP 0.0
 
 #define BOTTOM_BAR_PADDING 15.0
+#define BOTTOM_BAR_BUTTON_SIZE 80.0
 
 #define TRINGULAR_PADDING 20.0
 #define THUMB_SIZE 200.0
@@ -89,15 +90,17 @@
         [self.view addSubview:processedView];
         
         // buttons
+        
         if(camera.cameraCount > 1)
         {
-            switchButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - BUTTON_FLASH_PADDING_SIDE - BUTTON_FLASH_SIZE, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0 - BUTTON_FLASH_PADDING_TOP - BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
-            [switchButton setImage:[UIImage imageNamed:@"trianglam_switch.png"] forState:UIControlStateNormal];
+            switchButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - BUTTON_FLASH_PADDING_SIDE - BUTTON_FLASH_SIZE, 20.0 + ((self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0) - 20) / 2.0 - BUTTON_FLASH_SIZE / 2.0, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
+            [switchButton setImage:[UIImage imageNamed:@"Switch.png"] forState:UIControlStateNormal];
+            [switchButton setImage:[UIImage imageNamed:@"SwitchTouched.png"] forState:UIControlStateHighlighted];
             [switchButton addTarget:self action:@selector(switchCamera:) forControlEvents:UIControlEventTouchUpInside];
             [self.view addSubview:switchButton];
         }
         
-        CGRect galleryButtonFrame = CGRectMake(BOTTOM_BAR_PADDING, self.view.frame.size.height - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING);
+        CGRect galleryButtonFrame = CGRectMake(BOTTOM_BAR_PADDING, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0) + (self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0)) / 2.0 - (BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING) / 2.0, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING);
         galleryButton = [[UIButton alloc] initWithFrame:galleryButtonFrame];
         NSUInteger imageCount = [[Gallery getImageArray] count];
         if(imageCount == 0)
@@ -118,8 +121,9 @@
         [self.view addSubview:indicatorView];
         
         if(camera.cameraCount != 0)
+        if (true)
         {
-            takePictureButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, self.view.frame.size.height - BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
+            takePictureButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0) + (self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0)) / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
             [takePictureButton setImage:[UIImage imageNamed:@"Camera.png"] forState:UIControlStateNormal];
             [takePictureButton setImage:[UIImage imageNamed:@"CameraTouched.png"] forState:UIControlStateHighlighted];
             [takePictureButton addTarget:self action:@selector(takePicture:) forControlEvents:UIControlEventTouchUpInside];
@@ -127,9 +131,10 @@
             [camera showPreviewInView:cameraView];
         }
         
-        chooseFromGallery = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, self.view.frame.size.height - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING)];
+        chooseFromGallery = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0) + (self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0)) / 2.0 - (BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING) / 2.0, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING)];
         //[chooseFromGallery setTitle:@"Gal" forState:UIControlStateNormal];
-        [chooseFromGallery setImage:[UIImage imageNamed:@"trianglam_gallery.png"] forState:UIControlStateNormal];
+        [chooseFromGallery setImage:[UIImage imageNamed:@"More.png"] forState:UIControlStateNormal];
+        [chooseFromGallery setImage:[UIImage imageNamed:@"MoreTouched.png"] forState:UIControlStateHighlighted];
         [chooseFromGallery addTarget:self action:@selector(chooseFromGallery:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:chooseFromGallery];
         
@@ -143,30 +148,35 @@
         // ok/not ok button
         CGRect okButtonFrame = CGRectMake(self.view.frame.size.width / 2.0 + BUTTON_FLASH_PADDING_SIDE / 2.0, self.view.frame.size.height - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING);
         okButton = [[UIButton alloc] initWithFrame:okButtonFrame];
-        [okButton setImage:[UIImage imageNamed:@"trianglam_ok.png"] forState:UIControlStateNormal];
+        [okButton setImage:[UIImage imageNamed:@"Accept.png"] forState:UIControlStateNormal];
+        [okButton setImage:[UIImage imageNamed:@"AcceptTouched.png"] forState:UIControlStateHighlighted];
         okButton.alpha = 0.0;
         [okButton addTarget:self action:@selector(acceptImage:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:okButton];
         
         CGRect notOkButtonFrame = CGRectMake(self.view.frame.size.width / 2.0 - BOTTOM_BAR_HEIGHT + BUTTON_FLASH_PADDING_SIDE, self.view.frame.size.height - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING);
         notOkButton = [[UIButton alloc] initWithFrame:notOkButtonFrame];
-        [notOkButton setImage:[UIImage imageNamed:@"trianglam_close.png"] forState:UIControlStateNormal];
+        [notOkButton setImage:[UIImage imageNamed:@"Discard.png"] forState:UIControlStateNormal];
+        [notOkButton setImage:[UIImage imageNamed:@"DiscardTouched.png"] forState:UIControlStateHighlighted];
         notOkButton.alpha = 0.0;
         [notOkButton addTarget:self action:@selector(releaseImage:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:notOkButton];
         
         // flash dropdown
-        flashDropDown = [[DropDown alloc] initWithFrame:CGRectMake(self.view.frame.size.width - BUTTON_FLASH_PADDING_SIDE * 2.0 - BUTTON_FLASH_SIZE * 2.0, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0 - BUTTON_FLASH_PADDING_TOP - BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
+        flashDropDown = [[DropDown alloc] initWithFrame:CGRectMake(self.view.frame.size.width - BUTTON_FLASH_PADDING_SIDE * 2.0 - BUTTON_FLASH_SIZE * 2.0, 20.0 + ((self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0) - 20) / 2.0 - BUTTON_FLASH_SIZE / 2.0, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
         [self.view addSubview:flashDropDown];
         
         UIButton *flashAutoButton = [[UIButton alloc] init];
         [flashAutoButton setImage:[UIImage imageNamed:@"FlashAuto.png"] forState:UIControlStateNormal];
+        [flashAutoButton setImage:[UIImage imageNamed:@"FlashAutoTouched.png"] forState:UIControlStateHighlighted];
         
         UIButton *flashOnButton = [[UIButton alloc] init];
         [flashOnButton setImage:[UIImage imageNamed:@"Flash.png"] forState:UIControlStateNormal];
+        [flashOnButton setImage:[UIImage imageNamed:@"FlashTouched.png"] forState:UIControlStateHighlighted];
         
         UIButton *flashOffButton = [[UIButton alloc] init];
-        [flashOffButton setImage:[UIImage imageNamed:@"FlashNo.png"] forState:UIControlStateNormal];
+        [flashOffButton setImage:[UIImage imageNamed:@"NoFlash.png"] forState:UIControlStateNormal];
+        [flashOffButton setImage:[UIImage imageNamed:@"NoFlashTouched.png"] forState:UIControlStateHighlighted];
         
         flashDropDown.buttons = @[flashAutoButton, flashOnButton, flashOffButton];
         flashDropDown.delegate = self;
@@ -175,22 +185,25 @@
         [flashDropDown addTarget:self action:@selector(setFlash:) forControlEvents:UIControlEventTouchUpInside];
         
         // settings
-        sizeDropDown = [[DropDown alloc] initWithFrame:CGRectMake(BUTTON_FLASH_PADDING_SIDE * 2.0 + BUTTON_FLASH_SIZE, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0 - BUTTON_FLASH_PADDING_TOP - BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
+        sizeDropDown = [[DropDown alloc] initWithFrame:CGRectMake(BUTTON_FLASH_PADDING_SIDE * 2.0 + BUTTON_FLASH_SIZE, 20.0 + ((self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0) - 20) / 2.0 - BUTTON_FLASH_SIZE / 2.0, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
         [self.view addSubview:sizeDropDown];
         
         UIFont *font = [UIFont systemFontOfSize:32.0];
         UIButton *smallSizeButton = [[UIButton alloc] init];
-        [smallSizeButton setTitle:@"S" forState:UIControlStateNormal];
+        [smallSizeButton setImage:[UIImage imageNamed:@"SizeS.png"] forState:UIControlStateNormal];
+        [smallSizeButton setImage:[UIImage imageNamed:@"SizeSTouched.png"] forState:UIControlStateHighlighted];
         smallSizeButton.titleLabel.font = font;
         [smallSizeButton setTitleColor:[UIColor colorWithWhite:0.9 alpha:0.5] forState:UIControlStateHighlighted];
         
         UIButton *middleSizeButton = [[UIButton alloc] init];
-        [middleSizeButton setTitle:@"M" forState:UIControlStateNormal];
+        [middleSizeButton setImage:[UIImage imageNamed:@"SizeM.png"] forState:UIControlStateNormal];
+        [middleSizeButton setImage:[UIImage imageNamed:@"SizeMTouched.png"] forState:UIControlStateHighlighted];
         middleSizeButton.titleLabel.font = font;
         [middleSizeButton setTitleColor:[UIColor colorWithWhite:0.9 alpha:0.5] forState:UIControlStateHighlighted];
         
         UIButton *largeSizeButton = [[UIButton alloc] init];
-        [largeSizeButton setTitle:@"L" forState:UIControlStateNormal];
+        [largeSizeButton setImage:[UIImage imageNamed:@"SizeL.png"] forState:UIControlStateNormal];
+        [largeSizeButton setImage:[UIImage imageNamed:@"SizeLTouched.png"] forState:UIControlStateHighlighted];
         largeSizeButton.titleLabel.font = font;
         [largeSizeButton setTitleColor:[UIColor colorWithWhite:0.9 alpha:0.5] forState:UIControlStateHighlighted];
         
@@ -203,7 +216,7 @@
             sizeDropDown.selectedButtonIndex = 1;
     
         // shape dropdown
-        shapeDropDown = [[DropDown alloc] initWithFrame:CGRectMake(BUTTON_FLASH_PADDING_SIDE, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0 - BUTTON_FLASH_PADDING_TOP - BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
+        shapeDropDown = [[DropDown alloc] initWithFrame:CGRectMake(BUTTON_FLASH_PADDING_SIDE, 20.0 + ((self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0) - 20) / 2.0 - BUTTON_FLASH_SIZE / 2.0, BUTTON_FLASH_SIZE, BUTTON_FLASH_SIZE)];
         [self.view addSubview:shapeDropDown];
         
         UIButton *triangleButton = [[UIButton alloc] init];

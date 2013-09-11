@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "photo-touch-1.png"
+      "filename" : "CameraTouched.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "photo-touch-2\u001e.png"
+      "filename" : "CameraTouched@2x.png"
     }
   ],
   "info" : {
