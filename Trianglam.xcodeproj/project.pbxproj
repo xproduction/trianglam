@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D01E0B8617B26B1A0042B4C3 /* ImageRenderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D01E0B8517B26B1A0042B4C3 /* ImageRenderOperation.m */; };
-		D09E6B4617E2576C001D7E92 /* CDActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E6B4517E2576C001D7E92 /* CDActivityIndicatorView.m */; };
 		D09FDEB617B235D50076198E /* RGMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FDEB317B235D50076198E /* RGMPageControl.m */; };
 		D09FDEB717B235D50076198E /* RGMPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FDEB517B235D50076198E /* RGMPagingScrollView.m */; };
 		D0BCE1B317AA990500222AB6 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BCE1B217AA990500222AB6 /* Camera.m */; };
@@ -46,8 +45,8 @@
 /* Begin PBXFileReference section */
 		D01E0B8417B26B1A0042B4C3 /* ImageRenderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageRenderOperation.h; sourceTree = "<group>"; };
 		D01E0B8517B26B1A0042B4C3 /* ImageRenderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRenderOperation.m; sourceTree = "<group>"; };
-		D09E6B4417E2576C001D7E92 /* CDActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDActivityIndicatorView.h; path = "../../../Downloads/CDActivityIndicatorView-master/CDActivityIndicatorView/CDActivityIndicatorView.h"; sourceTree = "<group>"; };
-		D09E6B4517E2576C001D7E92 /* CDActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDActivityIndicatorView.m; path = "../../../Downloads/CDActivityIndicatorView-master/CDActivityIndicatorView/CDActivityIndicatorView.m"; sourceTree = "<group>"; };
+		D0318A5117E271B60003253B /* CDActivityIndicatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDActivityIndicatorView.h; sourceTree = "<group>"; };
+		D0318A5217E271B60003253B /* CDActivityIndicatorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDActivityIndicatorView.m; sourceTree = "<group>"; };
 		D09FDEB217B235D50076198E /* RGMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RGMPageControl.h; path = RGMPagingScrollView/RGMPageControl.h; sourceTree = "<group>"; };
 		D09FDEB317B235D50076198E /* RGMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RGMPageControl.m; path = RGMPagingScrollView/RGMPageControl.m; sourceTree = "<group>"; };
 		D09FDEB417B235D50076198E /* RGMPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RGMPagingScrollView.h; path = RGMPagingScrollView/RGMPagingScrollView.h; sourceTree = "<group>"; };
@@ -131,11 +130,11 @@
 			name = OperationQueue;
 			sourceTree = "<group>";
 		};
-		D09E6B4317E2574E001D7E92 /* CDActivityIndicatorView */ = {
+		D0318A5017E271A00003253B /* CDActivityIndicatorView */ = {
 			isa = PBXGroup;
 			children = (
-				D09E6B4417E2576C001D7E92 /* CDActivityIndicatorView.h */,
-				D09E6B4517E2576C001D7E92 /* CDActivityIndicatorView.m */,
+				D0318A5117E271B60003253B /* CDActivityIndicatorView.h */,
+				D0318A5217E271B60003253B /* CDActivityIndicatorView.m */,
 			);
 			name = CDActivityIndicatorView;
 			sourceTree = "<group>";
@@ -173,7 +172,7 @@
 		D28A1D341664F3AA005578F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D09E6B4317E2574E001D7E92 /* CDActivityIndicatorView */,
+				D0318A5017E271A00003253B /* CDActivityIndicatorView */,
 				D09FDEB117B235CB0076198E /* PagingScrollView */,
 				E78ECF0F17AE5CB20025D3E2 /* Blur View */,
 				D2640C52169B0E19000A9A7B /* QuartzCore.framework */,
@@ -331,7 +330,6 @@
 				D28A1D6716661D80005578F1 /* Gallery.m in Sources */,
 				D28A1D6E166633AD005578F1 /* GalleryViewController.m in Sources */,
 				D09FDEB717B235D50076198E /* RGMPagingScrollView.m in Sources */,
-				D09E6B4617E2576C001D7E92 /* CDActivityIndicatorView.m in Sources */,
 				D223EA5B166E25CE00411CC0 /* GalleryCollectionCell.m in Sources */,
 				D223EA5E166E371300411CC0 /* UIImage+Triangles.m in Sources */,
 				D283195B17B26E240024C6EF /* UIViewController+TopAndBottomBlur.m in Sources */,
