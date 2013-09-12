@@ -11,6 +11,7 @@
 
 #import "Camera.h"
 #import "DropDown.h"
+#import "CDActivityIndicatorView.h"
 
 @interface CameraViewController : UIViewController<CameraDelegate, DropDownDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -18,7 +19,7 @@
     UIImageView *pictureView, *processedView;
     UIImage *processedImage, *thumbImage;
     NSMutableArray *queue;
-    UIActivityIndicatorView *indicatorView;
+    CDActivityIndicatorView *indicatorView;
     Camera *camera;
     UIButton *galleryButton, *takePictureButton, *okButton, *notOkButton, *chooseFromGallery, *switchButton;
     NSUInteger processing, size;

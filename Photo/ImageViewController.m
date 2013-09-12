@@ -16,6 +16,9 @@
 #import "RGMPageControl.h"
 #import "UIViewController+TopAndBottomBlur.h"
 
+#define BUTTON_SIZE 30
+#define BUTTON_PADDING 30
+
 @interface ImageViewController (TopAndBottomBlur)
 
 @end
@@ -27,10 +30,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 - (id)initWithImageAtIndex:(NSUInteger)index
 {
     self = [super init];
-    if (self) {
-        // ui sweetness
-        [self addTopAndBottomBlur];
-        
+    if (self) {        
         currentIndex = index;
         images = [Gallery getImageArray];
         
@@ -69,42 +69,65 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 
 - (void)renewInterface
 {
-    bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0.0, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0) + (self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0)) / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, self.view.frame.size.width, BOTTOM_BAR_HEIGHT)];
+    CGFloat dynamicBottomBarHeight = self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0);
     
-        UIButton *instagramButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
-        [instagramButton setImage:[UIImage imageNamed:@"Share.png"] forState:UIControlStateNormal];
-        [instagramButton setImage:[UIImage imageNamed:@"ShareTouched.png"] forState:UIControlStateHighlighted];
-        [instagramButton addTarget:self action:@selector(shareToInstagram:) forControlEvents:UIControlEventTouchUpInside];
-        [bottomBar addSubview:instagramButton];
+    bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0.0, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0), self.view.frame.size.width, dynamicBottomBarHeight)];
+    bottomBar.backgroundColor = [UIColor colorWithRed:80.0/255.0 green:80.0/255.0 blue:80.0/255.0 alpha:1.0];
+    
+    NSMutableArray* buttons = [[NSMutableArray alloc] init];
+    
+    UIButton *shareButton = [[UIButton alloc] init];
+    [shareButton setImage:[UIImage imageNamed:@"Share.png"] forState:UIControlStateNormal];
+    [shareButton setImage:[UIImage imageNamed:@"ShareTouched.png"] forState:UIControlStateHighlighted];
+    [shareButton addTarget:self action:@selector(shareTo:) forControlEvents:UIControlEventTouchUpInside];
+    [buttons addObject:shareButton];
+    
+    UIButton *instagramButton = [[UIButton alloc] init];
+    [instagramButton setImage:[UIImage imageNamed:@"OpenIn.png"] forState:UIControlStateNormal];
+    [instagramButton setImage:[UIImage imageNamed:@"OpenInTouched.png"] forState:UIControlStateHighlighted];
+    [instagramButton addTarget:self action:@selector(shareToInstagram:) forControlEvents:UIControlEventTouchUpInside];
+    [buttons addObject:instagramButton];
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(BOTTOM_BAR_HEIGHT, 0.0, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
+        UIButton *button = [[UIButton alloc] init];
         [button setImage:[UIImage imageNamed:@"Facebook.png"] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@"FacebookTouched.png"] forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(shareToFacebook:) forControlEvents:UIControlEventTouchUpInside];
-        [bottomBar addSubview:button];
+        [buttons addObject:button];
     }
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(BOTTOM_BAR_HEIGHT * 2.0, 0.0, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
+        UIButton *button = [[UIButton alloc] init];
         [button setImage:[UIImage imageNamed:@"Twitter.png"] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@"TwitterTouched.png"] forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(shareToTwitter:) forControlEvents:UIControlEventTouchUpInside];
-        [bottomBar addSubview:button];
+        [buttons addObject:button];
     }
     
     if ([MFMailComposeViewController canSendMail]) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(BOTTOM_BAR_HEIGHT * 3.0, 0.0, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
+        UIButton *button = [[UIButton alloc] init];
         [button setImage:[UIImage imageNamed:@"Mail.png"] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@"MailTouched.png"] forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(mail:) forControlEvents:UIControlEventTouchUpInside];
+        [buttons addObject:button];
+    }
+    
+    // middle - count * (width / 2) - count-1 * (padding / 2) + (i-1) *
+    // 50 - 1 * (30 / 2)
+    // 50 - 2 * (30 / 2) - 1 * (15 / 2) + 0 * (30 + 15)
+    
+    for (int i = 1; i <= buttons.count; i++) {
+        UIButton* button = (UIButton*)[buttons objectAtIndex:i-1];
+        
+        CGFloat x = (self.view.frame.size.width / 2.0) - buttons.count * (BUTTON_SIZE / 2.0) - (buttons.count - 1) * (BUTTON_PADDING / 2.0) + (i-1) * (BUTTON_SIZE + BUTTON_PADDING);
+        button.frame = CGRectMake(x, 0.0, BUTTON_SIZE, dynamicBottomBarHeight);
         [bottomBar addSubview:button];
     }
     
     [self.view addSubview:bottomBar];
     
     topBar = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0)];
-    //topBar.backgroundColor = [UIColor lightGrayColor];
+    topBar.backgroundColor = [UIColor colorWithRed:80.0/255.0 green:80.0/255.0 blue:80.0/255.0 alpha:1.0];
     
     UIButton *dismissButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, topBar.frame.size.height / 2.0 - 40.0, 80.0, 80.0)];
     [dismissButton setImage:[UIImage imageNamed:@"Close.png"] forState:UIControlStateNormal];
@@ -184,7 +207,6 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         [UIView animateWithDuration:0.4 animations:^(void){
             bottomBar.alpha = 1.0;
             topBar.alpha = 1.0;
-            [self setBlurAlpha:1.0];
         }];
     }
     else
@@ -192,7 +214,6 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         [UIView animateWithDuration:0.4 animations:^(void){
             bottomBar.alpha = 0.0;
             topBar.alpha = 0.0;
-            [self setBlurAlpha:0.0];
         }];
     }
 }
@@ -207,6 +228,8 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         interactionController.UTI = @"com.instagram.exclusivegram";
         interactionController.annotation = @{@"InstagramCaption" : NSLocalizedString(@"Taken with #trianglam", nil)};
         [interactionController presentOpenInMenuFromRect:self.view.frame inView:self.view animated:YES];
+    } else {
+        [self openIn:sender];
     }
 }
 

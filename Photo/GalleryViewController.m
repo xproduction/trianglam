@@ -18,7 +18,7 @@
 #define STATUS_BAR_HEIGHT 20.0
 #define TOP_BAR_HEIGHT 44.0
 
-#define BUTTON_PADDING 12.0
+#define BUTTON_PADDING 0.0
 
 @interface GalleryViewController (TopAndBottomBlur)
 
@@ -49,9 +49,9 @@
         [self addTopAndBottomBlur];
         
         float buttonSize = self.view.center.y - self.view.center.x - 2.0 * BUTTON_PADDING;
-        UIButton *shootButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0 + BUTTON_PADDING, self.view.center.y + self.view.center.x + BUTTON_PADDING, buttonSize, buttonSize)];
-        [shootButton setImage:[UIImage imageNamed:@"Camera.png"] forState:UIControlStateNormal];
-        [shootButton setImage:[UIImage imageNamed:@"CameraTouched.png"] forState:UIControlStateHighlighted];
+        UIButton *shootButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, self.view.center.y + self.view.center.x + BUTTON_PADDING, 60.0 + BUTTON_PADDING, buttonSize)];
+        [shootButton setImage:[UIImage imageNamed:@"CameraIcon.png"] forState:UIControlStateNormal];
+        [shootButton setImage:[UIImage imageNamed:@"CameraIconTouched.png"] forState:UIControlStateHighlighted];
         [shootButton addTarget:self action:@selector(goToCamera:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:shootButton];
         

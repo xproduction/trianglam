@@ -114,8 +114,10 @@
         [galleryButton addTarget:self action:@selector(goToGallery:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:galleryButton];
         
-        indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        indicatorView.frame = CGRectMake(self.view.frame.size.width / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, self.view.frame.size.height - BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT);
+        indicatorView = [[CDActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        indicatorView.image = [UIImage imageNamed:@"Tria.png"];
+        indicatorView.frame = CGRectMake(self.view.frame.size.width / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0) + (self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0)) / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT);
+        indicatorView.fitFrame = NO;
         indicatorView.alpha = 0.0;
         [indicatorView stopAnimating];
         [self.view addSubview:indicatorView];
@@ -131,7 +133,7 @@
             [camera showPreviewInView:cameraView];
         }
         
-        chooseFromGallery = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0) + (self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0)) / 2.0 - (BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING) / 2.0, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING)];
+        chooseFromGallery = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0) + (self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0)) / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT)];
         //[chooseFromGallery setTitle:@"Gal" forState:UIControlStateNormal];
         [chooseFromGallery setImage:[UIImage imageNamed:@"More.png"] forState:UIControlStateNormal];
         [chooseFromGallery setImage:[UIImage imageNamed:@"MoreTouched.png"] forState:UIControlStateHighlighted];
@@ -146,7 +148,7 @@
         [self.view addSubview:lightView];
         
         // ok/not ok button
-        CGRect okButtonFrame = CGRectMake(self.view.frame.size.width / 2.0 + BUTTON_FLASH_PADDING_SIDE / 2.0, self.view.frame.size.height - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING);
+        CGRect okButtonFrame = CGRectMake(self.view.frame.size.width / 2.0 + BUTTON_FLASH_PADDING_SIDE / 2.0, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0) + (self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0)) / 2.0 - (BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING) / 2.0, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING);
         okButton = [[UIButton alloc] initWithFrame:okButtonFrame];
         [okButton setImage:[UIImage imageNamed:@"Accept.png"] forState:UIControlStateNormal];
         [okButton setImage:[UIImage imageNamed:@"AcceptTouched.png"] forState:UIControlStateHighlighted];
@@ -154,7 +156,7 @@
         [okButton addTarget:self action:@selector(acceptImage:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:okButton];
         
-        CGRect notOkButtonFrame = CGRectMake(self.view.frame.size.width / 2.0 - BOTTOM_BAR_HEIGHT + BUTTON_FLASH_PADDING_SIDE, self.view.frame.size.height - BOTTOM_BAR_HEIGHT + BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING);
+        CGRect notOkButtonFrame = CGRectMake(self.view.frame.size.width / 2.0 - BOTTOM_BAR_HEIGHT + BUTTON_FLASH_PADDING_SIDE, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0) + (self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0)) / 2.0 - (BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING) / 2.0, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING, BOTTOM_BAR_HEIGHT - 2.0 * BOTTOM_BAR_PADDING);
         notOkButton = [[UIButton alloc] initWithFrame:notOkButtonFrame];
         [notOkButton setImage:[UIImage imageNamed:@"Discard.png"] forState:UIControlStateNormal];
         [notOkButton setImage:[UIImage imageNamed:@"DiscardTouched.png"] forState:UIControlStateHighlighted];
