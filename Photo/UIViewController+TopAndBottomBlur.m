@@ -8,6 +8,7 @@
 
 #import "UIViewController+TopAndBottomBlur.h"
 
+#import "ImageViewController.h"
 #import "AMBlurView.h"
 
 @implementation UIViewController (TopAndBottomBlur)
@@ -27,7 +28,7 @@
     float trianglamSize = 30.0;
     
     float topMargin = 0.0;
-    if (![self prefersStatusBarHidden])
+    if (![self isKindOfClass:[ImageViewController class]])
         topMargin = 20.0;
     
     trianglam.frame = CGRectMake(topBlurView.center.x - trianglamSize / 2.0, topMargin + (topBlurView.frame.size.height - topMargin) / 2.0 - trianglamSize / 2.0, trianglamSize, trianglamSize);
