@@ -296,7 +296,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         [fullScreenImages removeObjectForKey:[NSNumber numberWithInt:currentIndex+2]];
     }
     
-    if (queue.operationCount > 3)
+    if (queue.operationCount > 2)
         [queue cancelAllOperations];
     
     UIImageView* imageView = (UIImageView*)[pagingScrollView dequeueReusablePageWithIdentifer:reuseIdentifier forIndex:currentIndex];
@@ -310,6 +310,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         imageView.image = [Gallery getThumbAtIndex:currentIndex];
         
         ImageRenderOperation* operation = [[ImageRenderOperation alloc] initWithImage:[[images objectAtIndex:currentIndex] objectForKey:@"image"] delegate:self index:currentIndex andImageView:imageView];
+        [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
         
         if (![[queue operations] containsObject:operation])
         {
