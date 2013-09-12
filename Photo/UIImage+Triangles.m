@@ -122,8 +122,8 @@ static NSUInteger bitsPerComponent = 8;
     
     free(rawData);
     
-    NSMutableString *string = [[NSMutableString alloc] init];
-    [string appendString:@"<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n"];
+    //NSMutableString *string = [[NSMutableString alloc] init];
+    //[string appendString:@"<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n"];
     
     for (NSUInteger y = 0; y < self.size.height / height; y++) {
         for (NSUInteger x = 0; x < self.size.width / width; x++) {
@@ -136,12 +136,12 @@ static NSUInteger bitsPerComponent = 8;
                 CGContextAddLineToPoint(context, width * ratio * x + width * ratio + 1.0 / 2.0 * width * ratio + DELTA, height * ratio * y);
                 CGContextAddLineToPoint(context, width * ratio * x + width * ratio / 2.0, height * ratio * y + height * ratio);
                 
-                [string appendFormat:@"<polygon points=\"%.3f,%d %.3f,%d %f,%d\" style=\"fill:rgb(%d,%d,%d);stroke:none;\"/>\n",
+                /*[string appendFormat:@"<polygon points=\"%.3f,%d %.3f,%d %f,%d\" style=\"fill:rgb(%d,%d,%d);stroke:none;\"/>\n",
                  width * x - 1.0 / 2.0 * width, height * y,
                  width * x + width + 1.0 / 2.0 * width, height * y,
                  width * x + width / 2, height * y + height,
                  (int)(pixels[byteIndex] * 255), (int)(pixels[byteIndex + 1] * 255), (int)(pixels[byteIndex + 2] * 255)
-                 ];
+                 ];*/
             }
             else
             {
@@ -149,19 +149,19 @@ static NSUInteger bitsPerComponent = 8;
                 CGContextAddLineToPoint(context, width * x * ratio + width * ratio + 1.0 / 2.0 * width * ratio + DELTA, height * ratio * y + height * ratio);
                 CGContextAddLineToPoint(context, width * x * ratio + width * ratio / 2.0, height * ratio * y);
                 
-                [string appendFormat:@"<polygon points=\"%.3f,%d %.3f,%d %f,%d\" style=\"fill:rgb(%d,%d,%d);stroke:none;\"/>\n",
+                /*[string appendFormat:@"<polygon points=\"%.3f,%d %.3f,%d %f,%d\" style=\"fill:rgb(%d,%d,%d);stroke:none;\"/>\n",
                  width * x - 1.0 / 2.0 * width, height * y + height,
                  width * x + width + 1.0 / 2.0 * width, height * y + height,
                  width * x + width / 2, height * y,
                  (int)(pixels[byteIndex] * 255), (int)(pixels[byteIndex + 1] * 255), (int)(pixels[byteIndex + 2] * 255)
-                 ];
+                 ];*/
             }
             CGContextClosePath(context);
             CGContextFillPath(context);
         }
     }
     
-    [string appendString:@"</svg>"];
+    //[string appendString:@"</svg>"];
     
        
     
@@ -175,7 +175,7 @@ static NSUInteger bitsPerComponent = 8;
     CGImageRelease(imgRef);
     free(data);
     
-    return @{@"image" : image, @"vector" : string};
+    return @{@"image" : image, @"vector" : @""}; // string
 }
 
 - (NSDictionary *)squareImageWithWidth:(float)width ratio:(NSUInteger)ratio
@@ -229,23 +229,23 @@ static NSUInteger bitsPerComponent = 8;
     
     free(rawData);
     
-    NSMutableString *string = [[NSMutableString alloc] init];
-    [string appendString:@"<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n"];
+    //NSMutableString *string = [[NSMutableString alloc] init];
+    //[string appendString:@"<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n"];
     
     for (NSUInteger y = 0; y < self.size.height / height; y++) {
         for (NSUInteger x = 0; x < self.size.width / width; x++) {
             NSUInteger byteIndex = (self.size.width / width * y * 4) + x * 4;
             [[UIColor colorWithRed:pixels[byteIndex] green:pixels[byteIndex + 1] blue:pixels[byteIndex + 2] alpha:pixels[byteIndex + 3]] set];
             CGContextFillRect(context, CGRectMake(width * ratio * x - DELTA, height * ratio * y - DELTA, width * ratio, height * ratio));                
-            [string appendFormat:@"<rect x=\"%f\" y=\"%d\" width=\"%f\" height=\"%d\" style=\"fill:rgb(%d,%d,%d);stroke:none;\"/>\n",
+            /*[string appendFormat:@"<rect x=\"%f\" y=\"%d\" width=\"%f\" height=\"%d\" style=\"fill:rgb(%d,%d,%d);stroke:none;\"/>\n",
                  width * x, height * y,
                  width, height,
                  (int)(pixels[byteIndex] * 255), (int)(pixels[byteIndex + 1] * 255), (int)(pixels[byteIndex + 2] * 255)
-                 ];
+                 ];*/
         }
     }
     
-    [string appendString:@"</svg>"];
+    //[string appendString:@"</svg>"];
     
     
     
@@ -259,7 +259,7 @@ static NSUInteger bitsPerComponent = 8;
     CGImageRelease(imgRef);
     free(data);
     
-    return @{@"image" : image, @"vector" : string};
+    return @{@"image" : image, @"vector" : @""}; //string
 }
 
 - (NSDictionary *)hexagonImageWithWidth:(float)width ratio:(NSUInteger)ratio
@@ -282,7 +282,9 @@ static NSUInteger bitsPerComponent = 8;
     CGContextRelease(ctx);
     
     //
-    NSUInteger height = width * (1.0 / EQUILATERAL_RATIO);
+    float height = width;
+    height /= EQUILATERAL_RATIO;
+    float rowHeight = height * 0.72;
     
     colorSpace = CGColorSpaceCreateDeviceRGB();
     unsigned char * data = (unsigned char*) calloc(pixelHeight * ratio * pixelWidth * ratio * 4, sizeof(unsigned char));
@@ -295,12 +297,12 @@ static NSUInteger bitsPerComponent = 8;
     CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, pixelHeight * ratio);
     CGContextConcatCTM(context, flipVertical);
     
-    CGFloat *pixels = malloc(sizeof(CGFloat) * 4 * (self.size.width / width) * (self.size.height / height));
+    CGFloat *pixels = malloc(sizeof(CGFloat) * 4 * ((self.size.width / width) + 1) * (self.size.height / rowHeight));
     CGFloat red, blue, green, alpha;
     
-    for (NSUInteger y = 0; y < self.size.height / height; y++) {
-        for (NSUInteger x = 0; x < self.size.width / width; x++) {
-            [self getAverageRed:&red green:&green blue:&blue andAlpha:&alpha inRect:CGRectMake(width * x, height * y, width, height) from:rawData width:pixelWidth height:pixelHeight];
+    for (NSUInteger y = 0; y < self.size.height / rowHeight; y++) {
+        for (NSUInteger x = 0; x < self.size.width / width + 1; x++) {
+            [self getAverageRed:&red green:&green blue:&blue andAlpha:&alpha inRect:CGRectMake(self.size.width / ((self.size.width / width) + 1) * x, rowHeight * y, self.size.width / ((self.size.width / width) + 1), rowHeight) from:rawData width:pixelWidth height:pixelHeight];
             NSUInteger byteIndex = (self.size.width / width * y * 4) + x * 4;
             pixels[byteIndex] = red;
             pixels[byteIndex + 1] = green;
@@ -310,57 +312,31 @@ static NSUInteger bitsPerComponent = 8;
     }
     
     free(rawData);
-    
-    NSMutableString *string = [[NSMutableString alloc] init];
-    [string appendString:@"<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n"];
-    
-    for (NSUInteger y = 0; y < self.size.height / height; y++) {
-        for (NSUInteger x = 0; x < self.size.width / width; x++) {
+
+    float diffY = rowHeight * 1.0;
+    for (NSUInteger y = 0; y < self.size.height / rowHeight; y++) {
+        for (NSUInteger x = 0; x < self.size.width / width + 1; x++) {
             NSUInteger byteIndex = (self.size.width / width * y * 4) + x * 4;
-            [[UIColor colorWithRed:pixels[byteIndex] green:pixels[byteIndex + 1] blue:pixels[byteIndex + 2] alpha:pixels[byteIndex + 3]] set];
+            if((self.size.width / width + 1) - x <= 1)
+                byteIndex = (self.size.width / width * y * 4) + (x - 1) * 4;
+            [[UIColor colorWithRed:pixels[byteIndex] green:pixels[byteIndex + 1] blue:pixels[byteIndex + 2] alpha:1.0] set];
             CGContextBeginPath(context);
             float diffX = 0.0;
             if (y % 2) {
-                diffX = (cos(D60) - cos(D30)) * ratio * width;
+                diffX = - width * ratio / 2.0;
             }
-            //if((x % 2 == 0 && y % 2 == 0) || (x % 2 == 1 && y % 2 == 1))
-            //{
-                CGContextMoveToPoint(context, diffX + width * ratio * x + sin(D30 + D60) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60) * height * ratio / 2.0);
-                CGContextAddLineToPoint(context, diffX + width * ratio * x + sin(D30 + D60 * 2.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 2.0) * height * ratio / 2.0);
-                CGContextAddLineToPoint(context, diffX + width * ratio * x + sin(D30 + D60 * 3.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 3.0) * height * ratio / 2.0);
-                CGContextAddLineToPoint(context, diffX + width * ratio * x + sin(D30 + D60 * 4.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 4.0) * height * ratio / 2.0);
-                CGContextAddLineToPoint(context, diffX + width * ratio * x + sin(D30 + D60 * 5.0) * width * ratio / 2.0, height * ratio * y + cos(D30 + D60 * 5.0) * height * ratio / 2.0);
-                CGContextAddLineToPoint(context, diffX + width * ratio * x + sin(D30) * width * ratio / 2.0, height * ratio * y + cos(D30) * height * ratio / 2.0);
-                
-                /*[string appendFormat:@"<polygon points=\"%.3f,%d %.3f,%d %f,%d\" style=\"fill:rgb(%d,%d,%d);stroke:none;\"/>\n",
-                 width * x - 1.0 / 2.0 * width, height * y,
-                 width * x + width + 1.0 / 2.0 * width, height * y,
-                 width * x + width / 2, height * y + height,
-                 (int)(pixels[byteIndex] * 255), (int)(pixels[byteIndex + 1] * 255), (int)(pixels[byteIndex + 2] * 255)
-                 ];*/
-            //}
-            /*else
-            {
-                CGContextMoveToPoint(context, width * ratio * x - 1.0 / 2.0 * width * ratio - DELTA, height * ratio * y + height * ratio);
-                CGContextAddLineToPoint(context, width * x * ratio + width * ratio + 1.0 / 2.0 * width * ratio + DELTA, height * ratio * y + height * ratio);
-                CGContextAddLineToPoint(context, width * x * ratio + width * ratio / 2.0, height * ratio * y);
-                
-                [string appendFormat:@"<polygon points=\"%.3f,%d %.3f,%d %f,%d\" style=\"fill:rgb(%d,%d,%d);stroke:none;\"/>\n",
-                 width * x - 1.0 / 2.0 * width, height * y + height,
-                 width * x + width + 1.0 / 2.0 * width, height * y + height,
-                 width * x + width / 2, height * y,
-                 (int)(pixels[byteIndex] * 255), (int)(pixels[byteIndex + 1] * 255), (int)(pixels[byteIndex + 2] * 255)
-                 ];
-            }*/
+
+            CGContextMoveToPoint(context, diffX + width * ratio * x + width * ratio / 2.0, diffY + rowHeight * ratio * y - height * ratio * 0.25);
+            CGContextAddLineToPoint(context, diffX + width * ratio * x + width * ratio, diffY + rowHeight * ratio * y);
+            CGContextAddLineToPoint(context, diffX + width * ratio * x + width * ratio, diffY + rowHeight * ratio * y + height * ratio * 0.5);
+            CGContextAddLineToPoint(context, diffX + width * ratio * x + width * ratio  / 2.0, diffY + rowHeight * ratio * y + height * ratio * 0.75);
+            CGContextAddLineToPoint(context, diffX + width * ratio * x, diffY + rowHeight * ratio * y + height * ratio * 0.5);
+            CGContextAddLineToPoint(context, diffX + width * ratio * x, diffY + rowHeight * ratio * y);
             CGContextClosePath(context);
             CGContextFillPath(context);
         }
     }
-    
-    [string appendString:@"</svg>"];
-    
-    
-    
+
     UIGraphicsPopContext();
     free(pixels);
     
@@ -371,7 +347,7 @@ static NSUInteger bitsPerComponent = 8;
     CGImageRelease(imgRef);
     free(data);
     
-    return @{@"image" : image, @"vector" : string};
+    return @{@"image" : image, @"vector" : @""}; // string
 }
 
 @end
