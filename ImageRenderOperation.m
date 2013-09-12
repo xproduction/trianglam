@@ -44,6 +44,7 @@
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     
     CGContextRef bitmapContext = CGBitmapContextCreate(NULL, CGImageGetWidth(image), CGImageGetHeight(image), CGImageGetBitsPerComponent(image), CGImageGetWidth(image) * 4, colorSpace, kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrder32Little);
+    CGContextSetInterpolationQuality(bitmapContext, kCGInterpolationNone);
     
     if (self.isCancelled)
     {
