@@ -13,6 +13,8 @@
 #import "ImageViewController.h"
 #import "UIViewController+TopAndBottomBlur.h"
 
+#import "Flurry.h"
+
 #define IMAGE_SIZE 104.0
 #define IMAGE_PADDING 4.0
 #define STATUS_BAR_HEIGHT 20.0
@@ -103,6 +105,8 @@
 
 - (void)viewPhotoAtIndex:(NSUInteger)index
 {
+    [Flurry logEvent:@"Viewed detail of a photo"];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     ImageViewController *controller = [[ImageViewController alloc] initWithImageAtIndex:[[Gallery getImageArray] count] - index - 1];
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

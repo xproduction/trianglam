@@ -40,6 +40,10 @@
 		D28A1D6716661D80005578F1 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6616661D80005578F1 /* Gallery.m */; };
 		D28A1D6E166633AD005578F1 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6D166633AC005578F1 /* GalleryViewController.m */; };
 		D28A1D74166635E2005578F1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D73166635E2005578F1 /* CoreVideo.framework */; };
+		D2BEFF3217E3492600DFB836 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */; };
+		D2BEFF3617E349F100DFB836 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3517E349F100DFB836 /* Security.framework */; };
+		D2BEFF3817E34A1B00DFB836 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */; };
 		E78ECF0E17AE5CAC0025D3E2 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +101,11 @@
 		D28A1D6C166633AC005578F1 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		D28A1D6D166633AC005578F1 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
 		D28A1D73166635E2005578F1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
+		D2BEFF3317E3493800DFB836 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		D2BEFF3517E349F100DFB836 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E78ECF0C17AE5CAC0025D3E2 /* AMBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMBlurView.h; sourceTree = "<group>"; };
 		E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMBlurView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +115,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */,
+				D2BEFF3817E34A1B00DFB836 /* AdSupport.framework in Frameworks */,
+				D2BEFF3617E349F100DFB836 /* Security.framework in Frameworks */,
 				D2640C53169B0E19000A9A7B /* QuartzCore.framework in Frameworks */,
 				D27CBD6A1680A34D006B6574 /* Social.framework in Frameworks */,
 				D27CBD651680A33D006B6574 /* MessageUI.framework in Frameworks */,
@@ -113,6 +125,7 @@
 				D28A1D6416661A07005578F1 /* CoreMedia.framework in Frameworks */,
 				D28A1D62166619B9005578F1 /* ImageIO.framework in Frameworks */,
 				D28A1D3A1664F3AA005578F1 /* CoreGraphics.framework in Frameworks */,
+				D2BEFF3217E3492600DFB836 /* libFlurry_4.2.3.a in Frameworks */,
 				D28A1D591664F440005578F1 /* AVFoundation.framework in Frameworks */,
 				D28A1D361664F3AA005578F1 /* UIKit.framework in Frameworks */,
 				D28A1D381664F3AA005578F1 /* Foundation.framework in Frameworks */,
@@ -173,6 +186,10 @@
 		D28A1D341664F3AA005578F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */,
+				D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */,
+				D2BEFF3517E349F100DFB836 /* Security.framework */,
+				D2BEFF3417E3493D00DFB836 /* Flurry */,
 				D0318A5017E271A00003253B /* CDActivityIndicatorView */,
 				D09FDEB117B235CB0076198E /* PagingScrollView */,
 				E78ECF0F17AE5CB20025D3E2 /* Blur View */,
@@ -236,6 +253,15 @@
 				D28A1D4B1664F3AA005578F1 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D2BEFF3417E3493D00DFB836 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */,
+				D2BEFF3317E3493800DFB836 /* Flurry.h */,
+			);
+			name = Flurry;
 			sourceTree = "<group>";
 		};
 		E78ECF0F17AE5CB20025D3E2 /* Blur View */ = {
@@ -420,6 +446,10 @@
 				GCC_PREFIX_HEADER = "Photo/Trianglam-Prefix.pch";
 				INFOPLIST_FILE = "Photo/Trianglam-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/matej/Documents/iOS/X\\ pro/trianglam",
+				);
 				PRODUCT_NAME = Trianglam;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -438,6 +468,10 @@
 				GCC_PREFIX_HEADER = "Photo/Trianglam-Prefix.pch";
 				INFOPLIST_FILE = "Photo/Trianglam-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/matej/Documents/iOS/X\\ pro/trianglam",
+				);
 				PRODUCT_NAME = Trianglam;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

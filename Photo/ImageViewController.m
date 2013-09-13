@@ -16,6 +16,8 @@
 #import "RGMPageControl.h"
 #import "UIViewController+TopAndBottomBlur.h"
 
+#import "Flurry.h"
+
 #define BUTTON_SIZE 30
 #define BUTTON_PADDING 30
 
@@ -162,6 +164,8 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 
 - (IBAction)remove:(id)sender
 {
+    [Flurry logEvent:@"Removed photo"];
+    
     
     // current image for back up
     UIImageView *backupView = [[UIImageView alloc] init];
