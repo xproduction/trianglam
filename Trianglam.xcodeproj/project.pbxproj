@@ -42,6 +42,10 @@
 		D28A1D6716661D80005578F1 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6616661D80005578F1 /* Gallery.m */; };
 		D28A1D6E166633AD005578F1 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6D166633AC005578F1 /* GalleryViewController.m */; };
 		D28A1D74166635E2005578F1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D73166635E2005578F1 /* CoreVideo.framework */; };
+		D2BEFF3617E349F100DFB836 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3517E349F100DFB836 /* Security.framework */; };
+		D2BEFF3817E34A1B00DFB836 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */; };
+		E77B598217E3BFAB00A01D82 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */; };
 		E78ECF0E17AE5CAC0025D3E2 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +105,11 @@
 		D28A1D6C166633AC005578F1 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		D28A1D6D166633AC005578F1 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
 		D28A1D73166635E2005578F1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
+		D2BEFF3317E3493800DFB836 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		D2BEFF3517E349F100DFB836 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E78ECF0C17AE5CAC0025D3E2 /* AMBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMBlurView.h; sourceTree = "<group>"; };
 		E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMBlurView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +131,7 @@
 				D28A1D591664F440005578F1 /* AVFoundation.framework in Frameworks */,
 				D28A1D361664F3AA005578F1 /* UIKit.framework in Frameworks */,
 				D28A1D381664F3AA005578F1 /* Foundation.framework in Frameworks */,
+				E77B598217E3BFAB00A01D82 /* libFlurry_4.2.3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,9 +170,9 @@
 		D28A1D261664F3AA005578F1 = {
 			isa = PBXGroup;
 			children = (
-				D01E0B8317B26A550042B4C3 /* OperationQueue */,
 				D210AEC117673640007F7524 /* Media.xcassets */,
-				D28A1D3B1664F3AA005578F1 /* Photo */,
+				D28A1D3B1664F3AA005578F1 /* Trianglam */,
+				E77B598617E3C27400A01D82 /* Sources */,
 				D28A1D341664F3AA005578F1 /* Frameworks */,
 				D28A1D321664F3AA005578F1 /* Products */,
 			);
@@ -198,37 +208,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D28A1D3B1664F3AA005578F1 /* Photo */ = {
+		D28A1D3B1664F3AA005578F1 /* Trianglam */ = {
 			isa = PBXGroup;
 			children = (
-				D0BCE1B117AA990500222AB6 /* Camera.h */,
-				D0BCE1B217AA990500222AB6 /* Camera.m */,
 				D28A1D441664F3AA005578F1 /* AppDelegate.h */,
 				D28A1D451664F3AA005578F1 /* AppDelegate.m */,
-				D28A1D5E1664FF6C005578F1 /* CameraViewController.h */,
-				D28A1D5F1664FF6C005578F1 /* CameraViewController.m */,
-				D2008B1716A020910022DB19 /* DropDown.h */,
-				D2008B1816A020910022DB19 /* DropDown.m */,
-				D2010E0617AA9368009ADB8F /* ActivityInstagram.h */,
-				D2010E0717AA9368009ADB8F /* ActivityInstagram.m */,
-				D223EA5F166E3E0D00411CC0 /* ImageViewController.h */,
-				D223EA60166E3E0D00411CC0 /* ImageViewController.m */,
-				D28A1D6C166633AC005578F1 /* GalleryViewController.h */,
-				D28A1D6D166633AC005578F1 /* GalleryViewController.m */,
-				D283195917B26E240024C6EF /* UIViewController+TopAndBottomBlur.h */,
-				D283195A17B26E240024C6EF /* UIViewController+TopAndBottomBlur.m */,
-				D28A1D6516661D7F005578F1 /* Gallery.h */,
-				D28A1D6616661D80005578F1 /* Gallery.m */,
-				D223EA7A166F592100411CC0 /* Settings.h */,
-				D223EA7B166F592100411CC0 /* Settings.m */,
-				D223EA59166E25CE00411CC0 /* GalleryCollectionCell.h */,
-				D223EA5A166E25CE00411CC0 /* GalleryCollectionCell.m */,
-				D223EA5C166E371300411CC0 /* UIImage+Triangles.h */,
-				D223EA5D166E371300411CC0 /* UIImage+Triangles.m */,
-				D223EA7F166F848100411CC0 /* UIImage+Extensions.h */,
-				D223EA80166F848100411CC0 /* UIImage+Extensions.m */,
+				E77B598417E3C22400A01D82 /* Models */,
+				E77B598317E3C1F900A01D82 /* View Controllers */,
+				E77B598517E3C23800A01D82 /* UI */,
 				D28A1D3C1664F3AA005578F1 /* Supporting Files */,
 			);
+			name = Trianglam;
 			path = Photo;
 			sourceTree = "<group>";
 		};
@@ -244,6 +234,71 @@
 				D28A1D4B1664F3AA005578F1 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D2BEFF3417E3493D00DFB836 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */,
+				D2BEFF3317E3493800DFB836 /* Flurry.h */,
+			);
+			name = Flurry;
+			sourceTree = "<group>";
+		};
+		E77B598317E3C1F900A01D82 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D28A1D5E1664FF6C005578F1 /* CameraViewController.h */,
+				D28A1D5F1664FF6C005578F1 /* CameraViewController.m */,
+				D223EA5F166E3E0D00411CC0 /* ImageViewController.h */,
+				D223EA60166E3E0D00411CC0 /* ImageViewController.m */,
+				D28A1D6C166633AC005578F1 /* GalleryViewController.h */,
+				D28A1D6D166633AC005578F1 /* GalleryViewController.m */,
+				D283195917B26E240024C6EF /* UIViewController+TopAndBottomBlur.h */,
+				D283195A17B26E240024C6EF /* UIViewController+TopAndBottomBlur.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E77B598417E3C22400A01D82 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0BCE1B117AA990500222AB6 /* Camera.h */,
+				D0BCE1B217AA990500222AB6 /* Camera.m */,
+				D28A1D6516661D7F005578F1 /* Gallery.h */,
+				D28A1D6616661D80005578F1 /* Gallery.m */,
+				D223EA7A166F592100411CC0 /* Settings.h */,
+				D223EA7B166F592100411CC0 /* Settings.m */,
+				D223EA5C166E371300411CC0 /* UIImage+Triangles.h */,
+				D223EA5D166E371300411CC0 /* UIImage+Triangles.m */,
+				D223EA7F166F848100411CC0 /* UIImage+Extensions.h */,
+				D223EA80166F848100411CC0 /* UIImage+Extensions.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E77B598517E3C23800A01D82 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D2008B1716A020910022DB19 /* DropDown.h */,
+				D2008B1816A020910022DB19 /* DropDown.m */,
+				D2010E0617AA9368009ADB8F /* ActivityInstagram.h */,
+				D2010E0717AA9368009ADB8F /* ActivityInstagram.m */,
+				D223EA59166E25CE00411CC0 /* GalleryCollectionCell.h */,
+				D223EA5A166E25CE00411CC0 /* GalleryCollectionCell.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		E77B598617E3C27400A01D82 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D01E0B8317B26A550042B4C3 /* OperationQueue */,
+				D0318A5017E271A00003253B /* CDActivityIndicatorView */,
+				D09FDEB117B235CB0076198E /* PagingScrollView */,
+				E78ECF0F17AE5CB20025D3E2 /* Blur View */,
+			);
+			name = Sources;
 			sourceTree = "<group>";
 		};
 		E78ECF0F17AE5CB20025D3E2 /* Blur View */ = {
@@ -428,6 +483,11 @@
 				GCC_PREFIX_HEADER = "Photo/Trianglam-Prefix.pch";
 				INFOPLIST_FILE = "Photo/Trianglam-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/matej/Documents/iOS/X\\ pro/trianglam",
+					/Users/Kaspar/Documents/Projekty/Aplikace/trianglam,
+				);
 				PRODUCT_NAME = Trianglam;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -446,6 +506,11 @@
 				GCC_PREFIX_HEADER = "Photo/Trianglam-Prefix.pch";
 				INFOPLIST_FILE = "Photo/Trianglam-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/matej/Documents/iOS/X\\ pro/trianglam",
+					/Users/Kaspar/Documents/Projekty/Aplikace/trianglam,
+				);
 				PRODUCT_NAME = Trianglam;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -164,7 +164,7 @@
         [notOkButton setImage:[UIImage imageNamed:@"Discard.png"] forState:UIControlStateNormal];
         [notOkButton setImage:[UIImage imageNamed:@"DiscardTouched.png"] forState:UIControlStateHighlighted];
         notOkButton.alpha = 0.0;
-        [notOkButton addTarget:self action:@selector(releaseImage:) forControlEvents:UIControlEventTouchUpInside];
+        [notOkButton addTarget:self action:@selector(rejectImage:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:notOkButton];
         
         // flash dropdown
@@ -343,6 +343,8 @@
 
 - (IBAction)switchCamera:(id)sender
 {
+    [Flurry logEvent:@"Switched camera"];
+    
     [camera switchCamera];
     [self reloadUserInterface];
 }
@@ -357,6 +359,8 @@
 
 - (void)cameraTookImage:(UIImage *)image
 {
+    [Flurry logEvent:@"Took photo using camera"];
+    
     pictureView.image = image;
     pictureView.alpha = 1.0;
     
@@ -378,6 +382,38 @@
 - (void)processImage:(UIImage *)image
 {
     [self performSelectorOnMainThread:@selector(startProcessing) withObject:nil waitUntilDone:YES];
+    
+    // analytics
+    NSString *shapeString;
+    switch (shape) {
+        case SHAPE_TRIANGLE:
+            shapeString = @"Triangle";
+            break;
+        case SHAPE_RECT:
+            shapeString = @"Rectangle";
+            break;
+        case SHAPE_HEXAGON:
+            shapeString = @"Hexagon";
+            break;
+            
+    }
+    NSString *sizeString;
+    switch (size) {
+        case 10:
+            sizeString = @"S";
+            break;
+        case 20:
+            sizeString = @"M";
+            break;
+        case 35:
+            sizeString = @"L";
+            break;
+            
+    }
+    NSDictionary *params = @{@"Shape":shapeString, @"Size":sizeString};
+    
+    [Flurry logEvent:@"Took photo with settings" withParameters:params];
+    
     NSDictionary *dic;
     switch (shape) {
         case SHAPE_TRIANGLE:
@@ -458,6 +494,8 @@
 
 - (IBAction)acceptImage:(id)sender
 {
+    [Flurry logEvent:@"Accepted photo"];
+    
     notOkButton.alpha = 0.0;
     okButton.alpha = 0.0;
     pictureView.alpha = 0.0;
@@ -482,6 +520,12 @@
         processedView.frame = processedImageViewFrame;
         [self releaseImage:sender];
     }];
+}
+
+- (IBAction)rejectImage:(id)sender
+{
+    [Flurry logEvent:@"Rejected photo"];
+    [self releaseImage:sender];
 }
 
 - (IBAction)releaseImage:(id)sender

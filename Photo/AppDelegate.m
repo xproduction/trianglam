@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Flurry.h"
 
 @implementation AppDelegate
 
@@ -14,6 +15,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //[Flurry setDebugLogEnabled:YES];
+    [Flurry setCrashReportingEnabled:YES];
+    //[Flurry setEventLoggingEnabled:YES];
+    [Flurry startSession:@"VD9RF33942GTFK38R5D2"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
    
     cameraController = [[CameraViewController alloc] init];
@@ -56,6 +62,8 @@
 
 - (void)transitionToGallery
 {
+    [Flurry logEvent:@"Went to gallery"];
+    
     if (self.window.rootViewController.view == cameraController.view)
     {
         [UIView transitionFromView:self.window.rootViewController.view
@@ -69,6 +77,8 @@
 }
 - (void)transitionToCamera
 {
+    [Flurry logEvent:@"Went to camera"];
+    
     if (self.window.rootViewController.view == galleryController.view)
     {
         [UIView transitionFromView:self.window.rootViewController.view
