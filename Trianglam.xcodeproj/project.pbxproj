@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D01E0B8617B26B1A0042B4C3 /* ImageRenderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D01E0B8517B26B1A0042B4C3 /* ImageRenderOperation.m */; };
+		D077C32217E2FB0200E2DA07 /* CDActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0318A5217E271B60003253B /* CDActivityIndicatorView.m */; };
 		D09FDEB617B235D50076198E /* RGMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FDEB317B235D50076198E /* RGMPageControl.m */; };
 		D09FDEB717B235D50076198E /* RGMPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FDEB517B235D50076198E /* RGMPagingScrollView.m */; };
 		D0BCE1B317AA990500222AB6 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BCE1B217AA990500222AB6 /* Camera.m */; };
@@ -342,6 +343,7 @@
 				D0BCE1B317AA990500222AB6 /* Camera.m in Sources */,
 				E78ECF0E17AE5CAC0025D3E2 /* AMBlurView.m in Sources */,
 				D09FDEB617B235D50076198E /* RGMPageControl.m in Sources */,
+				D077C32217E2FB0200E2DA07 /* CDActivityIndicatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
