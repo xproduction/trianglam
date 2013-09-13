@@ -40,10 +40,10 @@
 		D28A1D6716661D80005578F1 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6616661D80005578F1 /* Gallery.m */; };
 		D28A1D6E166633AD005578F1 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6D166633AC005578F1 /* GalleryViewController.m */; };
 		D28A1D74166635E2005578F1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D73166635E2005578F1 /* CoreVideo.framework */; };
-		D2BEFF3217E3492600DFB836 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */; };
 		D2BEFF3617E349F100DFB836 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3517E349F100DFB836 /* Security.framework */; };
 		D2BEFF3817E34A1B00DFB836 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */; };
+		E77B598217E3BFAB00A01D82 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */; };
 		E78ECF0E17AE5CAC0025D3E2 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */; };
 /* End PBXBuildFile section */
 
@@ -125,10 +125,10 @@
 				D28A1D6416661A07005578F1 /* CoreMedia.framework in Frameworks */,
 				D28A1D62166619B9005578F1 /* ImageIO.framework in Frameworks */,
 				D28A1D3A1664F3AA005578F1 /* CoreGraphics.framework in Frameworks */,
-				D2BEFF3217E3492600DFB836 /* libFlurry_4.2.3.a in Frameworks */,
 				D28A1D591664F440005578F1 /* AVFoundation.framework in Frameworks */,
 				D28A1D361664F3AA005578F1 /* UIKit.framework in Frameworks */,
 				D28A1D381664F3AA005578F1 /* Foundation.framework in Frameworks */,
+				E77B598217E3BFAB00A01D82 /* libFlurry_4.2.3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +449,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/matej/Documents/iOS/X\\ pro/trianglam",
+					/Users/Kaspar/Documents/Projekty/Aplikace/trianglam,
 				);
 				PRODUCT_NAME = Trianglam;
 				PROVISIONING_PROFILE = "";
@@ -471,6 +472,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/matej/Documents/iOS/X\\ pro/trianglam",
+					/Users/Kaspar/Documents/Projekty/Aplikace/trianglam,
 				);
 				PRODUCT_NAME = Trianglam;
 				PROVISIONING_PROFILE = "";
