@@ -60,7 +60,52 @@
         CGRect cameraFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
         
         // default settings
-        size = 20;
+        if ([[NSUserDefaults standardUserDefaults] valueForKey:@"sizePreset"])
+        {
+            switch ([[[NSUserDefaults standardUserDefaults] valueForKey:@"sizePreset"] intValue]) {
+                case 0:
+                    size = 10;
+                    break;
+                case 1:
+                    size = 20;
+                    break;
+                case 2:
+                    size = 35;
+                    break;
+            }
+        }
+        else
+        {
+            size = 20;
+        }
+        
+        if ([[NSUserDefaults standardUserDefaults] valueForKey:@"flashPreset"])
+        {
+            switch ([[[NSUserDefaults standardUserDefaults] valueForKey:@"sizePreset"] intValue]) {
+                case 0:
+                    [camera setFlashAuto];
+                    break;
+                case 1:
+                    [camera setFlashOn];
+                    break;
+                case 2:
+                    [camera setFlashOff];
+                    break;
+            }
+        }
+        else
+        {
+            [camera setFlashAuto];
+        }
+        
+        if ([[NSUserDefaults standardUserDefaults] valueForKey:@"shapePreset"])
+        {
+            shape = [[NSUserDefaults standardUserDefaults] valueForKey:@"shapePreset"];
+        }
+        else
+        {
+            shape = SHAPE_TRIANGLE;
+        }
         
         // camera view/layer
         cameraView = [[UIView alloc] initWithFrame:cameraFrame];
@@ -395,18 +440,14 @@
             
     }
     NSString *sizeString;
-    switch (size) {
-        case 10:
-            sizeString = @"S";
-            break;
-        case 20:
-            sizeString = @"M";
-            break;
-        case 35:
-            sizeString = @"L";
-            break;
-            
+    if (size <= 10) {
+        sizeString = @"S";
+    } else if(size <= 20){
+        sizeString = @"M";
+    } else {
+        sizeString = @"L";
     }
+
     NSDictionary *params = @{@"Shape":shapeString, @"Size":sizeString};
     
     [Flurry logEvent:@"Took photo with settings" withParameters:params];
