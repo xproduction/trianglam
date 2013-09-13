@@ -39,6 +39,7 @@
 		D28A1D6716661D80005578F1 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6616661D80005578F1 /* Gallery.m */; };
 		D28A1D6E166633AD005578F1 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1D6D166633AC005578F1 /* GalleryViewController.m */; };
 		D28A1D74166635E2005578F1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28A1D73166635E2005578F1 /* CoreVideo.framework */; };
+		D2BEFF2417E2F66D00DFB836 /* CDActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0318A5217E271B60003253B /* CDActivityIndicatorView.m */; };
 		E78ECF0E17AE5CAC0025D3E2 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */; };
 /* End PBXBuildFile section */
 
@@ -322,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BEFF2417E2F66D00DFB836 /* CDActivityIndicatorView.m in Sources */,
 				D01E0B8617B26B1A0042B4C3 /* ImageRenderOperation.m in Sources */,
 				D28A1D421664F3AA005578F1 /* main.m in Sources */,
 				D2010E0817AA9368009ADB8F /* ActivityInstagram.m in Sources */,

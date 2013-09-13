@@ -267,6 +267,13 @@ static NSUInteger bitsPerComponent = 8;
     unsigned char *rawData;
     NSUInteger pixelWidth, pixelHeight;
     
+    // magic constants
+    if(width == 35)
+        width = 40;
+    if(width == 20)
+        width = 22;
+    
+    
     // raw data init
     CGImageRef imageRef = [self CGImage];
     pixelWidth = CGImageGetWidth(imageRef);
