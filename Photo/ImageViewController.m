@@ -150,29 +150,23 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 
 - (IBAction)dismiss:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismiss:sender animated:YES];
+}
+
+- (IBAction)dismiss:(id)sender animated:(BOOL)animated
+{
+    [self dismissViewControllerAnimated:animated completion:nil];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
 - (IBAction)remove:(id)sender
 {
-    currentImageView.hidden = YES;
     
+    // current image for back up
     UIImageView *backupView = [[UIImageView alloc] init];
     backupView.backgroundColor = [UIColor blackColor];
-    backupView.frame = CGRectMake(currentImageView.frame.origin.x, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.frame.size.width);
     backupView.image = currentImageView.image;
     backupView.contentMode = UIViewContentModeScaleAspectFit;
-    [scrollView insertSubview:backupView aboveSubview:currentImageView];
-    
-    [UIView animateWithDuration:0.3 animations:^(void){
-        backupView.frame = CGRectMake(scrollView.contentOffset.x + self.view.frame.size.width / 2.0, scrollView.contentOffset.y + self.view.frame.size.height / 2.0, 2.0, 2.0);
-    } completion:^(BOOL finished){
-        currentImageView.hidden = NO;
-        [backupView removeFromSuperview];
-        [scrollView reloadData];
-        scrollView.currentPage = images.count - currentIndex - 1;
-    }];
     
     [Gallery removeImageAtIndex:currentIndex];
     [fullScreenImages removeAllObjects];
@@ -195,8 +189,22 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
     } else {
         ((CameraViewController*)appDelegate.cameraController).galleryButton.alpha = 0.0;
         
-        [self dismiss:nil];
+        [self dismiss:nil animated:NO];
+        [((AppDelegate *)appDelegate) transitionToCamera];
+        return;
     }
+
+    scrollView.currentPage = images.count - currentIndex - 1;
+    [scrollView reloadData];
+    
+    backupView.frame = CGRectMake(scrollView.contentOffset.x + 10.0, scrollView.contentOffset.y + self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0, self.view.frame.size.width, self.view.frame.size.width);
+    [scrollView insertSubview:backupView aboveSubview:currentImageView];
+    
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationCurveEaseIn animations:^(void){
+        backupView.frame = CGRectMake(scrollView.contentOffset.x + self.view.frame.size.width / 2.0, scrollView.contentOffset.y + self.view.frame.size.height / 2.0, 2.0, 2.0);
+    } completion:^(BOOL finished){
+        [backupView removeFromSuperview];
+    }];
     
 }
 
