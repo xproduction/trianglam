@@ -7,6 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "Flurry.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreLocation/CoreLocation.h>
 
@@ -552,6 +553,8 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    [Flurry logEvent:@"Took photo from camera roll"];
+
     NSURL *assetURL = [info objectForKey:UIImagePickerControllerReferenceURL];
     
     __block CLLocation* location;
