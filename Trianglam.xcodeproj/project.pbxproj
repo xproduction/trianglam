@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		D01E0B8617B26B1A0042B4C3 /* ImageRenderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D01E0B8517B26B1A0042B4C3 /* ImageRenderOperation.m */; };
 		D077C32217E2FB0200E2DA07 /* CDActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0318A5217E271B60003253B /* CDActivityIndicatorView.m */; };
-		D077C32717E33EDE00E2DA07 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D077C32617E33EDD00E2DA07 /* AssetsLibrary.framework */; };
-		D077C32917E33FC100E2DA07 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D077C32817E33FC100E2DA07 /* CoreLocation.framework */; };
 		D09FDEB617B235D50076198E /* RGMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FDEB317B235D50076198E /* RGMPageControl.m */; };
 		D09FDEB717B235D50076198E /* RGMPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FDEB517B235D50076198E /* RGMPagingScrollView.m */; };
 		D0BCE1B317AA990500222AB6 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BCE1B217AA990500222AB6 /* Camera.m */; };
+		D0E1EB8C17E3C86E00771DAC /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */; };
+		D0E1EB8E17E3C88900771DAC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E1EB8D17E3C88900771DAC /* AssetsLibrary.framework */; };
+		D0E1EB9017E3C88F00771DAC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E1EB8F17E3C88F00771DAC /* CoreLocation.framework */; };
 		D2008B1916A020910022DB19 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = D2008B1816A020910022DB19 /* DropDown.m */; };
 		D2010E0817AA9368009ADB8F /* ActivityInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = D2010E0717AA9368009ADB8F /* ActivityInstagram.m */; };
 		D210AEC217673640007F7524 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D210AEC117673640007F7524 /* Media.xcassets */; };
@@ -45,7 +46,6 @@
 		D2BEFF3617E349F100DFB836 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3517E349F100DFB836 /* Security.framework */; };
 		D2BEFF3817E34A1B00DFB836 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */; };
-		E77B598217E3BFAB00A01D82 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */; };
 		E78ECF0E17AE5CAC0025D3E2 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */; };
 /* End PBXBuildFile section */
 
@@ -54,14 +54,14 @@
 		D01E0B8517B26B1A0042B4C3 /* ImageRenderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRenderOperation.m; sourceTree = "<group>"; };
 		D0318A5117E271B60003253B /* CDActivityIndicatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDActivityIndicatorView.h; sourceTree = "<group>"; };
 		D0318A5217E271B60003253B /* CDActivityIndicatorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDActivityIndicatorView.m; sourceTree = "<group>"; };
-		D077C32617E33EDD00E2DA07 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		D077C32817E33FC100E2DA07 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D09FDEB217B235D50076198E /* RGMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RGMPageControl.h; path = RGMPagingScrollView/RGMPageControl.h; sourceTree = "<group>"; };
 		D09FDEB317B235D50076198E /* RGMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RGMPageControl.m; path = RGMPagingScrollView/RGMPageControl.m; sourceTree = "<group>"; };
 		D09FDEB417B235D50076198E /* RGMPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RGMPagingScrollView.h; path = RGMPagingScrollView/RGMPagingScrollView.h; sourceTree = "<group>"; };
 		D09FDEB517B235D50076198E /* RGMPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RGMPagingScrollView.m; path = RGMPagingScrollView/RGMPagingScrollView.m; sourceTree = "<group>"; };
 		D0BCE1B117AA990500222AB6 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		D0BCE1B217AA990500222AB6 /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
+		D0E1EB8D17E3C88900771DAC /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		D0E1EB8F17E3C88F00771DAC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D2008B1716A020910022DB19 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
 		D2008B1816A020910022DB19 /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
 		D2010E0617AA9368009ADB8F /* ActivityInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityInstagram.h; sourceTree = "<group>"; };
@@ -119,8 +119,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D077C32917E33FC100E2DA07 /* CoreLocation.framework in Frameworks */,
-				D077C32717E33EDE00E2DA07 /* AssetsLibrary.framework in Frameworks */,
+				D0E1EB9017E3C88F00771DAC /* CoreLocation.framework in Frameworks */,
+				D0E1EB8E17E3C88900771DAC /* AssetsLibrary.framework in Frameworks */,
+				D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */,
+				D2BEFF3817E34A1B00DFB836 /* AdSupport.framework in Frameworks */,
+				D2BEFF3617E349F100DFB836 /* Security.framework in Frameworks */,
 				D2640C53169B0E19000A9A7B /* QuartzCore.framework in Frameworks */,
 				D27CBD6A1680A34D006B6574 /* Social.framework in Frameworks */,
 				D27CBD651680A33D006B6574 /* MessageUI.framework in Frameworks */,
@@ -131,7 +134,7 @@
 				D28A1D591664F440005578F1 /* AVFoundation.framework in Frameworks */,
 				D28A1D361664F3AA005578F1 /* UIKit.framework in Frameworks */,
 				D28A1D381664F3AA005578F1 /* Foundation.framework in Frameworks */,
-				E77B598217E3BFAB00A01D82 /* libFlurry_4.2.3.a in Frameworks */,
+				D0E1EB8C17E3C86E00771DAC /* libFlurry_4.2.3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,11 +192,12 @@
 		D28A1D341664F3AA005578F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D077C32817E33FC100E2DA07 /* CoreLocation.framework */,
-				D077C32617E33EDD00E2DA07 /* AssetsLibrary.framework */,
-				D0318A5017E271A00003253B /* CDActivityIndicatorView */,
-				D09FDEB117B235CB0076198E /* PagingScrollView */,
-				E78ECF0F17AE5CB20025D3E2 /* Blur View */,
+				D0E1EB8F17E3C88F00771DAC /* CoreLocation.framework */,
+				D0E1EB8D17E3C88900771DAC /* AssetsLibrary.framework */,
+				D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */,
+				D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */,
+				D2BEFF3517E349F100DFB836 /* Security.framework */,
+				D2BEFF3417E3493D00DFB836 /* Flurry */,
 				D2640C52169B0E19000A9A7B /* QuartzCore.framework */,
 				D27CBD691680A34D006B6574 /* Social.framework */,
 				D27CBD641680A33D006B6574 /* MessageUI.framework */,
@@ -487,6 +491,7 @@
 					"$(inherited)",
 					"/Users/matej/Documents/iOS/X\\ pro/trianglam",
 					/Users/Kaspar/Documents/Projekty/Aplikace/trianglam,
+					"/Users/zvonicek/Documents/iOS\\ dev/trianglam",
 				);
 				PRODUCT_NAME = Trianglam;
 				PROVISIONING_PROFILE = "";
@@ -510,6 +515,7 @@
 					"$(inherited)",
 					"/Users/matej/Documents/iOS/X\\ pro/trianglam",
 					/Users/Kaspar/Documents/Projekty/Aplikace/trianglam,
+					"/Users/zvonicek/Documents/iOS\\ dev/trianglam",
 				);
 				PRODUCT_NAME = Trianglam;
 				PROVISIONING_PROFILE = "";
