@@ -84,11 +84,13 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
     [shareButton addTarget:self action:@selector(shareTo:) forControlEvents:UIControlEventTouchUpInside];
     [buttons addObject:shareButton];
     
-    UIButton *instagramButton = [[UIButton alloc] init];
-    [instagramButton setImage:[UIImage imageNamed:@"OpenIn.png"] forState:UIControlStateNormal];
-    [instagramButton setImage:[UIImage imageNamed:@"OpenInTouched.png"] forState:UIControlStateHighlighted];
-    [instagramButton addTarget:self action:@selector(shareToInstagram:) forControlEvents:UIControlEventTouchUpInside];
-    [buttons addObject:instagramButton];
+    //if ([self canOpenDocument]) {
+        UIButton *instagramButton = [[UIButton alloc] init];
+        [instagramButton setImage:[UIImage imageNamed:@"OpenIn.png"] forState:UIControlStateNormal];
+        [instagramButton setImage:[UIImage imageNamed:@"OpenInTouched.png"] forState:UIControlStateHighlighted];
+        [instagramButton addTarget:self action:@selector(shareToInstagram:) forControlEvents:UIControlEventTouchUpInside];
+        [buttons addObject:instagramButton];
+    //}
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
         UIButton *button = [[UIButton alloc] init];
@@ -233,23 +235,24 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 
 #pragma mark - Sharing
            
-- (IBAction)shareToInstagram:(id)sender
+- (IBAction)shareToInstagram:(UIView *)sender
 {
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"instagram://app"]])
     {
         interactionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filename]];
         interactionController.UTI = @"com.instagram.exclusivegram";
         interactionController.annotation = @{@"InstagramCaption" : NSLocalizedString(@"Taken with #trianglam", nil)};
-        [interactionController presentOpenInMenuFromRect:self.view.frame inView:self.view animated:YES];
+        [interactionController presentOpenInMenuFromRect:sender.frame inView:self.view animated:YES];
     } else {
         [self openIn:sender];
     }
 }
 
-- (IBAction)openIn:(id)sender
+- (IBAction)openIn:(UIView *)sender
 {
+    CGRect frame = CGRectMake(bottomBar.frame.origin.x + sender.frame.origin.x, bottomBar.frame.origin.y + sender.frame.origin.y, sender.frame.size.width, sender.frame.size.height);
     interactionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filename]];
-    [interactionController presentOpenInMenuFromRect:self.view.frame inView:self.view animated:YES];
+    [interactionController presentOpenInMenuFromRect:frame inView:self.view animated:YES];
 }
 
 - (IBAction)shareTo:(id)sender
