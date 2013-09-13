@@ -123,7 +123,6 @@
         [self.view addSubview:indicatorView];
         
         if(camera.cameraCount != 0)
-        if (true)
         {
             takePictureButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0) + (self.view.frame.size.height - (self.view.frame.size.height / 2.0 + self.view.frame.size.width / 2.0)) / 2.0 - BOTTOM_BAR_HEIGHT / 2.0, BOTTOM_BAR_HEIGHT, BOTTOM_BAR_HEIGHT)];
             [takePictureButton setImage:[UIImage imageNamed:@"Camera.png"] forState:UIControlStateNormal];

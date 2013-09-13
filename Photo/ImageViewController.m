@@ -112,10 +112,6 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         [buttons addObject:button];
     }
     
-    // middle - count * (width / 2) - count-1 * (padding / 2) + (i-1) *
-    // 50 - 1 * (30 / 2)
-    // 50 - 2 * (30 / 2) - 1 * (15 / 2) + 0 * (30 + 15)
-    
     for (int i = 1; i <= buttons.count; i++) {
         UIButton* button = (UIButton*)[buttons objectAtIndex:i-1];
         
@@ -128,6 +124,11 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
     
     topBar = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height / 2.0 - self.view.frame.size.width / 2.0)];
     topBar.backgroundColor = [UIColor colorWithRed:80.0/255.0 green:80.0/255.0 blue:80.0/255.0 alpha:1.0];
+    
+    UIImageView *trianglam = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Trianglam.png"]];
+    [topBar addSubview:trianglam];
+    float trianglamSize = 30.0;
+    trianglam.frame = CGRectMake(topBar.center.x - trianglamSize / 2.0, topBar.frame.size.height / 2.0 - 15.0, trianglamSize, trianglamSize);
     
     UIButton *dismissButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, topBar.frame.size.height / 2.0 - 40.0, 80.0, 80.0)];
     [dismissButton setImage:[UIImage imageNamed:@"Close.png"] forState:UIControlStateNormal];
