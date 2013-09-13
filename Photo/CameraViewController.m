@@ -7,6 +7,8 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <CoreLocation/CoreLocation.h>
 
 #import "CameraViewController.h"
 #import "AppDelegate.h"
@@ -55,6 +57,8 @@
         
         camera = [[Camera alloc] init];
         camera.delegate = self;
+        
+        gallery = [[Gallery alloc] init];
         
         CGRect cameraFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
         
@@ -458,7 +462,7 @@
     okButton.alpha = 0.0;
     pictureView.alpha = 0.0;
     pictureView.contentMode = UIViewContentModeScaleAspectFit;
-    if([Gallery addImage:processedImage thumb:thumbImage vector:vector])
+    if([gallery addImage:processedImage thumb:thumbImage vector:vector])
     {
         NSLog(@"image saved");
     }
@@ -504,6 +508,19 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    NSURL *assetURL = [info objectForKey:UIImagePickerControllerReferenceURL];
+    
+    __block CLLocation* location;
+    
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library assetForURL:assetURL
+             resultBlock:^(ALAsset *asset)  {
+                 location = [asset valueForProperty:ALAssetPropertyLocation];
+             }
+             failureBlock:^(NSError *error) {
+             }
+    ];
+    
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     UIImage *scaledImage = [image imageByScalingProportionallyToMinimumSize:CGSizeMake(480.0, 480.0)];
     [self cameraTookImage:scaledImage];

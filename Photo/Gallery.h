@@ -11,7 +11,7 @@
 @interface Gallery : NSObject
 
 + (NSArray *)getImageArray;
-+ (BOOL)addImage:(UIImage *)image thumb:(UIImage *)thumb vector:(NSString *)vector;
+- (BOOL)addImage:(UIImage *)image thumb:(UIImage *)thumb vector:(NSString *)vector;
 + (UIImage *)getImageAtIndex:(NSUInteger)index;
 + (UIImage *)getThumbAtIndex:(NSUInteger)index;
 + (BOOL)removeImageAtIndex:(NSUInteger)index;
