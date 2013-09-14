@@ -13,7 +13,7 @@
 
 @interface ImageViewController : UIViewController <MFMailComposeViewControllerDelegate, RGMPagingScrollViewDatasource, RGMPagingScrollViewDelegate, ImageRenderDelegate, UIDocumentInteractionControllerDelegate>
 {
-    NSUInteger currentIndex;
+    NSUInteger previousIndex, currentIndex;
     NSArray *images;
     NSMutableDictionary *fullScreenImages;
     UIDocumentInteractionController *interactionController;
@@ -21,7 +21,7 @@
     UIView *bottomBar, *topBar;
     RGMPagingScrollView *scrollView;
     NSString *filename;
-    UIImageView *currentImageView, *previousImageView, *nextImageView;
+    UIImageView *currentImageView, *previousImageView;
     UIImage* nextImage;
     float lastContentOffset;
     NSOperationQueue* queue;

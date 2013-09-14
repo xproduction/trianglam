@@ -96,4 +96,24 @@
     
     [(NSObject *)self.delegate performSelectorOnMainThread:@selector(renderDidFinish:) withObject:self waitUntilDone:NO];
 }
+
+-(BOOL)isEqual:(id)other
+{
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    return self.index == ((ImageRenderOperation*)other).index;
+}
+
+-(NSUInteger)hash
+{
+    NSUInteger prime = 31;
+    NSUInteger result = 1;
+    
+    result = prime * result + self.index;
+    
+    return result;
+}
+
 @end
