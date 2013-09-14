@@ -14,7 +14,7 @@
 #import "CDActivityIndicatorView.h"
 #import "Gallery.h"
 
-@interface CameraViewController : UIViewController<CameraDelegate, DropDownDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CameraViewController : UIViewController<CameraDelegate, DropDownDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate>
 {
     UIView *cameraView, *lightView;
     UIImageView *pictureView, *processedView;
@@ -29,6 +29,8 @@
     DropDown *flashDropDown, *sizeDropDown, *shapeDropDown;
     NSUInteger shape;
     UIPopoverController* popover;
+    CLLocation* pictureLocation;
+    CLLocationManager* locationManager;
 }
 
 @property (nonatomic, strong) UIButton* galleryButton;

@@ -59,6 +59,11 @@
         camera = [[Camera alloc] init];
         camera.delegate = self;
         
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+        
         gallery = [[Gallery alloc] init];
         
         CGRect cameraFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
@@ -401,11 +406,39 @@
     [appDelegate transitionToGallery];
 }
 
+- (void)saveImageFromGallery:(UIImage*)image
+{
+    pictureView.image = image;
+    pictureView.alpha = 1.0;
+    
+    [self animateFlash];
+    [self tryProcessing:image];
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    if (locations.count == 0)
+        return;
+    
+    pictureLocation = [locations objectAtIndex:0];
+    
+    if (pictureLocation.horizontalAccuracy >= locationManager.desiredAccuracy) {
+        [locationManager stopUpdatingLocation];
+    }
+}
+
 #pragma mark - CameraDelegate
 
 - (void)cameraTookImage:(UIImage *)image
 {
     [Flurry logEvent:@"Took photo using camera"];
+    
+    if ([CLLocationManager locationServicesEnabled])
+    {
+        [locationManager startUpdatingLocation];
+    }
     
     pictureView.image = image;
     pictureView.alpha = 1.0;
@@ -452,7 +485,11 @@
         sizeString = @"L";
     }
 
-    NSDictionary *params = @{@"Shape":shapeString, @"Size":sizeString};
+    NSDictionary *params;
+    if (shapeString != nil && sizeString != nil)
+    {
+        params = @{@"Shape":shapeString, @"Size":sizeString};
+    }
     
     [Flurry logEvent:@"Took photo with settings" withParameters:params];
     
@@ -542,7 +579,7 @@
     okButton.alpha = 0.0;
     pictureView.alpha = 0.0;
     pictureView.contentMode = UIViewContentModeScaleAspectFit;
-    if([gallery addImage:processedImage thumb:thumbImage vector:vector])
+    if([gallery addImage:processedImage location:pictureLocation thumb:thumbImage vector:vector])
     {
         NSLog(@"image saved");
     }
@@ -588,6 +625,11 @@
     if ([[Gallery getImageArray] count] > 0) {
         galleryButton.alpha = 1.0;
     }
+    
+    if ([CLLocationManager locationServicesEnabled])
+    {
+        [locationManager stopUpdatingLocation];
+    }
 }
 
 #pragma mark - UIImagePickerController delegate
@@ -598,20 +640,19 @@
 
     NSURL *assetURL = [info objectForKey:UIImagePickerControllerReferenceURL];
     
-    __block CLLocation* location;
-    
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     [library assetForURL:assetURL
              resultBlock:^(ALAsset *asset)  {
-                 location = [asset valueForProperty:ALAssetPropertyLocation];
+                 pictureLocation = [asset valueForProperty:ALAssetPropertyLocation];
              }
              failureBlock:^(NSError *error) {
+                 pictureLocation = nil;
              }
     ];
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     UIImage *scaledImage = [image imageByScalingProportionallyToMinimumSize:CGSizeMake(480.0, 480.0)];
-    [self cameraTookImage:scaledImage];
+    [self saveImageFromGallery:scaledImage];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
     pictureView.contentMode = UIViewContentModeScaleAspectFit;

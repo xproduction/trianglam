@@ -95,7 +95,7 @@
     [self saveArray:images];
 }
 
-- (BOOL)addImage:(UIImage *)image thumb:(UIImage *)thumb vector:(NSString *)vector
+- (BOOL)addImage:(UIImage *)image location:(CLLocation *)location thumb:(UIImage *)thumb vector:(NSString *)vector
 {
     if(image == nil || thumb == nil)
     {
@@ -103,7 +103,7 @@
     }
     double time = [[NSDate date] timeIntervalSince1970] * 1000.0;
     NSString *imageFilename = [Gallery saveImage:image to:[NSString stringWithFormat:IMAGE_FORMAT, time]];
-    [self saveImageToCameraRoll:image];
+    [self saveImageToCameraRoll:image location:location];
     NSString *thumbFilename = [Gallery saveImage:thumb to:[NSString stringWithFormat:THUMB_FORMAT, time]];
     //NSDictionary *dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:imageFilename, @"image", thumbFilename, @"thumb", nil];
     NSDictionary *dictionary = @{@"image" : imageFilename, @"thumb" : thumbFilename, @"vector" : vector};
@@ -181,13 +181,16 @@
     return nil;
 }
 
-- (BOOL)saveImageToCameraRoll:(UIImage *)image
+- (BOOL)saveImageToCameraRoll:(UIImage *)image location:(CLLocation*)location
 {
     if([(AppDelegate *)[UIApplication sharedApplication].delegate automaticallySaveToCameraRoll]) {
         
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-        CLLocation *loc = [[CLLocation alloc] initWithLatitude:53.778702 longitude:0.0];
-        NSDictionary *gpsInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:[Gallery getGPSDictionaryForLocation:loc], @"{GPS}", nil];
+        NSDictionary *gpsInfoDict;
+        if (location != nil)
+        {
+            gpsInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:[Gallery getGPSDictionaryForLocation:location], @"{GPS}", nil];
+        }
         
         NSData* data = UIImageJPEGRepresentation(image, 1.0);
         
