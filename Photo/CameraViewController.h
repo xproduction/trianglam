@@ -31,6 +31,7 @@
     UIPopoverController* popover;
     CLLocation* pictureLocation;
     CLLocationManager* locationManager;
+    BOOL fromCamera;
 }
 
 @property (nonatomic, strong) UIButton* galleryButton;

@@ -90,7 +90,7 @@
         
         if ([[NSUserDefaults standardUserDefaults] valueForKey:@"flashPreset"])
         {
-            switch ([[[NSUserDefaults standardUserDefaults] valueForKey:@"sizePreset"] intValue]) {
+            switch ([[[NSUserDefaults standardUserDefaults] valueForKey:@"flashPreset"] intValue]) {
                 case 0:
                     [camera setFlashAuto];
                     break;
@@ -109,7 +109,7 @@
         
         if ([[NSUserDefaults standardUserDefaults] valueForKey:@"shapePreset"])
         {
-            shape = [[NSUserDefaults standardUserDefaults] valueForKey:@"shapePreset"];
+            shape = [[[NSUserDefaults standardUserDefaults] valueForKey:@"shapePreset"] intValue];
         }
         else
         {
@@ -408,6 +408,7 @@
 
 - (void)saveImageFromGallery:(UIImage*)image
 {
+    fromCamera = NO;
     pictureView.image = image;
     pictureView.alpha = 1.0;
     
@@ -433,12 +434,8 @@
 
 - (void)cameraTookImage:(UIImage *)image
 {
+    fromCamera = YES;
     [Flurry logEvent:@"Took photo using camera"];
-    
-    if ([CLLocationManager locationServicesEnabled])
-    {
-        [locationManager startUpdatingLocation];
-    }
     
     pictureView.image = image;
     pictureView.alpha = 1.0;
@@ -460,8 +457,12 @@
 
 - (void)processImage:(UIImage *)image
 {
-    [self performSelectorOnMainThread:@selector(startProcessing) withObject:nil waitUntilDone:YES];
+    if (fromCamera && [CLLocationManager locationServicesEnabled])
+    {
+        [locationManager startUpdatingLocation];
+    }
     
+    [self performSelectorOnMainThread:@selector(startProcessing) withObject:nil waitUntilDone:YES];
     // analytics
     NSString *shapeString;
     switch (shape) {
