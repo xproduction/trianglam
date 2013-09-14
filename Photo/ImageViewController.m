@@ -239,10 +239,21 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 {
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"instagram://app"]])
     {
-        interactionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filename]];
-        interactionController.UTI = @"com.instagram.exclusivegram";
-        interactionController.annotation = @{@"InstagramCaption" : NSLocalizedString(@"Taken with #trianglam", nil)};
-        [interactionController presentOpenInMenuFromRect:sender.frame inView:self.view animated:YES];
+        NSData *imageData = [[NSFileManager defaultManager] contentsAtPath:filename];
+        NSString *writePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"instagram.ig"];
+        if (![imageData writeToFile:writePath atomically:YES]) {
+            // failure
+            NSLog(@"image save failed to path %@", writePath);
+            return;
+        } else {
+            NSURL *fileURL = [NSURL fileURLWithPath:writePath];
+            interactionController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
+            interactionController.delegate = self;
+            [interactionController setUTI:@"com.instagram.photo"];
+            interactionController.annotation = @{@"InstagramCaption" : NSLocalizedString(@"Taken with #trianglam", nil)};
+            
+            if (![interactionController presentOpenInMenuFromRect:sender.frame inView:self.view animated:YES]) NSLog(@"couldn't present document interaction controller");
+        }
     } else {
         [self openIn:sender];
     }
@@ -304,6 +315,17 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
             controller.modalPresentationStyle = UIModalPresentationFormSheet;
         }
         [self presentViewController:controller animated:YES completion:nil];
+    }
+}
+
+#pragma mark - UIDocumentInteractionControllerDelegate
+-(void)documentInteractionController:(UIDocumentInteractionController *)controller willBeginSendingToApplication:(NSString *)application
+{
+    // Workaround for instagram - it can receive only .ig file whereas other applications need jpeg. UIDocumentInteractionController must
+    // be initialized with .ig file, set back jpeg file for all applications except instagram
+    if (![application isEqualToString:@"com.burbn.instagram"])
+    {
+        controller.URL = [NSURL fileURLWithPath:filename];
     }
 }
 

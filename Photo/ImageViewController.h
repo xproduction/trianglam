@@ -11,7 +11,7 @@
 #import "RGMPagingScrollView.h"
 #import "ImageRenderOperation.h"
 
-@interface ImageViewController : UIViewController <MFMailComposeViewControllerDelegate, RGMPagingScrollViewDatasource, RGMPagingScrollViewDelegate, ImageRenderDelegate>
+@interface ImageViewController : UIViewController <MFMailComposeViewControllerDelegate, RGMPagingScrollViewDatasource, RGMPagingScrollViewDelegate, ImageRenderDelegate, UIDocumentInteractionControllerDelegate>
 {
     NSUInteger currentIndex;
     NSArray *images;
