@@ -494,18 +494,35 @@
     
     [Flurry logEvent:@"Took photo with settings" withParameters:params];
     
+    // picture frame
+    
+    CGRect pictureFrame = CGRectMake(0.0, 80.0, 480.0, 480.0);
+    if(fromCamera)
+    {
+        float ratio = self.view.frame.size.height / self.view.frame.size.width;
+        NSLog(@"%f %f", ratio, 3.0f / 2.0f);
+        if (fabs(3.0f / 2.0f - ratio) <= FLT_EPSILON) {
+            NSUInteger padding = (480 - 430) / 2;
+            pictureFrame = CGRectMake(0.0 + padding, 80.0 + padding, 480.0 - padding * 2, 480.0 - padding * 2);
+        }
+        else
+        {
+            NSUInteger padding = (480 - 360) / 2;
+            pictureFrame = CGRectMake(0.0 + padding, 80.0 + padding, 480.0 - padding * 2, 480.0 - padding * 2);
+        }
+    }
+    
     NSDictionary *dic;
     switch (shape) {
         case SHAPE_TRIANGLE:
-            dic = [[[image imageByScalingProportionallyToSize:CGSizeMake(480.0, 640.0)] imageAtRect:CGRectMake(0.0, 80.0, 480.0, 480.0)] triangleImageWithWidth:size ratio:4];
+            dic = [[[image imageByScalingProportionallyToSize:CGSizeMake(480.0, 640.0)] imageAtRect:pictureFrame] triangleImageWithWidth:size ratio:4];
             break;
         case SHAPE_RECT:
-            dic = [[[image imageByScalingProportionallyToSize:CGSizeMake(480.0, 640.0)] imageAtRect:CGRectMake(0.0, 80.0, 480.0, 480.0)] squareImageWithWidth:size ratio:4];
+            dic = [[[image imageByScalingProportionallyToSize:CGSizeMake(480.0, 640.0)] imageAtRect:pictureFrame] squareImageWithWidth:size ratio:4];
             break;
         case SHAPE_HEXAGON:
-            dic = [[[image imageByScalingProportionallyToSize:CGSizeMake(480.0, 640.0)] imageAtRect:CGRectMake(0.0, 80.0, 480.0, 480.0)] hexagonImageWithWidth:size ratio:4];
+            dic = [[[image imageByScalingProportionallyToSize:CGSizeMake(480.0, 640.0)] imageAtRect:pictureFrame] hexagonImageWithWidth:size ratio:4];
             break;
-            
     }
     UIImage *tempImage = [dic objectForKey:@"image"];
     NSUInteger padding = (size > 30) ? size * 2.0 : size;
