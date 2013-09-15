@@ -500,7 +500,6 @@
     if(fromCamera)
     {
         float ratio = self.view.frame.size.height / self.view.frame.size.width;
-        NSLog(@"%f %f", ratio, 3.0f / 2.0f);
         if (fabs(3.0f / 2.0f - ratio) <= FLT_EPSILON) {
             NSUInteger padding = (480 - 430) / 2;
             pictureFrame = CGRectMake(0.0 + padding, 80.0 + padding, 480.0 - padding * 2, 480.0 - padding * 2);
