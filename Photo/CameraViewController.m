@@ -513,17 +513,20 @@
             pictureFrame = CGRectMake(0.0 + padding, 80.0 + padding, 480.0 - padding * 2, 480.0 - padding * 2);
         }
     }
+        
+    UIImage *scaledImage = [[image imageByScalingProportionallyToSize:CGSizeMake(480.0, 640.0)] imageAtRect:pictureFrame];
+    scaledImage = [scaledImage imageByScalingProportionallyToSize:CGSizeMake(480.0, 480.0)];
     
     NSDictionary *dic;
     switch (shape) {
         case SHAPE_TRIANGLE:
-            dic = [[[image imageByScalingProportionallyToSize:CGSizeMake(480.0, 640.0)] imageAtRect:pictureFrame] triangleImageWithWidth:size ratio:4];
+            dic = [scaledImage triangleImageWithWidth:size ratio:4];
             break;
         case SHAPE_RECT:
-            dic = [[[image imageByScalingProportionallyToSize:CGSizeMake(480.0, 640.0)] imageAtRect:pictureFrame] squareImageWithWidth:size ratio:4];
+            dic = [scaledImage squareImageWithWidth:size ratio:4];
             break;
         case SHAPE_HEXAGON:
-            dic = [[[image imageByScalingProportionallyToSize:CGSizeMake(480.0, 640.0)] imageAtRect:pictureFrame] hexagonImageWithWidth:size ratio:4];
+            dic = [scaledImage hexagonImageWithWidth:size ratio:4];
             break;
     }
     UIImage *tempImage = [dic objectForKey:@"image"];
