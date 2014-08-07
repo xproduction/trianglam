@@ -12,7 +12,6 @@
 		D09FDEB617B235D50076198E /* RGMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FDEB317B235D50076198E /* RGMPageControl.m */; };
 		D09FDEB717B235D50076198E /* RGMPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FDEB517B235D50076198E /* RGMPagingScrollView.m */; };
 		D0BCE1B317AA990500222AB6 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BCE1B217AA990500222AB6 /* Camera.m */; };
-		D0E1EB8C17E3C86E00771DAC /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */; };
 		D0E1EB8E17E3C88900771DAC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E1EB8D17E3C88900771DAC /* AssetsLibrary.framework */; };
 		D0E1EB9017E3C88F00771DAC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E1EB8F17E3C88F00771DAC /* CoreLocation.framework */; };
 		D2008B1916A020910022DB19 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = D2008B1816A020910022DB19 /* DropDown.m */; };
@@ -44,6 +43,7 @@
 		D2BEFF3817E34A1B00DFB836 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */; };
 		E78ECF0E17AE5CAC0025D3E2 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */; };
+		E7EC65D01993ADF90071171E /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EC65CF1993ADF90071171E /* libFlurry_4.2.3.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,13 +99,13 @@
 		D28A1D6C166633AC005578F1 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		D28A1D6D166633AC005578F1 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
 		D28A1D73166635E2005578F1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		D2BEFF3317E3493800DFB836 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		D2BEFF3517E349F100DFB836 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E78ECF0C17AE5CAC0025D3E2 /* AMBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMBlurView.h; sourceTree = "<group>"; };
 		E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMBlurView.m; sourceTree = "<group>"; };
+		E7EC65CF1993ADF90071171E /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7EC65D01993ADF90071171E /* libFlurry_4.2.3.a in Frameworks */,
 				D0E1EB9017E3C88F00771DAC /* CoreLocation.framework in Frameworks */,
 				D0E1EB8E17E3C88900771DAC /* AssetsLibrary.framework in Frameworks */,
 				D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */,
@@ -128,7 +129,6 @@
 				D28A1D591664F440005578F1 /* AVFoundation.framework in Frameworks */,
 				D28A1D361664F3AA005578F1 /* UIKit.framework in Frameworks */,
 				D28A1D381664F3AA005578F1 /* Foundation.framework in Frameworks */,
-				D0E1EB8C17E3C86E00771DAC /* libFlurry_4.2.3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,8 +234,8 @@
 		D2BEFF3417E3493D00DFB836 /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
-				D2BEFF3117E3492600DFB836 /* libFlurry_4.2.3.a */,
 				D2BEFF3317E3493800DFB836 /* Flurry.h */,
+				E7EC65CF1993ADF90071171E /* libFlurry_4.2.3.a */,
 			);
 			name = Flurry;
 			sourceTree = "<group>";
@@ -477,12 +477,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/matej/Documents/iOS/X\\ pro/trianglam",
-					/Users/Kaspar/Documents/Projekty/Aplikace/trianglam,
-					"/Users/zvonicek/Documents/iOS\\ dev/trianglam",
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = Trianglam;
-				PROVISIONING_PROFILE = "85127B1B-401C-41B8-A28D-7B2DB09C5EB6";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -494,19 +492,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: X Production s.r.o.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Photo/Trianglam-Prefix.pch";
 				INFOPLIST_FILE = "Photo/Trianglam-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/matej/Documents/iOS/X\\ pro/trianglam",
+					/Users/matej/Documents/iOS/X,
+					pro/trianglam,
 					/Users/Kaspar/Documents/Projekty/Aplikace/trianglam,
-					"/Users/zvonicek/Documents/iOS\\ dev/trianglam",
+					/Users/zvonicek/Documents/iOS,
+					dev/trianglam,
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = Trianglam;
-				PROVISIONING_PROFILE = "85127B1B-401C-41B8-A28D-7B2DB09C5EB6";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
