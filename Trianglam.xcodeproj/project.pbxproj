@@ -44,7 +44,43 @@
 		D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */; };
 		E78ECF0E17AE5CAC0025D3E2 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */; };
 		E7EC65D01993ADF90071171E /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EC65CF1993ADF90071171E /* libFlurry_4.2.3.a */; };
+		E7EC65F11993B00A0071171E /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EC65F01993B00A0071171E /* PhotosUI.framework */; };
+		E7EC65F31993B00A0071171E /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EC65F21993B00A0071171E /* Photos.framework */; };
+		E7EC65F81993B00A0071171E /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC65F71993B00A0071171E /* PhotoEditingViewController.swift */; };
+		E7EC65FA1993B00A0071171E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7EC65F91993B00A0071171E /* MainInterface.storyboard */; };
+		E7EC65FD1993B00A0071171E /* Trianglamate.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E7EC65EF1993B00A0071171E /* Trianglamate.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E7EC65FB1993B00A0071171E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D28A1D281664F3AA005578F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7EC65EE1993B00A0071171E;
+			remoteInfo = Trianglamate;
+		};
+		E7EC65FE1993B00A0071171E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D28A1D281664F3AA005578F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7EC65EE1993B00A0071171E;
+			remoteInfo = Trianglamate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E7EC66031993B00A0071171E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E7EC65FD1993B00A0071171E /* Trianglamate.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D01E0B8417B26B1A0042B4C3 /* ImageRenderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageRenderOperation.h; sourceTree = "<group>"; };
@@ -106,6 +142,12 @@
 		E78ECF0C17AE5CAC0025D3E2 /* AMBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMBlurView.h; sourceTree = "<group>"; };
 		E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMBlurView.m; sourceTree = "<group>"; };
 		E7EC65CF1993ADF90071171E /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
+		E7EC65EF1993B00A0071171E /* Trianglamate.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Trianglamate.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7EC65F01993B00A0071171E /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		E7EC65F21993B00A0071171E /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		E7EC65F61993B00A0071171E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7EC65F71993B00A0071171E /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
+		E7EC65F91993B00A0071171E /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +171,15 @@
 				D28A1D591664F440005578F1 /* AVFoundation.framework in Frameworks */,
 				D28A1D361664F3AA005578F1 /* UIKit.framework in Frameworks */,
 				D28A1D381664F3AA005578F1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7EC65EC1993B00A0071171E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7EC65F11993B00A0071171E /* PhotosUI.framework in Frameworks */,
+				E7EC65F31993B00A0071171E /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +221,7 @@
 				D210AEC117673640007F7524 /* Media.xcassets */,
 				D28A1D3B1664F3AA005578F1 /* Trianglam */,
 				E77B598617E3C27400A01D82 /* Sources */,
+				E7EC65F41993B00A0071171E /* Trianglamate */,
 				D28A1D341664F3AA005578F1 /* Frameworks */,
 				D28A1D321664F3AA005578F1 /* Products */,
 			);
@@ -179,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				D28A1D311664F3AA005578F1 /* Trianglam.app */,
+				E7EC65EF1993B00A0071171E /* Trianglamate.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -202,6 +255,8 @@
 				D28A1D351664F3AA005578F1 /* UIKit.framework */,
 				D28A1D371664F3AA005578F1 /* Foundation.framework */,
 				D28A1D391664F3AA005578F1 /* CoreGraphics.framework */,
+				E7EC65F01993B00A0071171E /* PhotosUI.framework */,
+				E7EC65F21993B00A0071171E /* Photos.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -305,6 +360,24 @@
 			name = "Blur View";
 			sourceTree = "<group>";
 		};
+		E7EC65F41993B00A0071171E /* Trianglamate */ = {
+			isa = PBXGroup;
+			children = (
+				E7EC65F71993B00A0071171E /* PhotoEditingViewController.swift */,
+				E7EC65F91993B00A0071171E /* MainInterface.storyboard */,
+				E7EC65F51993B00A0071171E /* Supporting Files */,
+			);
+			path = Trianglamate;
+			sourceTree = "<group>";
+		};
+		E7EC65F51993B00A0071171E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E7EC65F61993B00A0071171E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,15 +388,35 @@
 				D28A1D2D1664F3AA005578F1 /* Sources */,
 				D28A1D2E1664F3AA005578F1 /* Frameworks */,
 				D28A1D2F1664F3AA005578F1 /* Resources */,
+				E7EC66031993B00A0071171E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E7EC65FC1993B00A0071171E /* PBXTargetDependency */,
+				E7EC65FF1993B00A0071171E /* PBXTargetDependency */,
 			);
 			name = Trianglam;
 			productName = Photo;
 			productReference = D28A1D311664F3AA005578F1 /* Trianglam.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E7EC65EE1993B00A0071171E /* Trianglamate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7EC66021993B00A0071171E /* Build configuration list for PBXNativeTarget "Trianglamate" */;
+			buildPhases = (
+				E7EC65EB1993B00A0071171E /* Sources */,
+				E7EC65EC1993B00A0071171E /* Frameworks */,
+				E7EC65ED1993B00A0071171E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Trianglamate;
+			productName = Trianglamate;
+			productReference = E7EC65EF1993B00A0071171E /* Trianglamate.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -342,6 +435,10 @@
 							};
 						};
 					};
+					E7EC65EE1993B00A0071171E = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 55R9SSZ27B;
+					};
 				};
 			};
 			buildConfigurationList = D28A1D2B1664F3AA005578F1 /* Build configuration list for PBXProject "Trianglam" */;
@@ -357,6 +454,7 @@
 			projectRoot = "";
 			targets = (
 				D28A1D301664F3AA005578F1 /* Trianglam */,
+				E7EC65EE1993B00A0071171E /* Trianglamate */,
 			);
 		};
 /* End PBXProject section */
@@ -368,6 +466,14 @@
 			files = (
 				D28A1D401664F3AA005578F1 /* InfoPlist.strings in Resources */,
 				D210AEC217673640007F7524 /* Media.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7EC65ED1993B00A0071171E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7EC65FA1993B00A0071171E /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +506,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E7EC65EB1993B00A0071171E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7EC65F81993B00A0071171E /* PhotoEditingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E7EC65FC1993B00A0071171E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7EC65EE1993B00A0071171E /* Trianglamate */;
+			targetProxy = E7EC65FB1993B00A0071171E /* PBXContainerItemProxy */;
+		};
+		E7EC65FF1993B00A0071171E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7EC65EE1993B00A0071171E /* Trianglamate */;
+			targetProxy = E7EC65FE1993B00A0071171E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D28A1D3E1664F3AA005578F1 /* InfoPlist.strings */ = {
@@ -513,6 +640,68 @@
 			};
 			name = Release;
 		};
+		E7EC66001993B00A0071171E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = Trianglamate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E7EC66011993B00A0071171E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = Trianglamate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -533,6 +722,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		E7EC66021993B00A0071171E /* Build configuration list for PBXNativeTarget "Trianglamate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7EC66001993B00A0071171E /* Debug */,
+				E7EC66011993B00A0071171E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
