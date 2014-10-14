@@ -42,13 +42,15 @@
 		D2BEFF3617E349F100DFB836 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3517E349F100DFB836 /* Security.framework */; };
 		D2BEFF3817E34A1B00DFB836 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */; };
+		E77BF1D319ED5C0D0012B5BE /* libFlurry_5.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E77BF1D119ED5BC70012B5BE /* libFlurry_5.4.0.a */; };
 		E78ECF0E17AE5CAC0025D3E2 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */; };
-		E7EC65D01993ADF90071171E /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EC65CF1993ADF90071171E /* libFlurry_4.2.3.a */; };
 		E7EC65F11993B00A0071171E /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EC65F01993B00A0071171E /* PhotosUI.framework */; };
 		E7EC65F31993B00A0071171E /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EC65F21993B00A0071171E /* Photos.framework */; };
 		E7EC65F81993B00A0071171E /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC65F71993B00A0071171E /* PhotoEditingViewController.swift */; };
 		E7EC65FA1993B00A0071171E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7EC65F91993B00A0071171E /* MainInterface.storyboard */; };
 		E7EC65FD1993B00A0071171E /* Trianglamate.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E7EC65EF1993B00A0071171E /* Trianglamate.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E7EC66041993B0FD0071171E /* UIImage+Triangles.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA5D166E371300411CC0 /* UIImage+Triangles.m */; };
+		E7EC66051993B1000071171E /* UIImage+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA80166F848100411CC0 /* UIImage+Extensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,9 +141,9 @@
 		D2BEFF3517E349F100DFB836 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E77BF1D119ED5BC70012B5BE /* libFlurry_5.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.4.0.a; sourceTree = SOURCE_ROOT; };
 		E78ECF0C17AE5CAC0025D3E2 /* AMBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMBlurView.h; sourceTree = "<group>"; };
 		E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMBlurView.m; sourceTree = "<group>"; };
-		E7EC65CF1993ADF90071171E /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		E7EC65EF1993B00A0071171E /* Trianglamate.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Trianglamate.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EC65F01993B00A0071171E /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		E7EC65F21993B00A0071171E /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -155,7 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7EC65D01993ADF90071171E /* libFlurry_4.2.3.a in Frameworks */,
+				E77BF1D319ED5C0D0012B5BE /* libFlurry_5.4.0.a in Frameworks */,
 				D0E1EB9017E3C88F00771DAC /* CoreLocation.framework in Frameworks */,
 				D0E1EB8E17E3C88900771DAC /* AssetsLibrary.framework in Frameworks */,
 				D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */,
@@ -290,7 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				D2BEFF3317E3493800DFB836 /* Flurry.h */,
-				E7EC65CF1993ADF90071171E /* libFlurry_4.2.3.a */,
+				E77BF1D119ED5BC70012B5BE /* libFlurry_5.4.0.a */,
 			);
 			name = Flurry;
 			sourceTree = "<group>";
@@ -511,6 +513,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7EC65F81993B00A0071171E /* PhotoEditingViewController.swift in Sources */,
+				E7EC66051993B1000071171E /* UIImage+Extensions.m in Sources */,
+				E7EC66041993B0FD0071171E /* UIImage+Triangles.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +734,7 @@
 				E7EC66011993B00A0071171E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
