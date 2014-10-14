@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface UIImage (Extensions)
 - (UIImage *)imageAtRect:(CGRect)rect;
