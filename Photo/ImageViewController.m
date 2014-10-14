@@ -238,12 +238,12 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
 
 - (NSInteger)getNextIndexForIndex:(NSInteger)index
 {
-    if (abs(index - previousIndex) == 1)
+    if (((index < previousIndex) ? (previousIndex - index) : (index - previousIndex)) == 1)
     {
         if (index > previousIndex)
-            return index+1;
+            return index + 1;
         else if (index < previousIndex)
-            return index-1;
+            return index - 1;
     }
     
     return -1;
@@ -340,7 +340,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
     if (index < 0 || index >= images.count)
         return;
     
-    if (![fullScreenImages objectForKey:[NSNumber numberWithInt:index]])
+    if (![fullScreenImages objectForKey:[NSNumber numberWithInteger:index]])
     {
         ImageRenderOperation* operation = [[ImageRenderOperation alloc] initWithImage:[[images objectAtIndex:index] objectForKey:@"image"] delegate:self index:index andImageView:nil];
         [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
@@ -348,12 +348,12 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         if (![[queue operations] containsObject:operation])
         {
             [queue addOperation:operation];
-            NSLog(@"loading image %d", index);
+            NSLog(@"loading image %ld", (long)index);
         } else {
-            NSLog(@"already rendering image %d", index);
+            NSLog(@"already rendering image %ld", (long)index);
         }
     } else {
-        NSLog(@"already contains rendered image %d", index);
+        NSLog(@"already contains rendered image %ld", (long)index);
     }
 }
 
@@ -404,13 +404,13 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
     NSInteger index = images.count - backwardIndex - 1;
     filename = [[images objectAtIndex:index] objectForKey:@"image"] ;
     
-    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:index-2]])
+    if ([fullScreenImages objectForKey:[NSNumber numberWithInteger:index-2]])
     {
-        [fullScreenImages removeObjectForKey:[NSNumber numberWithInt:index-2]];
+        [fullScreenImages removeObjectForKey:[NSNumber numberWithInteger:index-2]];
     }
-    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:index+2]])
+    if ([fullScreenImages objectForKey:[NSNumber numberWithInteger:index+2]])
     {
-        [fullScreenImages removeObjectForKey:[NSNumber numberWithInt:index+2]];
+        [fullScreenImages removeObjectForKey:[NSNumber numberWithInteger:index+2]];
     }
     
     for (ImageRenderOperation* op in queue.operations)
@@ -418,7 +418,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
         if (op.index != currentIndex)
         {
             [op cancel];
-            NSLog(@"rendering image %d cancelled", op.index);
+            NSLog(@"rendering image %ld cancelled", (long)op.index);
         }
     }
     
@@ -427,9 +427,9 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
     currentImageView = imageView;
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    if ([fullScreenImages objectForKey:[NSNumber numberWithInt:index]])
+    if ([fullScreenImages objectForKey:[NSNumber numberWithInteger:index]])
     {
-        imageView.image = [fullScreenImages objectForKey:[NSNumber numberWithInt:index]];
+        imageView.image = [fullScreenImages objectForKey:[NSNumber numberWithInteger:index]];
     } else {
         imageView.image = [Gallery getThumbAtIndex:index];
     }
@@ -447,7 +447,7 @@ static NSString *reuseIdentifier = @"RGMPageReuseIdentifier";
     else if (previousImageView.tag == images.count - op.index - 1)
         previousImageView.image = op.renderedImage;
     
-    [fullScreenImages setObject:op.renderedImage forKey:[NSNumber numberWithInt:op.index]];
+    [fullScreenImages setObject:op.renderedImage forKey:[NSNumber numberWithInteger:op.index]];
 }
 
 

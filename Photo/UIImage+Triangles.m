@@ -30,7 +30,7 @@ static NSUInteger bitsPerComponent = 8;
         return;
     }
     
-    int byteIndex = (bytesPerPixel * pixelWidth * y) + x * bytesPerPixel;
+    unsigned long byteIndex = (bytesPerPixel * pixelWidth * y) + x * bytesPerPixel;
     
     *red  = (rawData[byteIndex]     * 1.0) / 255.0;
     *green = (rawData[byteIndex + 1] * 1.0) / 255.0;

@@ -352,7 +352,7 @@
 
 - (IBAction)setFlash:(DropDown *)sender
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:sender.selectedButtonIndex] forKey:@"flashPreset"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:sender.selectedButtonIndex] forKey:@"flashPreset"];
     
     [self reloadUserInterface];
     switch (sender.selectedButtonIndex) {
@@ -370,7 +370,7 @@
 
 - (IBAction)setSize:(DropDown *)sender
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:sender.selectedButtonIndex] forKey:@"sizePreset"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:sender.selectedButtonIndex] forKey:@"sizePreset"];
 
     switch (sender.selectedButtonIndex) {
         case 0:
@@ -387,7 +387,7 @@
 
 - (IBAction)setShape:(DropDown *)sender
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:sender.selectedButtonIndex] forKey:@"shapePreset"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:sender.selectedButtonIndex] forKey:@"shapePreset"];
 
     shape = sender.selectedButtonIndex;
 }
