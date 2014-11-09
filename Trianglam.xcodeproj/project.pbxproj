@@ -20,7 +20,6 @@
 		D223EA5B166E25CE00411CC0 /* GalleryCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA5A166E25CE00411CC0 /* GalleryCollectionCell.m */; };
 		D223EA5E166E371300411CC0 /* UIImage+Triangles.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA5D166E371300411CC0 /* UIImage+Triangles.m */; };
 		D223EA61166E3E0D00411CC0 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA60166E3E0D00411CC0 /* ImageViewController.m */; };
-		D223EA7C166F592100411CC0 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA7B166F592100411CC0 /* Settings.m */; };
 		D223EA81166F848100411CC0 /* UIImage+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D223EA80166F848100411CC0 /* UIImage+Extensions.m */; };
 		D2640C53169B0E19000A9A7B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2640C52169B0E19000A9A7B /* QuartzCore.framework */; };
 		D27CBD651680A33D006B6574 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27CBD641680A33D006B6574 /* MessageUI.framework */; };
@@ -43,30 +42,8 @@
 		D2BEFF3817E34A1B00DFB836 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D2BEFF3A17E34A6B00DFB836 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */; };
 		E77BF1D319ED5C0D0012B5BE /* libFlurry_5.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E77BF1D119ED5BC70012B5BE /* libFlurry_5.4.0.a */; };
-		E77BF1D919ED6FDB0012B5BE /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EC65F01993B00A0071171E /* PhotosUI.framework */; };
-		E77BF1DA19ED6FDB0012B5BE /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EC65F21993B00A0071171E /* Photos.framework */; };
-		E77BF1E019ED6FDB0012B5BE /* PhotoEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77BF1DF19ED6FDB0012B5BE /* PhotoEditingViewController.m */; };
-		E77BF1E219ED6FDB0012B5BE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E77BF1E119ED6FDB0012B5BE /* MainInterface.storyboard */; };
-		E77BF1E519ED6FDB0012B5BE /* Triangilter.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E77BF1D819ED6FDB0012B5BE /* Triangilter.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E78ECF0E17AE5CAC0025D3E2 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78ECF0D17AE5CAC0025D3E2 /* AMBlurView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E77BF1E319ED6FDB0012B5BE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D28A1D281664F3AA005578F1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E77BF1D719ED6FDB0012B5BE;
-			remoteInfo = Triangilter;
-		};
-		E77BF1E619ED6FDB0012B5BE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D28A1D281664F3AA005578F1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E77BF1D719ED6FDB0012B5BE;
-			remoteInfo = Triangilter;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		E7EC66031993B00A0071171E /* Embed App Extensions */ = {
@@ -75,7 +52,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E77BF1E519ED6FDB0012B5BE /* Triangilter.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,8 +82,6 @@
 		D223EA5D166E371300411CC0 /* UIImage+Triangles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Triangles.m"; sourceTree = "<group>"; };
 		D223EA5F166E3E0D00411CC0 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		D223EA60166E3E0D00411CC0 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
-		D223EA7A166F592100411CC0 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
-		D223EA7B166F592100411CC0 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		D223EA7F166F848100411CC0 /* UIImage+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extensions.h"; sourceTree = "<group>"; };
 		D223EA80166F848100411CC0 /* UIImage+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extensions.m"; sourceTree = "<group>"; };
 		D2640C52169B0E19000A9A7B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -140,7 +114,6 @@
 		D2BEFF3717E34A1B00DFB836 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		D2BEFF3917E34A6B00DFB836 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E77BF1D119ED5BC70012B5BE /* libFlurry_5.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.4.0.a; sourceTree = SOURCE_ROOT; };
-		E77BF1D819ED6FDB0012B5BE /* Triangilter.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Triangilter.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E77BF1DD19ED6FDB0012B5BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E77BF1DE19ED6FDB0012B5BE /* PhotoEditingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingViewController.h; sourceTree = "<group>"; };
 		E77BF1DF19ED6FDB0012B5BE /* PhotoEditingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoEditingViewController.m; sourceTree = "<group>"; };
@@ -172,15 +145,6 @@
 				D28A1D591664F440005578F1 /* AVFoundation.framework in Frameworks */,
 				D28A1D361664F3AA005578F1 /* UIKit.framework in Frameworks */,
 				D28A1D381664F3AA005578F1 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E77BF1D519ED6FDB0012B5BE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E77BF1D919ED6FDB0012B5BE /* PhotosUI.framework in Frameworks */,
-				E77BF1DA19ED6FDB0012B5BE /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				D28A1D311664F3AA005578F1 /* Trianglam.app */,
-				E77BF1D819ED6FDB0012B5BE /* Triangilter.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,8 +281,6 @@
 				D0BCE1B217AA990500222AB6 /* Camera.m */,
 				D28A1D6516661D7F005578F1 /* Gallery.h */,
 				D28A1D6616661D80005578F1 /* Gallery.m */,
-				D223EA7A166F592100411CC0 /* Settings.h */,
-				D223EA7B166F592100411CC0 /* Settings.m */,
 				D223EA5C166E371300411CC0 /* UIImage+Triangles.h */,
 				D223EA5D166E371300411CC0 /* UIImage+Triangles.m */,
 				D223EA7F166F848100411CC0 /* UIImage+Extensions.h */,
@@ -395,30 +356,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				E77BF1E419ED6FDB0012B5BE /* PBXTargetDependency */,
-				E77BF1E719ED6FDB0012B5BE /* PBXTargetDependency */,
 			);
 			name = Trianglam;
 			productName = Photo;
 			productReference = D28A1D311664F3AA005578F1 /* Trianglam.app */;
 			productType = "com.apple.product-type.application";
-		};
-		E77BF1D719ED6FDB0012B5BE /* Triangilter */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E77BF1E819ED6FDB0012B5BE /* Build configuration list for PBXNativeTarget "Triangilter" */;
-			buildPhases = (
-				E77BF1D419ED6FDB0012B5BE /* Sources */,
-				E77BF1D519ED6FDB0012B5BE /* Frameworks */,
-				E77BF1D619ED6FDB0012B5BE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Triangilter;
-			productName = Triangilter;
-			productReference = E77BF1D819ED6FDB0012B5BE /* Triangilter.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -437,10 +379,6 @@
 							};
 						};
 					};
-					E77BF1D719ED6FDB0012B5BE = {
-						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = 55R9SSZ27B;
-					};
 				};
 			};
 			buildConfigurationList = D28A1D2B1664F3AA005578F1 /* Build configuration list for PBXProject "Trianglam" */;
@@ -456,7 +394,6 @@
 			projectRoot = "";
 			targets = (
 				D28A1D301664F3AA005578F1 /* Trianglam */,
-				E77BF1D719ED6FDB0012B5BE /* Triangilter */,
 			);
 		};
 /* End PBXProject section */
@@ -468,14 +405,6 @@
 			files = (
 				D28A1D401664F3AA005578F1 /* InfoPlist.strings in Resources */,
 				D210AEC217673640007F7524 /* Media.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E77BF1D619ED6FDB0012B5BE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E77BF1E219ED6FDB0012B5BE /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,7 +427,6 @@
 				D223EA5E166E371300411CC0 /* UIImage+Triangles.m in Sources */,
 				D283195B17B26E240024C6EF /* UIViewController+TopAndBottomBlur.m in Sources */,
 				D223EA61166E3E0D00411CC0 /* ImageViewController.m in Sources */,
-				D223EA7C166F592100411CC0 /* Settings.m in Sources */,
 				D223EA81166F848100411CC0 /* UIImage+Extensions.m in Sources */,
 				D2008B1916A020910022DB19 /* DropDown.m in Sources */,
 				D0BCE1B317AA990500222AB6 /* Camera.m in Sources */,
@@ -508,28 +436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E77BF1D419ED6FDB0012B5BE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E77BF1E019ED6FDB0012B5BE /* PhotoEditingViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E77BF1E419ED6FDB0012B5BE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E77BF1D719ED6FDB0012B5BE /* Triangilter */;
-			targetProxy = E77BF1E319ED6FDB0012B5BE /* PBXContainerItemProxy */;
-		};
-		E77BF1E719ED6FDB0012B5BE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E77BF1D719ED6FDB0012B5BE /* Triangilter */;
-			targetProxy = E77BF1E619ED6FDB0012B5BE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D28A1D3E1664F3AA005578F1 /* InfoPlist.strings */ = {
@@ -642,67 +549,6 @@
 			};
 			name = Release;
 		};
-		E77BF1E919ED6FDB0012B5BE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = Triangilter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		E77BF1EA19ED6FDB0012B5BE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = Triangilter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -723,14 +569,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		E77BF1E819ED6FDB0012B5BE /* Build configuration list for PBXNativeTarget "Triangilter" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E77BF1E919ED6FDB0012B5BE /* Debug */,
-				E77BF1EA19ED6FDB0012B5BE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
